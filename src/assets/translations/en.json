@@ -1,0 +1,10 @@
+{
+  "translation": {
+    "usernamePlaceholder": "Phone number",
+    "password": "Password",
+    "showPassword": "Show",
+    "login": "Login",
+    "greeting": "Hello",
+    "test": "This is a test"
+  }
+}

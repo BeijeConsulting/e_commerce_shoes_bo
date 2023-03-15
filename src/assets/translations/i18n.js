@@ -1,6 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import englishLanguage from "./en.json";
+import italianLanguage from "./it.json";
 
 i18n
   // detect user language
@@ -17,32 +19,8 @@ i18n
       escapeValue: false, // not needed for react as it escapes by default
     },
     resources: {
-      en: {
-        translation: {
-          // here we will place our translations...
-          usernamePlaceholder: "Phone number",
-          password: "Password",
-          showPassword: "Show",
-          login: "Login",
-        },
-      },
-      it: {
-        translation: {
-          usernamePlaceholder: "Numero di telefono",
-          password: "Password",
-          showPassword: "Mostra",
-          login: "Accedi",
-        },
-      },
-
-      zh: {
-        translation: {
-          usernamePlaceholder: "手机号码",
-          password: "健谈的",
-          showPassword: "显示密码",
-          login: "登录",
-        },
-      },
+      en: englishLanguage,
+      it: italianLanguage,
     },
   });
 
