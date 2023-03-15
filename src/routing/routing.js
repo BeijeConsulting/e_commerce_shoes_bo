@@ -14,7 +14,7 @@ import AddOrder from "../screens/AddOrder";
 import ModifyOrder from "../screens/ModifyOrder";
 import PersonalArea from "../screens/PersonalArea";
 import Dashboard from "../screens/Dashboard";
-
+import LanguageTestHook from "../screens/LanguageTestHook";
 import Products from "../screens/Products";
 import AddProduct from "../screens/AddProduct";
 import ModifyProduct from "../screens/ModifyProduct";
@@ -43,6 +43,8 @@ function Routing(props) {
 
       <Route path="/personal-area" element={<PersonalArea />} />
       <Route path="/dashboard" element={<Dashboard />} />
+
+      <Route path="/language" element={<LanguageTestHook />} />
 
       <Route path="*" element={<PageNotFound />} />
     </Routes>
