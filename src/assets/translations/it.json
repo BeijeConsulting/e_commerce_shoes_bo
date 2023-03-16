@@ -4,6 +4,18 @@
     "showPassword": "Mostra",
     "login": "Accedi",
     "greeting": "Ciao",
-    "test": "Questo è un test"
+    "product": "Prodotto",
+    "brand": "Marca",
+    "colour": "Colore",
+    "price": "Prezzo",
+    "size": "Taglia",
+    "type": "Tipo",
+    "quantity": "Quantità",
+    "date": "Data",
+    "description": "Descrizione",
+    "category": "Categoria",
+    "image": "Immagine",
+    "name": "Nome",
+    "surname": "Cognome"
   }
 }

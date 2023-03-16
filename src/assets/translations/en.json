@@ -5,6 +5,19 @@
     "showPassword": "Show",
     "login": "Login",
     "greeting": "Hello",
-    "test": "This is a test"
+    "test": "This is a test",
+    "product": "Product",
+    "brand": "Brand",
+    "colour": "Colour",
+    "price": "Price",
+    "size": "Size",
+    "type": "Type",
+    "quantity": "Quantity",
+    "date": "Date",
+    "description": "Description",
+    "category": "Category",
+    "image": "Image",
+    "name": "Name",
+    "surname": "Surname"
   }
 }
