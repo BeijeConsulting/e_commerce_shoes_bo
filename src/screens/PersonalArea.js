@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class PersonalArea extends Component {
-  render() {
-    return <div>PersonalArea</div>;
-  }
+export default function PersonalArea() {
+  return <div>PersonalArea</div>;
 }

@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class AddUser extends Component {
-  render() {
-    return <div>AddUser</div>;
-  }
+export default function AddUser() {
+  return <div>AddUser</div>;
 }

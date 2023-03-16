@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class AddOrder extends Component {
-  render() {
-    return <div>AddOrder</div>;
-  }
+export default function AddOrder() {
+  return <div>AddOrder</div>;
 }

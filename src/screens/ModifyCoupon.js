@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class ModifyCoupon extends Component {
-  render() {
-    return <div>ModifyCoupon</div>;
-  }
+export default function ModifyCoupon() {
+  return <div>ModifyCoupon</div>;
 }
