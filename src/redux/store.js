@@ -1,25 +1,27 @@
 // file: todos/todosReducer.ts noEmit
-import { combineReducers } from '@reduxjs/toolkit'
+import { combineReducers } from "@reduxjs/toolkit";
 
 // file: store.ts
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit";
 
 // We'll use redux-logger just as an example of adding another middleware
-import logger from 'redux-logger'
+import logger from "redux-logger";
 
 //DUCK
-import tokenDuck from './duck/token/tokenDuck'
+import tokenDuck from "./duck/token/tokenDuck";
+import languageDuck from "./duck/language/languageDuck";
 
 const reducer = combineReducers({
   // here we will be adding reducers
-  tokenDuck
-})
+  languageDuck,
+  tokenDuck,
+});
 
 const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-  devTools: process.env.NODE_ENV !== 'production'
-})
+  devTools: process.env.NODE_ENV !== "production",
+});
 
 export default store;
 
