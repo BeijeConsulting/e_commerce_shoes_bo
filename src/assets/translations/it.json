@@ -16,6 +16,7 @@
     "category": "Categoria",
     "image": "Immagine",
     "name": "Nome",
-    "surname": "Cognome"
+    "surname": "Cognome",
+    "test": "Questo è un test"
   }
 }
