@@ -1,35 +1,36 @@
 import React, { Component } from "react";
 import i18next from "i18next";
 import i18n from "../assets/translations/i18n";
+import LanguageSelector from "../components/functionalComponents/languageSelector/LanguageSelector";
+import withRouter from "../routing/wrapRoutingClass/withNavigation";
+import { connect } from "react-redux";
 
-export default class EntryApp extends Component {
+class EntryApp extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      language: "en",
-    };
   }
 
-  changeLanguageIt = () => {
-    i18n.changeLanguage("it");
-    this.setState({ language: "it" });
-  };
-
-  changeLanguageEN = () => {
-    i18n.changeLanguage("en");
-    this.setState({ language: "en" });
+  navigateToLogin = () => {
+    this.props.router.navigate("/login");
   };
 
   render() {
     return (
       <div>
-        <h1>Ciao, questo è un test</h1>
-        <p>Stiamo provando le traduzioni</p>
+        <h1>{i18next.t("test")}</h1>
         <p>{i18next.t("greeting")}</p>
-        <p>{i18next.t("test")}</p>
-        <button onClick={this.changeLanguageIt}>IT</button>
-        <button onClick={this.changeLanguageEN}>EN</button>
+        <p>Stiamo provando le traduzioni</p>
+        <p></p>
+
+        <LanguageSelector />
+        <button onClick={this.navigateToLogin}>To Login</button>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  languageDuck: state.languageDuck.language,
+});
+
+export default connect(mapStateToProps)(withRouter(EntryApp));
