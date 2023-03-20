@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import withRouter from "../routing/wrapRoutingClass/withNavigation";
+import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 
 class Products extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Products extends Component {
         <h1>PRODUCTS</h1>
         <button>ADD PRODUCT</button>
         <button>MODIFY PRODUCT</button>
+        <SideBar />
       </div>
     );
   }

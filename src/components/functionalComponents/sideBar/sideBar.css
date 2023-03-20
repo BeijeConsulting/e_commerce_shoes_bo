@@ -1,0 +1,13 @@
+.sideNavWrapper {
+  width: 300px;
+  height: calc(100vh - 70px);
+  padding: 20px 30px;
+  border: 1px solid black;
+}
+
+.sideNavMenu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
