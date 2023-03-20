@@ -22,6 +22,7 @@ export default function LanguageSelector() {
 
   const handleChange = (event) => {
     setState(event.target.value);
+    console.log("stato", state);
     dispatch(setLanguage(event.target.value));
     i18n.changeLanguage(event.target.value);
   };
