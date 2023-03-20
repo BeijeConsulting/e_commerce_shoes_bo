@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 
 export default class Coupons extends Component {
   render() {
@@ -7,6 +8,7 @@ export default class Coupons extends Component {
         <h1>COUPON</h1>
         <button>ADD COUPON</button>
         <button>MODIFY COUPON</button>
+        <SideBar />
         {/* <Outlet /> */}
       </div>
     );
