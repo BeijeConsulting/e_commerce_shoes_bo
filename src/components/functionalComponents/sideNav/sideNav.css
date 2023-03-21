@@ -1,0 +1,16 @@
+.menuListWrapper {
+  height: 100%;
+}
+.menuListWrapper ul {
+  margin-top: 30px;
+}
+.menuListWrapper li {
+  padding: 10px 30px;
+  list-style: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.active {
+  background-color: red;
+}

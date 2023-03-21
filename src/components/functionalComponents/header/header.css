@@ -1,0 +1,28 @@
+.header-body {
+    height: 70px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-right{
+    width:85vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-buttons{
+    width: 150px;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 10px;
+}
+
+.header-logo{
+    height: 100%;
+    width: 15vw;
+    display: flex;
+    justify-content: center;
+}
