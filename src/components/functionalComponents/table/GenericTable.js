@@ -24,33 +24,39 @@ function GenericTable() {
     setPage(0);
   };
 
-  function mapColumns(column, key) {
-    return (
-      <TableCell
-        key={column.id}
-        align={column.align}
-        style={{ minWidth: column.minWidth }}
-      >
-        {column.label}
-      </TableCell>
-    );
+  function mapColumns() {
+    return columns.map((column) => {
+      return (
+        <TableCell
+          key={column.id}
+          align={column.align}
+          style={{ minWidth: column.minWidth }}
+        >
+          {column.label}
+        </TableCell>
+      );
+    });
   }
 
-  function mapRows(row, key) {
-    return (
-      <TableRow hover role="checkbox" tabIndex={-1} key={key}>
-        {columns.map((column) => {
-          const value = row[column.id];
-          return (
-            <TableCell key={column.id} align={column.align}>
-              {column.format && typeof value === "number"
-                ? column.format(value)
-                : value}
-            </TableCell>
-          );
-        })}
-      </TableRow>
-    );
+  function mapRows() {
+    return rows
+      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      .map((row, key) => {
+        return (
+          <TableRow hover role="checkbox" tabIndex={-1} key={key}>
+            {columns.map((column) => {
+              const value = row[column.id];
+              return (
+                <TableCell key={column.id} align={column.align}>
+                  {column.format && typeof value === "number"
+                    ? column.format(value)
+                    : value}
+                </TableCell>
+              );
+            })}
+          </TableRow>
+        );
+      });
   }
 
   return (
@@ -68,13 +74,9 @@ function GenericTable() {
       >
         <Table stickyHeader aria-label="sticky table" className="generic-table">
           <TableHead className="table-head">
-            <TableRow>{columns.map(mapColumns)}</TableRow>
+            <TableRow>{mapColumns()}</TableRow>
           </TableHead>
-          <TableBody className="table-body">
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map(mapRows)}
-          </TableBody>
+          <TableBody className="table-body">{mapRows()}</TableBody>
         </Table>
       </TableContainer>
       <TablePagination
