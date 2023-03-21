@@ -11,3 +11,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.logoutButton {
+  background-color: #667a8a;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}

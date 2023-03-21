@@ -25,9 +25,16 @@ function GenericTable() {
   };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden", boxShadow: "none" }}>
+    <Paper
+      sx={{
+        width: 650,
+        overflow: "hidden",
+        boxShadow: "none",
+        margin: "0 auto",
+      }}
+    >
       <TableContainer
-        sx={{ height: 600, width: 650 }}
+        sx={{ height: 500, width: 650 }}
         className="table-container"
       >
         <Table stickyHeader aria-label="sticky table" className="generic-table">
