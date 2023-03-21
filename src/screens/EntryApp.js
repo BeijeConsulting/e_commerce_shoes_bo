@@ -4,6 +4,7 @@ import i18n from "../assets/translations/i18n";
 import LanguageSelector from "../components/functionalComponents/languageSelector/LanguageSelector";
 import withRouter from "../routing/wrapRoutingClass/withNavigation";
 import { connect } from "react-redux";
+import GenericTable from "../components/functionalComponents/table/GenericTable";
 
 class EntryApp extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class EntryApp extends Component {
 
         <LanguageSelector />
         <button onClick={this.navigateToLogin}>To Login</button>
+        <GenericTable />
       </div>
     );
   }
