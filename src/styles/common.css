@@ -17,3 +17,13 @@ code {
   margin: 0;
   font-family: "Poppins";
 }
+
+.screen-title {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
