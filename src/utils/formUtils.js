@@ -24,10 +24,10 @@ const addProductFormProps = [
     required: true,
   },
   {
-    label: "colour", // colore
+    label: "color", // colore
     type: "text",
-    id: "colour",
-    name: "colour",
+    id: "colur",
+    name: "color",
     required: true,
   },
   {
@@ -46,7 +46,7 @@ const addProductFormProps = [
   },
   {
     label: "quantity", // quantità
-    type: "text",
+    type: "number",
     id: "quantity",
     name: "quantity",
     required: true,
@@ -59,10 +59,17 @@ const addProductFormProps = [
     required: true,
   },
   {
-    label: "description", // descrizione
+    label: "description", // descrizione it
     type: "text",
-    id: "description",
-    name: "description",
+    id: "description_it",
+    name: "description_it",
+    required: true,
+  },
+  {
+    label: "description", // descrizione en
+    type: "text",
+    id: "description_en",
+    name: "description_en",
     required: true,
   },
   {
@@ -73,19 +80,44 @@ const addProductFormProps = [
     required: true,
   },
   {
-    label: "image", // immagine
-    type: "file", //????
-    id: "image",
-    name: "image",
+    label: "listed", // in vendita ?
+    type: "number",
+    id: "is_listed",
+    name: "is_listed",
     required: true,
   },
   {
+    label: "image", // immagine
+    type: "file", //????
+    id: "image_1",
+    name: "image_1",
+    required: true,
+    accept: "image/jpeg",
+  },
+  {
+    label: "image", // immagine
+    type: "file", //????
+    id: "image_2",
+    name: "image_2",
+    required: true,
+    accept: "image/png, image/jpeg",
+  },
+  {
+    label: "image", // immagine
+    type: "file", //????
+    id: "image_3",
+    name: "image_3",
+    required: true,
+    accept: "image/png, image/jpeg",
+  },
+
+  /*{
     label: "date", // immagine
     type: "date", //????
     id: "date",
     name: "date",
     required: true,
-  },
+  },*/
 ];
 
 export { addProductFormProps };
