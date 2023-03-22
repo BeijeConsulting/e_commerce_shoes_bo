@@ -4,22 +4,32 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./actionsButton.css";
+import { Link } from "react-router-dom";
 
-export default function BasicMenu({ icons, labels }) {
+export default function ActionsButton({ icons, labels, productId }) {
+  console.log("PROPS ACTIONSBUTTON:", productId);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
+    console.log("CLICK", productId);
     setAnchorEl(null);
   };
+
+  function navigateToProductDetails() {
+    console.log("CLICK", productId);
+  }
 
   function mapIcons(icon, index) {
     return (
       <MenuItem key={index} onClick={handleClose}>
-        {icon} &nbsp;
-        {labels[index]}
+        <Link to={`${icon.url}/${productId}`}>
+          <div style={{ display: "flex", gap: 10 }}>
+            {icon.icon} {icon.label}
+          </div>
+        </Link>
       </MenuItem>
     );
   }
