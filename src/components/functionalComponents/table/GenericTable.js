@@ -24,46 +24,59 @@ function GenericTable() {
     setPage(0);
   };
 
+  function mapColumns() {
+    return columns.map((column) => {
+      return (
+        <TableCell
+          key={column.id}
+          align={column.align}
+          style={{ minWidth: column.minWidth }}
+        >
+          {column.label}
+        </TableCell>
+      );
+    });
+  }
+
+  function mapRows() {
+    return rows
+      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      .map((row, key) => {
+        return (
+          <TableRow hover role="checkbox" tabIndex={-1} key={key}>
+            {columns.map((column) => {
+              const value = row[column.id];
+              return (
+                <TableCell key={column.id} align={column.align}>
+                  {column.format && typeof value === "number"
+                    ? column.format(value)
+                    : value}
+                </TableCell>
+              );
+            })}
+          </TableRow>
+        );
+      });
+  }
+
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden", boxShadow: "none" }}>
+    <Paper
+      sx={{
+        width: 650,
+        overflow: "hidden",
+        boxShadow: "none",
+        margin: "0 auto",
+      }}
+    >
       <TableContainer
-        sx={{ height: 600, width: 650 }}
+        sx={{ height: 500, width: 650 }}
         className="table-container"
       >
         <Table stickyHeader aria-label="sticky table" className="generic-table">
           <TableHead className="table-head">
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
+            <TableRow>{mapColumns()}</TableRow>
           </TableHead>
-          <TableBody className="table-body">
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
+          <TableBody className="table-body">{mapRows()}</TableBody>
         </Table>
       </TableContainer>
       <TablePagination

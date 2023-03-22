@@ -27,6 +27,7 @@ function SideNav() {
     const arrMenu = state.user.map((link, key) => {
       return (
         <li key={Math.random(key)}>
+          <div>{link.icon}</div>
           <NavLink to={link.link}>{link.label}</NavLink>
         </li>
       );
