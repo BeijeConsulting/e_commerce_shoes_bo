@@ -17,6 +17,7 @@
     "image": "Immagine",
     "name": "Nome",
     "surname": "Cognome",
-    "test": "Questo è un test"
+    "test": "Questo è un test",
+    "productsManagement": "Gestione prodotti"
   }
 }
