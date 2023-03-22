@@ -91,7 +91,7 @@ const addProductFormProps = [
     type: "file", //????
     id: "image_1",
     name: "image_1",
-    required: true,
+    required: false,
     accept: "image/jpeg",
   },
   {
@@ -99,7 +99,7 @@ const addProductFormProps = [
     type: "file", //????
     id: "image_2",
     name: "image_2",
-    required: true,
+    required: false,
     accept: "image/png, image/jpeg",
   },
   {
@@ -107,7 +107,7 @@ const addProductFormProps = [
     type: "file", //????
     id: "image_3",
     name: "image_3",
-    required: true,
+    required: false,
     accept: "image/png, image/jpeg",
   },
 
