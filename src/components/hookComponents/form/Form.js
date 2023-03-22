@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { changeLanguage } from "../../../utils/languageUtils";
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
@@ -7,6 +6,7 @@ import CardImg from "../../functionalComponents/cardImg/CardImg";
 import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 import EmptyImage from "../../../assets/images/emptyImage/emptyImage.jpg";
+import ImageListContainer from "../../functionalComponents/imageList/ImageListContainer";
 
 function Form(props) {
   const { t, i18n } = useTranslation();
@@ -42,11 +42,16 @@ function Form(props) {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log("data:", data);
+    const outputObject = { ...data, imagesArray: state.imagesArray };
+    console.log("outputObject:", outputObject);
+  };
 
   const [state, setState] = useState({
     lan: "en",
     facultativePictures: [],
+    imagesArray: [],
   });
 
   function addImage() {
@@ -72,12 +77,15 @@ function Form(props) {
 
   function removeImage() {
     let facPictures = state.facultativePictures;
+    let imgArray = state.imagesArray;
     if (facPictures.length !== 0) {
       facPictures.pop(); // remove one pictures from the facultatives
+      imgArray[3 + facPictures.length] = "";
     }
     setState({
       ...state,
       facultativePictures: facPictures,
+      imagesArray: imgArray,
     });
   }
 
@@ -143,7 +151,7 @@ function Form(props) {
             render={({ message }) => <p>{message}</p>}
           />
         }
-        {field.accept && (
+        {/*field.accept && (
           /*<CardImg
             width={{ width: 150 }}
             height={{ height: 140 }}
@@ -151,94 +159,87 @@ function Form(props) {
             title="image"
             ref={arrayReferences[parseInt(field.id.substring(6)) - 1]}
             imageSrc={EmptyImage} // style={{ width: "100%", marginRight: "400px" }}
-          />*/
+          />
           <img
             id={field.id + "-preview"}
             alt="shoe"
             ref={arrayReferences[parseInt(field.id.substring(6)) - 1]}
             src={EmptyImage}
           />
-        )}
+        )*/}
         <br />
       </div>
     );
   }
 
-  function setStateLanguage() {
-    setState({
-      lan: changeLanguage(i18n, state),
-    });
-  }
-
   function showPreview(event, imageId) {
     if (event.target.files.length > 0) {
-      var src = URL.createObjectURL(event.target.files[0]);
-      var preview = arrayReferences[parseInt(imageId.substring(6)) - 1].current;
-      preview.src = src;
-      preview.style.display = "block";
+      let imgArray = state.imagesArray;
+      // imgArray[parseInt(imageId.substring(6)) - 1] = URL.createObjectURL(
+      //   event.target.files[0]
+      // );
+      imgArray[imageId] = URL.createObjectURL(event.target.files[0]);
+      console.log(" event.target.files[0] :", event.target.files[0]);
+      console.log("URL.create...", URL.createObjectURL(event.target.files[0]));
+      //var src = URL.createObjectURL(event.target.files[0]);
+      //var preview = arrayReferences[parseInt(imageId.substring(6)) - 1].current;
+      //preview.src = src;
+      //preview.style.display = "block";
+      setState({
+        ...state,
+        imagesArray: imgArray,
+      });
     }
   }
 
+  function testSubmitForm(event) {
+    event.preventDefault();
+    console.log("testSubmitForm");
+    console.log("event.target.files[0]", event.target.name.value);
+    console.log("event.target.files[0]", event.target.file.value);
+  }
+
   return (
-    <>
-      <button onClick={setStateLanguage}>LANGUAGE</button>
+    <div>
+      {
+        <>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {[...props.propsData, ...state.facultativePictures].map(
+              mapFormFields
+            )}
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {[...props.propsData, ...state.facultativePictures].map(mapFormFields)}
+            <input type="submit" />
+          </form>
+          {/* <form onSubmit={testSubmitForm}>
+            <input id="file" type="file" name="file" />
+            <input id="name" name="name"></input>
+            <input type="submit" label="Invia qui" name="Invia" />
+          </form> */}
+        </>
+      }
 
-        <label htmlFor="file-ip-1">Upload Image</label>
-        <input
-          type="file"
-          id="file-ip-1"
-          accept="image/*"
-          onChange={showPreview}
-        />
-
-        <input type="submit" />
-      </form>
       {props.abilitatePictures && (
         <button onClick={addImage}>Aggiungi Immagini</button>
       )}
       {props.abilitatePictures && (
         <button onClick={removeImage}>Rimuovi Immagini</button>
       )}
-      <div className="preview">
-        <img id="file-ip-1-preview" alt="shoe" ref={refImg} />
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "10px",
-          alignItems: "center",
-        }}
-      >
-        {/*
-        <CardImg
-          width={{ width: 150 }}
-          height={{ height: 140 }}
-          title="green iguana"
-          imageSrc="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80"
-          // style={{ width: "100%", marginRight: "400px" }}
-        />
-        <CardImg
-          width={{ width: 150 }}
-          height={{ height: 140 }}
-          title="green iguana"
-          imageSrc="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80"
-          // style={{ width: "100%", marginRight: "400px" }}
-        />
-        <CardImg
-          width={{ width: 350 }}
-          height={{ height: 140 }}
-          title="green iguana"
-          imageSrc="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80"
-          // style={{ width: "100%", marginRight: "400px" }}
-        />*/}
-      </div>
-    </>
+      <ImageListContainer
+        imagesData={state.imagesArray}
+        state={state}
+        setImagesData={setState}
+        showPreview={showPreview}
+        // callbackButtonAdd={addImageCata}
+      />
+    </div>
   );
 }
 
 export default Form;
+
+// const imageListData = [
+//   { image: 'path/to/image1.jpg', ref: myRef1 },
+//   { image: 'path/to/image2.jpg', ref: myRef2 },
+//   { image: 'path/to/image3.jpg', ref: myRef3 },
+//   //...
+// ];
