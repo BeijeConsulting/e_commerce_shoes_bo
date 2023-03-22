@@ -18,6 +18,15 @@
     "name": "Nome",
     "surname": "Cognome",
     "test": "Questo è un test",
-    "productsManagement": "Gestione prodotti"
+    "productsManagement": "Gestione prodotti",
+    "addProduct": "Aggiungi prodotto",
+    "couponsManagement": "Gestione coupon",
+
+    "ordersList": "Lista ordini",
+    "usersList": "Lista utenti",
+    "employeesList": "Lista impiegati",
+    "couponsList": "Lista coupon",
+    "discountsList": "Lista ribassi",
+    "productsList": "Lista prodotti"
   }
 }
