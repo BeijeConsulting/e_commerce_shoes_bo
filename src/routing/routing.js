@@ -18,6 +18,7 @@ import LanguageTestHook from "../screens/LanguageTestHook";
 import Products from "../screens/Products";
 import AddProduct from "../screens/AddProduct";
 import ModifyProduct from "../screens/ModifyProduct";
+import ProductDetails from "../screens/ProductDetails";
 
 function Routing(props) {
   return (
@@ -38,6 +39,7 @@ function Routing(props) {
       <Route path="/orders/modify-order/:id" element={<ModifyOrder />} />
 
       <Route path="/products" element={<Products />} />
+      <Route path="/products/:id" element={<ProductDetails />} />
       <Route path="/products/add-product" element={<AddProduct />} />
       <Route path="/products/modify-product/:id" element={<ModifyProduct />} />
 
