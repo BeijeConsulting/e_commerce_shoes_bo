@@ -13,6 +13,8 @@
     "quantity": "Quantità",
     "date": "Data",
     "description": "Descrizione",
+    "descriptionIt": "Descrizione IT",
+    "descriptionEn": "Descrizione EN",
     "category": "Categoria",
     "image": "Immagine",
     "name": "Nome",
