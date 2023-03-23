@@ -19,6 +19,7 @@ import Products from "../screens/Products";
 import AddProduct from "../screens/AddProduct";
 import ModifyProduct from "../screens/ModifyProduct";
 import ProductDetails from "../screens/ProductDetails";
+import AddDiscount from "../screens/AddDiscount";
 
 function Routing(props) {
   return (
@@ -42,6 +43,8 @@ function Routing(props) {
       <Route path="/products/:id" element={<ProductDetails />} />
       <Route path="/products/add-product" element={<AddProduct />} />
       <Route path="/products/modify-product/:id" element={<ModifyProduct />} />
+
+      <Route path="/products/:id/discount" element={<AddDiscount />} />
 
       <Route path="/personal-area" element={<PersonalArea />} />
       <Route path="/dashboard" element={<Dashboard />} />
