@@ -18,8 +18,6 @@ function GenericTable(props) {
 
   const { t, i18n } = useTranslation();
 
-  console.log("PROPS:", props?.fields);
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };

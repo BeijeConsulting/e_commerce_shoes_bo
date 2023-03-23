@@ -51,3 +51,14 @@ export const couponsColumns = [
   { id: "min_order", label: "minOrder" },
   { id: "actions", label: "actions" },
 ];
+
+export const usersColumns = [
+  { id: "id", label: "Id" },
+  { id: "name", label: "name" },
+  { id: "surname", label: "surname" },
+  { id: "email", label: "email" },
+  { id: "telephone", label: "telephone" },
+  { id: "birthdate", label: "birthdate" },
+  { id: "address", label: "address" },
+  { id: "actions", label: "actions" },
+];
