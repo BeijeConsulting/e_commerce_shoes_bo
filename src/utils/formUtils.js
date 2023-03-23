@@ -120,4 +120,21 @@ const addProductFormProps = [
   },*/
 ];
 
-export { addProductFormProps };
+const addDiscountFormProps = [
+  {
+    label: "value", //  prezzo
+    type: "number",
+    id: "value",
+    name: "value",
+    required: true,
+  },
+  {
+    label: "expireDate", // quantità
+    type: "date",
+    id: "expireDate",
+    name: "expireDate",
+    required: true,
+  },
+];
+
+export { addProductFormProps, addDiscountFormProps };
