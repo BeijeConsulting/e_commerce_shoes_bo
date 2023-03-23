@@ -28,12 +28,12 @@ const LANGS = [
 // ----------------------------------------------------------------------
 
 export default function LanguagePopover() {
+  const { t, i18n } = useTranslation();
   const [state, setState] = useState({
     open: null,
-    lang: "en",
+    lang: i18n.language,
   });
 
-  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const languageRedux = useSelector((state) => state.languageDuck.language);
 
