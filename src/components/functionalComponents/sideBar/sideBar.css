@@ -3,6 +3,7 @@
   height: calc(100vh - 70px);
   padding: 20px 30px;
   border: 1px solid #ddd;
+  border-bottom: none;
   background-color: #ffffff;
 }
 
