@@ -9,10 +9,13 @@
 }
 
 .table-head th {
-  background-color: #f4f6f8;
+  background-color: #f0f9fc;
   font-weight: bold;
 }
 
-.table-body td:hover {
-  /* cursor: pointer; */
+.table-body {
+}
+
+.MuiTablePagination-root {
+  background-color: #f9fafb;
 }

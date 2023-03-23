@@ -2,7 +2,8 @@
   width: 300px;
   height: calc(100vh - 70px);
   padding: 20px 30px;
-  border: 1px solid black;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
 }
 
 .sideNavMenu {
@@ -13,7 +14,7 @@
 }
 
 .logoutButton {
-  background-color: #667a8a;
+  background-color: #0371bc;
   height: 40px;
   display: flex;
   align-items: center;

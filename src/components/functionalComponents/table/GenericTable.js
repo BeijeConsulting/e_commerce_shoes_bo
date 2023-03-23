@@ -86,7 +86,7 @@ function GenericTable(props) {
         boxShadow: "none",
         margin: "0 auto",
         // width: "95%",
-        backgroundColor: "transparent",
+        backgroundColor: "#ffffff",
       }}
     >
       <TableContainer sx={{ height: 500 }} className="table-container">

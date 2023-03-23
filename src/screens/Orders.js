@@ -29,7 +29,7 @@ export default function Orders() {
       <Header />
       <div style={{ display: "flex" }}>
         <SideBar />
-        <div style={{ backgroundColor: "#f9fafb", width: "100%" }}>
+        <div style={{ backgroundColor: "#f1f1f1", width: "100%" }}>
           <h1 className="screen-title">Gestione ordini</h1>
           <div style={{ width: "95%", margin: "0 auto" }}>
             <FiltersRow label={t("ordersList")} />
