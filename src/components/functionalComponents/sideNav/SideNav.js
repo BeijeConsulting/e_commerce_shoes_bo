@@ -3,6 +3,7 @@ import "./sideNav.css";
 import { sidebarConfig } from "../../../utils/sidebarConfigUtils";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function SideNav() {
   // stato per settare utente corrente
@@ -10,6 +11,8 @@ function SideNav() {
   const [state, setState] = useState({
     user: [],
   });
+
+  const { t, i18n } = useTranslation();
 
   //   oggetto custom che contiene i vari utenti e le relative voci del menu che possono visualizzare e cliccare
   const { admin, marketing, data_entry } = sidebarConfig;
@@ -28,7 +31,7 @@ function SideNav() {
       return (
         <li key={Math.random(key)}>
           <div>{link.icon}</div>
-          <NavLink to={link.link}>{link.label}</NavLink>
+          <NavLink to={link.link}>{t(link.label)}</NavLink>
         </li>
       );
     });

@@ -3,8 +3,11 @@ import SideNav from "../sideNav/SideNav";
 import "./sideBar.css";
 import { Link } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useTranslation } from "react-i18next";
 
 function SideBar() {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="sideNavWrapper">
       <nav className="sideNavMenu">
@@ -19,7 +22,7 @@ function SideBar() {
               textDecoration: "none",
             }}
           >
-            Logout
+            {t("logout")}
           </Link>
         </div>
       </nav>

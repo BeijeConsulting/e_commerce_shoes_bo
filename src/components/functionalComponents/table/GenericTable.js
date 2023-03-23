@@ -10,10 +10,13 @@ import TableRow from "@mui/material/TableRow";
 import { productsColumns, productsListIcons } from "../../../utils/tableUtils";
 import "./genericTable.css";
 import ActionsButton from "../../functionalComponents/actionsButton/ActionsButton";
+import { useTranslation } from "react-i18next";
 
 function GenericTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const { t, i18n } = useTranslation();
 
   console.log("PROPS:", props?.fields);
 
@@ -34,7 +37,7 @@ function GenericTable(props) {
           align={column.align}
           style={{ minWidth: column.minWidth }}
         >
-          {column.label}
+          {t(column.label)}
         </TableCell>
       );
     });
