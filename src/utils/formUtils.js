@@ -137,71 +137,70 @@ const addDiscountFormProps = [
   },
 ];
 
-// code, max_usages, user_id, expire_date, type, value, min_order, description
-const addCouponFormProps = [
+const modifyDiscountFormProps = [
   {
-    label: "code", //  prezzo
-    type: "text",
-    id: "code",
-    name: "code",
-    required: true,
-  },
-  {
-    label: "value",
+    label: "value", //  prezzo
     type: "number",
     id: "value",
     name: "value",
     required: true,
   },
   {
-    label: "maxUsages",
-    type: "number",
-    id: "maxUsages",
-    name: "maxUsages",
+    label: "expireDate", // quantità
+    type: "date",
+    id: "expireDate",
+    name: "expireDate",
     required: true,
+  },
+];
+
+const addOrdertFormProps = [
+  {
+    label: "name",
+    type: "text",
+    id: "name",
+    name: "name",
+    required: true,
+    errors: checkTextInput,
+  },
+  {
+    label: "status",
+    type: "text",
+    id: "status",
+    name: "status",
+    required: true,
+    errors: checkTextInput,
+  },
+  {
+    label: "paymentStatus",
+    type: "text",
+    id: "paymentStatus",
+    name: "paymentStatus",
+    required: true,
+    errors: checkTextInput,
   },
   {
     label: "userId",
     type: "number",
     id: "userId",
     name: "userId",
-    required: false,
-  },
-  {
-    label: "expireDate",
-    type: "date",
-    id: "expireDate",
-    name: "expireDate",
-    required: false,
-  },
-  {
-    label: "type",
-    type: "text",
-    id: "type",
-    name: "type",
     required: true,
   },
   {
-    label: "minOrder",
+    label: "transaction", //  prezzo
     type: "number",
-    id: "minOrder",
-    name: "minOrder",
-    required: false,
+    id: "transaction",
+    name: "transaction",
+    required: true,
   },
   {
-    label: "descriptionIt",
-    type: "text",
-    id: "description",
-    name: "description_it",
-    required: false,
-  },
-  {
-    label: "descriptionEn",
-    type: "text",
-    id: "description",
-    name: "description_en",
-    required: false,
+    name: "addOrder",
   },
 ];
 
-export { addProductFormProps, addDiscountFormProps, addCouponFormProps };
+export {
+  addProductFormProps,
+  addDiscountFormProps,
+  modifyDiscountFormProps,
+  addOrdertFormProps,
+};

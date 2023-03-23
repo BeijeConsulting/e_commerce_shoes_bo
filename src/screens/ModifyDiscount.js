@@ -7,28 +7,15 @@ import { modifyDiscountFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/servicesProducts";
 import MediaCard from "../components/functionalComponents/cardImg/CardImg";
-import { getProducts } from "../services/servicesProducts";
 
-function AddOrder(props) {
+function ModifyDiscount(props) {
   const { t, i18n } = useTranslation();
   const [state, setState] = useState({
     product: null,
-    productArr: [],
   });
   const language = i18n.language;
 
   const { id } = useParams();
-
-  useEffect(() => {
-    async function getResourcesProd() {
-      const response = await getProducts();
-      setState({
-        ...state,
-        productArr: response.data,
-      });
-    }
-    getResourcesProd();
-  }, []);
 
   useEffect(() => {
     async function getResources() {
@@ -42,15 +29,13 @@ function AddOrder(props) {
   const canUploadPictures = false;
   const addTitle = t("add");
 
-  console.log(state.productArr);
-
   return (
     <div>
       <Header />
       <div style={{ display: "flex" }}>
         <SideBar />
         <div style={{ width: "100%" }} className="screen-bg">
-          <h1 className="screen-title">{t("addOrder")}</h1>
+          <h1 className="screen-title">{t("modifyDiscount")}</h1>
           <div
             style={{
               width: "95%",
@@ -96,7 +81,6 @@ function AddOrder(props) {
                 propsData={modifyDiscountFormProps}
                 abilitatePictures={canUploadPictures}
                 buttonTitle={addTitle}
-                products={state.productArr}
               />
             </div>
           </div>
@@ -106,4 +90,4 @@ function AddOrder(props) {
   );
 }
 
-export default AddOrder;
+export default ModifyDiscount;
