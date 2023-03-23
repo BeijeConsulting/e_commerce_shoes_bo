@@ -91,7 +91,7 @@ function GenericTable(props) {
       }}
     >
       <TableContainer
-        sx={{ height: 500, backgroundColor: "white" }}
+        sx={{ height: 550, backgroundColor: "white" }}
         className="table-container"
       >
         <Table stickyHeader aria-label="sticky table" className="generic-table">
@@ -104,7 +104,7 @@ function GenericTable(props) {
       <TablePagination
         rowsPerPageOptions={[10, 25, 50]}
         component="div"
-        count={props?.products?.length || 0}
+        count={props?.fields?.length || 0}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
