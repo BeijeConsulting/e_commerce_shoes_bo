@@ -7,12 +7,12 @@
 .form-group-container {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 
 .form-input {
   /* margin-bottom: 20px; */
-  padding: 10px;
+  padding: 7px 8px;
   border: 2px solid #0171bc;
   border-radius: 7px;
   width: 300px;
