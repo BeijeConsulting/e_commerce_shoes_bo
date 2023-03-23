@@ -11,13 +11,17 @@
   width: 100%;
   list-style: none;
   cursor: pointer;
-  font-size: 14px;
   color: #667a8a;
 }
 
 .menuListWrapper li a {
   text-decoration: none;
-  margin: 0 10px;
+  margin-left: 10px;
+}
+
+.menuListWrapper li:hover {
+  font-weight: 700;
+  color: #0c7fda;
 }
 
 .active {
