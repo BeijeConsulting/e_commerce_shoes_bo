@@ -22,32 +22,32 @@ export const productsListIcons = [
 
 export const ordersColumns = [
   { id: "id", label: "Id" },
-  { id: "user_id", label: "User Id" },
-  { id: "created_at", label: "Date" },
-  { id: "payment_status", label: "Payment Status" },
-  { id: "status", label: "Status" },
-  { id: "total_price", label: "Total" },
-  { id: "transaction", label: "Transaction" },
-  { id: "actions", label: "Actions" },
+  { id: "user_id", label: "userId" },
+  { id: "created_at", label: "date" },
+  { id: "payment_status", label: "paymentStatus" },
+  { id: "status", label: "status" },
+  { id: "total_price", label: "total" },
+  { id: "transaction", label: "transaction" },
+  { id: "actions", label: "actions" },
 ];
 
 export const productsColumns = [
   { id: "id", label: "Id" },
-  { id: "image", label: "Image" },
-  { id: "brand", label: "Brand" },
-  { id: "name", label: "Name" },
-  { id: "category", label: "Category" },
-  { id: "starting_price", label: "Price" },
-  { id: "actions", label: "Actions" },
+  { id: "image", label: "image" },
+  { id: "brand", label: "brand" },
+  { id: "name", label: "name" },
+  { id: "category", label: "category" },
+  { id: "starting_price", label: "price" },
+  { id: "actions", label: "actions" },
 ];
 
 export const couponsColumns = [
   { id: "id", label: "Id" },
-  { id: "code", label: "Code" },
-  { id: "max_usages", label: "Max Usages" },
-  { id: "expire_date", label: "Expire Date" },
-  { id: "type", label: "Type" },
-  { id: "value", label: "Value" },
-  { id: "min_order", label: "Min Order" },
-  { id: "actions", label: "Actions" },
+  { id: "code", label: "code" },
+  { id: "max_usages", label: "maxUsages" },
+  { id: "expire_date", label: "expireDate" },
+  { id: "type", label: "type" },
+  { id: "value", label: "value" },
+  { id: "min_order", label: "minOrder" },
+  { id: "actions", label: "actions" },
 ];

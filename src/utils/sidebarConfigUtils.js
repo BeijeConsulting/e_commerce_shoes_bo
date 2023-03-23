@@ -8,61 +8,61 @@ import PersonIcon from "@mui/icons-material/Person";
 const sidebarConfig = {
   admin: [
     {
-      label: "Dashboard",
+      label: "dashboard",
       link: "/dashboard",
       icon: <HomeIcon />,
     },
     {
-      label: "Gestione prodotti",
+      label: "manageProducts",
       link: "/products",
       icon: <LocalMallIcon />,
     },
     {
-      label: "Gestione utenti",
+      label: "manageUsers",
       link: "/users",
       icon: <GroupsIcon />,
     },
     {
-      label: "Gestione coupon",
+      label: "manageCoupons",
       link: "/coupons",
       icon: <ConfirmationNumberIcon />,
     },
     {
-      label: "Gestione ordini",
+      label: "manageOrders",
       link: "/orders",
       icon: <ShoppingCartIcon />,
     },
     {
-      label: "Area personale",
+      label: "personalArea",
       link: "/personal-area",
       icon: <PersonIcon />,
     },
   ],
   data_entry: [
     {
-      label: "Gestione prodotti",
+      label: "manageProducts",
       link: "/products",
       icon: <LocalMallIcon />,
     },
     {
-      label: "Gestione ordini",
+      label: "manageOrders",
       link: "/orders",
       icon: <ShoppingCartIcon />,
     },
     {
-      label: "Area personale",
+      label: "personalArea",
       link: "/personal-area",
       icon: <PersonIcon />,
     },
   ],
   marketing: [
     {
-      label: "Gestione coupon",
+      label: "manageCoupons",
       link: "/coupons",
       icon: <ConfirmationNumberIcon />,
     },
     {
-      label: "Area personale",
+      label: "personalArea",
       link: "/personal-area",
       icon: <PersonIcon />,
     },
