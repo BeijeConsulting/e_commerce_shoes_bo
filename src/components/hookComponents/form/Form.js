@@ -48,6 +48,7 @@ function Form(props) {
     console.log("data:", data);
     const outputObject = { ...data, imagesArray: state.imagesArray };
     console.log("outputObject:", outputObject);
+    // reset form fields
   };
 
   const [state, setState] = useState({
@@ -141,6 +142,7 @@ function Form(props) {
           id={field.id}
           name={field.name}
           accept={field.accept}
+          required={field.required}
           //onChange={field.accept ? checkInputType : null}
           onChange={
             field.accept ? (event) => checkInputType(event, field.id) : null
