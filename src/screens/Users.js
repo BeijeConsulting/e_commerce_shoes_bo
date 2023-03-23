@@ -13,7 +13,7 @@ export default class Users extends Component {
         <Header />
         <div style={{ display: "flex" }}>
           <SideBar />
-          <div style={{ backgroundColor: "red", width: "100%" }}>
+          <div style={{ width: "100%" }} className="screen-bg">
             <h1>UTENTE LOGGATO</h1>
             <GenericTable />
           </div>

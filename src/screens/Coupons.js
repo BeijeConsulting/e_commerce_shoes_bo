@@ -27,7 +27,7 @@ function Coupons(props) {
       <Header />
       <div style={{ display: "flex" }}>
         <SideBar />
-        <div style={{ backgroundColor: "#f9fafb", width: "100%" }}>
+        <div style={{ width: "100%" }} className="screen-bg">
           <h1 className="screen-title">{t("couponsManagement")}</h1>
           <div style={{ width: "95%", margin: "0 auto" }}>
             <FiltersRow label={t("couponsList")} />

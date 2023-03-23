@@ -11,15 +11,15 @@ import { getOrders } from "../services/servicesOrders";
 
 export default function Orders() {
   const [state, setState] = useState({
-    productsList: null,
+    ordersList: null,
   });
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
     async function getResources() {
       const response = await getOrders();
-      console.log("RESPONSE:", response.data);
-      setState({ productsList: response.data });
+      console.log("RESPONSE orders:", response.data);
+      setState({ ordersList: response.data.orders });
     }
     getResources();
   }, []);
@@ -29,7 +29,7 @@ export default function Orders() {
       <Header />
       <div style={{ display: "flex" }}>
         <SideBar />
-        <div style={{ backgroundColor: "#f1f1f1", width: "100%" }}>
+        <div style={{ width: "100%" }} className="screen-bg">
           <h1 className="screen-title">Gestione ordini</h1>
           <div style={{ width: "95%", margin: "0 auto" }}>
             <FiltersRow label={t("ordersList")} />
