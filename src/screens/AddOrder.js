@@ -31,14 +31,14 @@ function AddOrder(props) {
     getResourcesProd();
   }, []);
 
-  useEffect(() => {
-    async function getResources() {
-      const response = await getProductById(id, language);
-      console.log("RESPONSE:", response.data);
-      setState({ ...state, product: response.data });
-    }
-    getResources();
-  }, [language]);
+  // useEffect(() => {
+  //   async function getResources() {
+  //     const response = await getProductById(id, language);
+  //     console.log("RESPONSE:", response.data);
+  //     setState({ ...state, product: response.data });
+  //   }
+  //   getResources();
+  // }, [language]);
 
   const canUploadPictures = false;
   const addTitle = t("add");
