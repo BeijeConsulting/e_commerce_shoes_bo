@@ -22,11 +22,12 @@ export const productsListIcons = [
 
 export const ordersColumns = [
   { id: "id", label: "Id" },
-  { id: "date ", label: "Date" },
+  { id: "user_id", label: "User Id" },
+  { id: "created_at", label: "Date" },
   { id: "payment_status", label: "Payment Status" },
-  { id: "stauts", label: "Status" },
-  { id: "total", label: "Total" },
-  { id: "quantity", label: "Quantity" },
+  { id: "status", label: "Status" },
+  { id: "total_price", label: "Total" },
+  { id: "transaction", label: "Transaction" },
   { id: "actions", label: "Actions" },
 ];
 
