@@ -82,6 +82,7 @@ export default function LanguagePopover() {
         <img
           src={LANGS.filter((lang) => lang.value === state.lang)[0].icon}
           alt={LANGS[0].label}
+          style={{ borderRadius: "10px" }}
         />
       </IconButton>
 
