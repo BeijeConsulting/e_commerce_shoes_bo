@@ -195,12 +195,32 @@ function Form(props) {
     }
   }
 
-  function testSubmitForm(event) {
+  /*function testSubmitForm(event) {
     event.preventDefault();
     console.log("testSubmitForm");
     console.log("event.target.files[0]", event.target.name.value);
     console.log("event.target.files[0]", event.target.file.value);
+  }*/
+
+  function mapProducts(products) {
+    products.map((product) => {
+      <label htmlFor={product.id}>{t(product.label)}</label>;
+      {
+        /* <br /> */
+      }
+
+      <input
+        {...register(product.name, product.errors)}
+        type={product.type}
+        id={product.id}
+        name={product.name}
+        //onChange={product.accept ? checkInputType : null}
+        className="form-input"
+      />;
+    });
   }
+
+  function mapAddresses(addresses) {}
 
   return (
     <div className="form">
@@ -210,7 +230,8 @@ function Form(props) {
             {[...props.propsData, ...state.facultativePictures].map(
               mapFormFields
             )}
-
+            {props.products && mapProducts(props.products)}
+            {/*} {props.arrayAddresses && map()}*/}
             {/* {<input type="submit" value={props.buttonTitle}></input>} */}
             {<Button type="submit" title={props.buttonTitle} color="success" />}
           </form>

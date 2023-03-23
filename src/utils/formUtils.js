@@ -154,4 +154,53 @@ const modifyDiscountFormProps = [
   },
 ];
 
-export { addProductFormProps, addDiscountFormProps, modifyDiscountFormProps };
+const addOrdertFormProps = [
+  {
+    label: "name",
+    type: "text",
+    id: "name",
+    name: "name",
+    required: true,
+    errors: checkTextInput,
+  },
+  {
+    label: "status",
+    type: "text",
+    id: "status",
+    name: "status",
+    required: true,
+    errors: checkTextInput,
+  },
+  {
+    label: "paymentStatus",
+    type: "text",
+    id: "paymentStatus",
+    name: "paymentStatus",
+    required: true,
+    errors: checkTextInput,
+  },
+  {
+    label: "userId",
+    type: "number",
+    id: "userId",
+    name: "userId",
+    required: true,
+  },
+  {
+    label: "transaction", //  prezzo
+    type: "number",
+    id: "transaction",
+    name: "transaction",
+    required: true,
+  },
+  {
+    name: "addOrder",
+  },
+];
+
+export {
+  addProductFormProps,
+  addDiscountFormProps,
+  modifyDiscountFormProps,
+  addOrdertFormProps,
+};
