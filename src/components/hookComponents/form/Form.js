@@ -7,6 +7,8 @@ import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 import EmptyImage from "../../../assets/images/emptyImage/emptyImage.jpg";
 import ImageListContainer from "../../functionalComponents/imageList/ImageListContainer";
+import { Button } from "../../functionalComponents/button/Button";
+import "./form.css";
 
 function Form(props) {
   const { t, i18n } = useTranslation();
@@ -129,9 +131,9 @@ function Form(props) {
 
   function mapFormFields(field) {
     return (
-      <div key={Math.random()}>
+      <div className="form-group-container" key={Math.random()}>
         <label htmlFor={field.id}>{t(field.label)}</label>
-        <br />
+        {/* <br /> */}
 
         <input
           {...register(field.name, field.errors)}
@@ -143,6 +145,7 @@ function Form(props) {
           onChange={
             field.accept ? (event) => checkInputType(event, field.id) : null
           }
+          className="form-input"
         />
         {
           <ErrorMessage
@@ -200,7 +203,7 @@ function Form(props) {
   }
 
   return (
-    <div>
+    <div className="form">
       {
         <>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -208,7 +211,8 @@ function Form(props) {
               mapFormFields
             )}
 
-            <input type="submit" />
+            {/* {<input type="submit" value={props.buttonTitle}></input>} */}
+            {<Button type="submit" title={props.buttonTitle} color="success" />}
           </form>
           {/* <form onSubmit={testSubmitForm}>
             <input id="file" type="file" name="file" />
@@ -224,13 +228,15 @@ function Form(props) {
       {props.abilitatePictures && (
         <button onClick={removeImage}>Rimuovi Immagini</button>
       )}
-      <ImageListContainer
-        imagesData={state.imagesArray}
-        state={state}
-        setImagesData={setState}
-        showPreview={showPreview}
-        // callbackButtonAdd={addImageCata}
-      />
+      {props.abilitatePictures && (
+        <ImageListContainer
+          imagesData={state.imagesArray}
+          state={state}
+          setImagesData={setState}
+          showPreview={showPreview}
+          // callbackButtonAdd={addImageCata}
+        />
+      )}
     </div>
   );
 }
