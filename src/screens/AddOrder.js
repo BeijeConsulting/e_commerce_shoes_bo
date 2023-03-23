@@ -19,6 +19,7 @@ function AddOrder(props) {
 
   const { id } = useParams();
 
+  // USEFFECT CHE CHIAMA I PRODOTTI E VENGONO PASSATI IN UN ARRAY AL FORM E VISUALIZZATI NELLA SCREEN DI ADD-ORDER
   useEffect(() => {
     async function getResourcesProd() {
       const response = await getProducts();
