@@ -8,7 +8,7 @@ import {
 } from "../genericAxios/genericAxios";
 
 async function getOrders() {
-  return await getData(ORDERS_PROPERTIES.BASE_URL + "/all", PROPERTIES.API_KEY);
+  return await getData(ORDERS_PROPERTIES.BASE_URL + "all", PROPERTIES.API_KEY);
 }
 
 /*async function getOrderById(id, lang) {
