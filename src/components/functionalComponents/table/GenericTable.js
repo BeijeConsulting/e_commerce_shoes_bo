@@ -8,9 +8,10 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { productsColumns, productsListIcons } from "../../../utils/tableUtils";
-import "./genericTable.css";
 import ActionsButton from "../../functionalComponents/actionsButton/ActionsButton";
 import { useTranslation } from "react-i18next";
+import emptyShoes from "../../../assets/images/emptyImage/emptyShoes.png";
+import "./genericTable.css";
 
 function GenericTable(props) {
   const [page, setPage] = React.useState(0);
@@ -61,7 +62,7 @@ function GenericTable(props) {
 
                 {column.id === "image" ? (
                   <img
-                    src={value}
+                    src={value ? value : emptyShoes}
                     alt="product"
                     style={{
                       width: "50px",
