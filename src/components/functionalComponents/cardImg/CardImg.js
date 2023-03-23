@@ -4,12 +4,13 @@ import CardMedia from "@mui/material/CardMedia";
 
 export default function MediaCard(props) {
   return (
-    <Card sx={props.width}>
+    <Card sx={props.width} style={props.style}>
       <CardMedia
         component="img"
         sx={props.height}
         image={props.imageSrc}
         title={props.title}
+
         // style={props.style}
       />
     </Card>
