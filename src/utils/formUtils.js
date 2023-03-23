@@ -198,9 +198,76 @@ const addOrdertFormProps = [
   },
 ];
 
+const addCouponFormProps = [
+  {
+    label: "code", //  prezzo
+    type: "text",
+    id: "code",
+    name: "code",
+    required: true,
+  },
+  {
+    label: "value",
+    type: "number",
+    id: "value",
+    name: "value",
+    required: true,
+  },
+  {
+    label: "maxUsages",
+    type: "number",
+    id: "maxUsages",
+    name: "maxUsages",
+    required: true,
+  },
+  {
+    label: "userId",
+    type: "number",
+    id: "userId",
+    name: "userId",
+    required: false,
+  },
+  {
+    label: "expireDate",
+    type: "date",
+    id: "expireDate",
+    name: "expireDate",
+    required: false,
+  },
+  {
+    label: "type",
+    type: "text",
+    id: "type",
+    name: "type",
+    required: true,
+  },
+  {
+    label: "minOrder",
+    type: "number",
+    id: "minOrder",
+    name: "minOrder",
+    required: false,
+  },
+  {
+    label: "descriptionIt",
+    type: "text",
+    id: "description",
+    name: "description_it",
+    required: false,
+  },
+  {
+    label: "descriptionEn",
+    type: "text",
+    id: "description",
+    name: "description_en",
+    required: false,
+  },
+];
+
 export {
   addProductFormProps,
   addDiscountFormProps,
   modifyDiscountFormProps,
   addOrdertFormProps,
+  addCouponFormProps,
 };
