@@ -87,10 +87,13 @@ function GenericTable(props) {
         boxShadow: "none",
         margin: "0 auto",
         // width: "95%",
-        backgroundColor: "#ffffff",
+        backgroundColor: "#f1f1f1",
       }}
     >
-      <TableContainer sx={{ height: 500 }} className="table-container">
+      <TableContainer
+        sx={{ height: 500, backgroundColor: "white" }}
+        className="table-container"
+      >
         <Table stickyHeader aria-label="sticky table" className="generic-table">
           <TableHead className="table-head">
             <TableRow>{mapColumns()}</TableRow>
