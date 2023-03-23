@@ -15,7 +15,7 @@ function GenericTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  console.log("PROPS:", props?.products);
+  console.log("PROPS:", props?.fields);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -44,7 +44,7 @@ function GenericTable(props) {
     return props?.fields?.map((product, key) => {
       return (
         <TableRow hover role="checkbox" tabIndex={-1} key={key}>
-          {productsColumns.map((column) => {
+          {props.columns.map((column) => {
             const value = product[column.id];
             return (
               <TableCell key={column.id} align={column.align}>
