@@ -44,7 +44,7 @@ function Routing(props) {
       <Route path="/products/add-product" element={<AddProduct />} />
       <Route path="/products/modify-product/:id" element={<ModifyProduct />} />
 
-      <Route path="/products/:id/discount" element={<AddDiscount />} />
+      <Route path="/products/:id/add-discount" element={<AddDiscount />} />
 
       <Route path="/personal-area" element={<PersonalArea />} />
       <Route path="/dashboard" element={<Dashboard />} />
