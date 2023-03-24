@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // @mui
 import { alpha } from "@mui/material/styles";
 import { Box, MenuItem, Stack, IconButton, Popover } from "@mui/material";
@@ -31,7 +31,7 @@ export default function LanguagePopover() {
   const { t, i18n } = useTranslation();
   const [state, setState] = useState({
     open: null,
-    lang: i18n.language,
+    lang: "en",
   });
 
   const dispatch = useDispatch();
@@ -50,6 +50,13 @@ export default function LanguagePopover() {
       open: null,
     });
   };
+
+  useEffect(() => {
+    setState({
+      ...state,
+      lang: i18n.language,
+    });
+  }, []);
 
   function handleLanguage(languageChosen) {
     handleClose();
