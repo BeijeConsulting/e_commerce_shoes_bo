@@ -3,11 +3,9 @@ import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import Header from "../components/functionalComponents/header/Header";
 import { useTranslation } from "react-i18next";
 import Form from "../components/hookComponents/form/Form";
-import { addOrdertFormProps } from "../utils/formUtils";
-import { modifyDiscountFormProps } from "../utils/formUtils";
+import { addOrderFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/servicesProducts";
-import MediaCard from "../components/functionalComponents/cardImg/CardImg";
 import { getProducts } from "../services/servicesProducts";
 
 function AddOrder(props) {
@@ -58,7 +56,6 @@ function AddOrder(props) {
               width: "95%",
               height: "80%",
               margin: "0 auto",
-              marginTop: "50px",
               display: "flex",
               justifyContent: "center",
             }}
@@ -69,23 +66,11 @@ function AddOrder(props) {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: 50,
-                width: "50%",
-              }}
-            >
-              <p>{state.product?.description}</p>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
                 width: "50%",
               }}
             >
               <Form
-                propsData={addOrdertFormProps}
+                propsData={addOrderFormProps}
                 abilitatePictures={canUploadPictures}
                 buttonTitle={addTitle}
                 products={state.productArr}

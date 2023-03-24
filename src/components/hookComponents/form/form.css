@@ -33,16 +33,20 @@
   max-height: 150px;
   margin-top: 10px;
   border-radius: 10px;
-  min-width: 200px;
+  min-width: 180px;
   background-color: white;
 }
 
 .addOrderFormButton {
   display: flex;
-  bottom: 19px;
-  height: 200px;
-  left: 255px;
-  right: 45px;
+  margin-top: 10px;
   align-items: end;
   justify-content: flex-end;
+}
+
+.shoeListWrapper div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 7px;
+  font-family: "Poppins";
 }

@@ -60,6 +60,9 @@
     "minOrder": "Minimum order",
     "maxUsages": "Maximum usages",
     "code": "Code",
+    "searchProducts": "Search products",
+    "searchProductsById": "Search products by ID",
+    "searchHere": "Search here",
 
     "orderDetails": "Order details",
     "productDetails": "Product details",

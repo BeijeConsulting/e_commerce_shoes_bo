@@ -59,6 +59,9 @@
     "minOrder": "Ordine minimo",
     "maxUsages": "Numero di usi",
     "code": "Codice",
+    "searchProducts": "Cerca prodotti",
+    "searchProductsById": "Cerca prodotti per ID",
+    "searchHere": "Cerca qui",
 
     "orderDetails": "Dettagli dell'ordine",
     "productDetails": "Dettagli del prodotto",

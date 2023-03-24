@@ -205,7 +205,7 @@ function Form(props) {
     return products?.map((product) => {
       return (
         <div key={product.id}>
-          <label htmlFor={product.id}>{t(product.name)}</label>
+          <label htmlFor={product.id}>{product.name}</label>
           {/* <br /> */}
           <input
             {...register(product.name, product.errors)}
@@ -237,12 +237,12 @@ function Form(props) {
             {[...props.propsData, ...state.facultativePictures].map(
               mapFormFields
             )}
-            <p>Search products</p>
+            <p>{t("searchProductsById")}</p>
             <input
               type="text"
               onChange={filterId}
               className="form-input"
-              placeholder={t("searchProducts")}
+              placeholder={t("searchHere")}
             />
             {state.filtereProducts && (
               <div className="shoeListWrapper">
