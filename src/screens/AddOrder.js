@@ -6,7 +6,6 @@ import Form from "../components/hookComponents/form/Form";
 import { addOrderFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/servicesProducts";
-import MediaCard from "../components/functionalComponents/cardImg/CardImg";
 import { getProducts } from "../services/servicesProducts";
 
 function AddOrder(props) {
