@@ -143,6 +143,7 @@ function Form(props) {
           name={field.name}
           accept={field.accept}
           required={field.required}
+          defaultValue={field.defaultValue}
           //onChange={field.accept ? checkInputType : null}
           onChange={
             field.accept ? (event) => checkInputType(event, field.id) : null
