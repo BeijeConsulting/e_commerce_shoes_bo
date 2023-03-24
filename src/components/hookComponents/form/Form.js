@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import CardImg from "../../functionalComponents/cardImg/CardImg";
 import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
-import EmptyImage from "../../../assets/images/emptyImage/emptyImage.jpg";
 import ImageListContainer from "../../functionalComponents/imageList/ImageListContainer";
 import { Button } from "../../functionalComponents/button/Button";
 import "./form.css";
@@ -55,6 +52,7 @@ function Form(props) {
     lan: "en",
     facultativePictures: [],
     imagesArray: [],
+    filtereProducts: [],
   });
 
   function addImage() {
@@ -143,11 +141,8 @@ function Form(props) {
           name={field.name}
           accept={field.accept}
           required={field.required}
-          defaultValue={field.defaultValue}
           //onChange={field.accept ? checkInputType : null}
-          onChange={
-            field.accept ? (event) => checkInputType(event, field.id) : null
-          }
+          onChange={field.accept ? checkInputType : null}
           className="form-input"
         />
         {
@@ -209,22 +204,31 @@ function Form(props) {
     return products?.map((product) => {
       return (
         <div key={product.id}>
-          <label htmlFor={product.id}>{t(product.label)}</label>
+          <label htmlFor={product.id}>{t(product.name)}</label>
           {/* <br /> */}
           <input
             {...register(product.name, product.errors)}
-            type={product.type}
+            type="checkbox"
             id={product.id}
             name={product.name}
-            //onChange={product.accept ? checkInputType : null}
-            className="form-input"
           />
         </div>
       );
     });
   }
 
-  function mapAddresses(addresses) {}
+  function filterId(event) {
+    let shoe = props.products.filter((product) => {
+      return String(product.id).includes(event.target.value);
+    });
+    if (event.target.value === "") {
+      shoe = null;
+    }
+    setState({
+      ...state,
+      filtereProducts: shoe,
+    });
+  }
   return (
     <div className="form">
       {
@@ -233,10 +237,31 @@ function Form(props) {
             {[...props.propsData, ...state.facultativePictures].map(
               mapFormFields
             )}
-            {mapProducts(props.products)}
-            {/*} {props.arrayAddresses && map()}*/}
+            <p>Search products</p>
+            <input
+              type="text"
+              onChange={filterId}
+              className="form-input"
+              placeholder={t("searchProducts")}
+            />
+            {state.filtereProducts && (
+              <div className="shoeListWrapper">
+                {mapProducts(state.filtereProducts)}
+              </div>
+            )}
+            <div className="addOrderFormButton">
+              {
+                <Button
+                  type="submit"
+                  title={props.buttonTitle}
+                  color="success"
+                />
+              }
+            </div>
+            {/*{mapProducts(props.products)}*/}
+            {/*} {
+              props.arrayAddresses && map()}*/}
             {/* {<input type="submit" value={props.buttonTitle}></input>} */}
-            {<Button type="submit" title={props.buttonTitle} color="success" />}
           </form>
           {/* <form onSubmit={testSubmitForm}>
             <input id="file" type="file" name="file" />

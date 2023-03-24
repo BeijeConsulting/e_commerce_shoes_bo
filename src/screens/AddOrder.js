@@ -3,9 +3,11 @@ import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import Header from "../components/functionalComponents/header/Header";
 import { useTranslation } from "react-i18next";
 import Form from "../components/hookComponents/form/Form";
+import { addOrdertFormProps } from "../utils/formUtils";
 import { modifyDiscountFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/servicesProducts";
+import MediaCard from "../components/functionalComponents/cardImg/CardImg";
 import { getProducts } from "../services/servicesProducts";
 
 function AddOrder(props) {
@@ -56,6 +58,7 @@ function AddOrder(props) {
               width: "95%",
               height: "80%",
               margin: "0 auto",
+              marginTop: "50px",
               display: "flex",
               justifyContent: "center",
             }}
@@ -70,17 +73,6 @@ function AddOrder(props) {
                 width: "50%",
               }}
             >
-              <h2>{state.product?.brand + " " + state.product?.name}</h2>
-              <MediaCard
-                imageSrc="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/c42ec98f-d993-4b3b-a045-6dbc885ee722/scarpa-da-training-metcon-8-Msjwbs.png"
-                height={{ height: 300 }}
-                title="Shoe"
-                width={{ width: 300 }}
-                style={{
-                  boxShadow: "10px 10px 50px #0371bc",
-                  borderRadius: "25px",
-                }}
-              />
               <p>{state.product?.description}</p>
             </div>
             <div
@@ -93,7 +85,7 @@ function AddOrder(props) {
               }}
             >
               <Form
-                propsData={modifyDiscountFormProps}
+                propsData={addOrdertFormProps}
                 abilitatePictures={canUploadPictures}
                 buttonTitle={addTitle}
                 products={state.productArr}
