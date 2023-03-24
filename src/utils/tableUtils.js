@@ -21,7 +21,7 @@ export const productsListIcons = [
 ];
 
 export const ordersColumns = [
-  { id: "id", label: "Id" },
+  { id: "order_id", label: "id" },
   { id: "user_id", label: "userId" },
   { id: "created_at", label: "date" },
   { id: "payment_status", label: "paymentStatus" },
@@ -32,7 +32,7 @@ export const ordersColumns = [
 ];
 
 export const productsColumns = [
-  { id: "id", label: "Id" },
+  { id: "id", label: "id" },
   { id: "image", label: "image" },
   { id: "brand", label: "brand" },
   { id: "name", label: "name" },
@@ -42,7 +42,7 @@ export const productsColumns = [
 ];
 
 export const couponsColumns = [
-  { id: "id", label: "Id" },
+  { id: "id", label: "id" },
   { id: "code", label: "code" },
   { id: "max_usages", label: "maxUsages" },
   { id: "expire_date", label: "expireDate" },
@@ -53,7 +53,7 @@ export const couponsColumns = [
 ];
 
 export const usersColumns = [
-  { id: "id", label: "Id" },
+  { id: "id", label: "id" },
   { id: "name", label: "name" },
   { id: "surname", label: "surname" },
   { id: "email", label: "email" },

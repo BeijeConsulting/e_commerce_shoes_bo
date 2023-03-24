@@ -10,31 +10,9 @@ import ImageListContainer from "../../functionalComponents/imageList/ImageListCo
 import { Button } from "../../functionalComponents/button/Button";
 import "./form.css";
 
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
-
 function Form(props) {
   const { t, i18n } = useTranslation();
   const refImg = useRef(null);
-
-  const currencies = [
-    {
-      value: "USD",
-      label: "$",
-    },
-    {
-      value: "EUR",
-      label: "€",
-    },
-    {
-      value: "BTC",
-      label: "฿",
-    },
-    {
-      value: "JPY",
-      label: "¥",
-    },
-  ];
 
   const image1Ref = useRef(null);
   const image2Ref = useRef(null);
@@ -77,7 +55,6 @@ function Form(props) {
     lan: "en",
     facultativePictures: [],
     imagesArray: [],
-    filtereProdutcs: [],
   });
 
   function addImage() {
@@ -166,7 +143,8 @@ function Form(props) {
           name={field.name}
           accept={field.accept}
           required={field.required}
-          // onChange={field.accept ? checkInputType : null}
+          defaultValue={field.defaultValue}
+          //onChange={field.accept ? checkInputType : null}
           onChange={
             field.accept ? (event) => checkInputType(event, field.id) : null
           }
@@ -227,51 +205,22 @@ function Form(props) {
     console.log("event.target.files[0]", event.target.file.value);
   }*/
 
-  /*function mapProducts(products) {
+  function mapProducts(products) {
     return products?.map((product) => {
       return (
         <div key={product.id}>
-          <label htmlFor={product.id}>{t(product.name)}</label>
+          <label htmlFor={product.id}>{t(product.label)}</label>
+          {/* <br /> */}
           <input
             {...register(product.name, product.errors)}
-            type="checkbox"
+            type={product.type}
             id={product.id}
             name={product.name}
             //onChange={product.accept ? checkInputType : null}
+            className="form-input"
           />
         </div>
       );
-    });
-  }*/
-
-  function mapProducts(prod) {
-    return prod?.map((product) => {
-      return (
-        <div key={product.id} className="shoeListMenu">
-          <label htmlFor={product.id}>{t(product.name)}</label>
-          <input
-            {...register(product.name, product.errors)}
-            type="checkbox"
-            id={product.id}
-            name={product.name}
-            //onChange={product.accept ? checkInputType : null}
-          />
-        </div>
-      );
-    });
-  }
-
-  function filterId(event) {
-    let shoe = props.products.filter((product) => {
-      return String(product.id).includes(event.target.value);
-    });
-    if (event.target.value === "") {
-      shoe = null;
-    }
-    //return shoe;
-    setState({
-      ...state,
-      filtereProdutcs: shoe,
     });
   }
 
@@ -284,48 +233,10 @@ function Form(props) {
             {[...props.propsData, ...state.facultativePictures].map(
               mapFormFields
             )}
-            <p>Search products</p>
-            <input
-              type="text"
-              onChange={filterId}
-              className="form-input"
-              placeholder={t("searchProducts")}
-            />
-            {state.filtereProdutcs && (
-              <div className="shoeListWrapper">
-                {mapProducts(state.filtereProdutcs)}
-              </div>
-            )}
-            {/*{mapProducts(props.products)}*/}
-
-            {/*}
-            <TextField
-              id="outlined-select-currency"
-              select
-              label="Select"
-              defaultValue="EUR"
-              helperText="Please select your currency"
-              name="currency"
-              //value{currency}
-            >
-              {currencies.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-              </TextField>*/}
-
+            {mapProducts(props.products)}
             {/*} {props.arrayAddresses && map()}*/}
             {/* {<input type="submit" value={props.buttonTitle}></input>} */}
-            <div className="addOrderFormButton">
-              {
-                <Button
-                  type="submit"
-                  title={props.buttonTitle}
-                  color="success"
-                />
-              }
-            </div>
+            {<Button type="submit" title={props.buttonTitle} color="success" />}
           </form>
           {/* <form onSubmit={testSubmitForm}>
             <input id="file" type="file" name="file" />
