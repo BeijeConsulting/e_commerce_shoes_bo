@@ -4,20 +4,20 @@ import GenericTable from "../components/functionalComponents/table/GenericTable"
 import Header from "../components/functionalComponents/header/Header";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { useTranslation } from "react-i18next";
-import { getProducts } from "../services/servicesProducts";
+import { getCoupons } from "../services/servicesCoupons";
 import { couponsColumns } from "../utils/tableUtils";
 
 function Coupons(props) {
   const [state, setState] = useState({
-    productsList: null,
+    couponsList: null,
   });
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
     async function getResources() {
-      const response = await getProducts();
+      const response = await getCoupons();
       console.log("RESPONSE:", response.data);
-      setState({ productsList: response.data });
+      setState({ couponsList: response.data });
     }
     getResources();
   }, []);
@@ -32,8 +32,9 @@ function Coupons(props) {
           <div style={{ width: "95%", margin: "0 auto" }}>
             <FiltersRow label={t("couponsList")} />
             <GenericTable
-              fields={state.productsList}
+              fields={state.couponsList}
               columns={couponsColumns}
+              isFromCoupons={true}
             />
           </div>
         </div>
