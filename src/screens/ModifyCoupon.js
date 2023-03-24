@@ -28,6 +28,7 @@ function ModifyCoupon(props) {
   }, [state.coupon]);
 
   function modCouponFormProps(formFields) {
+    if (!state.coupon) return;
     let newformProps = [];
 
     for (let i = 0; i < formFields.length; i++) {
