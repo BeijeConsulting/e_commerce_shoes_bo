@@ -218,7 +218,7 @@ function Form(props) {
     });
   }
   function filterId(event) {
-    let shoe = props.products.filter((product) => {
+    let shoe = props?.products?.filter((product) => {
       return String(product.id).includes(event.target.value);
     });
     if (event.target.value === "") {
