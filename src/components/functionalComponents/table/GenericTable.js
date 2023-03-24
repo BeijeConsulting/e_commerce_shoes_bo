@@ -8,9 +8,10 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { productsColumns, productsListIcons } from "../../../utils/tableUtils";
-import "./genericTable.css";
 import ActionsButton from "../../functionalComponents/actionsButton/ActionsButton";
 import { useTranslation } from "react-i18next";
+import emptyShoes from "../../../assets/images/emptyImage/emptyShoes.png";
+import "./genericTable.css";
 
 function GenericTable(props) {
   const [page, setPage] = React.useState(0);
@@ -61,7 +62,7 @@ function GenericTable(props) {
 
                 {column.id === "image" ? (
                   <img
-                    src={value}
+                    src={value ? value : emptyShoes}
                     alt="product"
                     style={{
                       width: "50px",
@@ -87,10 +88,13 @@ function GenericTable(props) {
         boxShadow: "none",
         margin: "0 auto",
         // width: "95%",
-        backgroundColor: "#ffffff",
+        backgroundColor: "#f1f1f1",
       }}
     >
-      <TableContainer sx={{ height: 500 }} className="table-container">
+      <TableContainer
+        sx={{ height: 550, backgroundColor: "white" }}
+        className="table-container"
+      >
         <Table stickyHeader aria-label="sticky table" className="generic-table">
           <TableHead className="table-head">
             <TableRow>{mapColumns()}</TableRow>
@@ -101,7 +105,7 @@ function GenericTable(props) {
       <TablePagination
         rowsPerPageOptions={[10, 25, 50]}
         component="div"
-        count={props?.products?.length || 0}
+        count={props?.fields?.length || 0}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

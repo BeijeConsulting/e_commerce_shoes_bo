@@ -207,7 +207,7 @@ function Form(props) {
   function mapProducts(products) {
     return products?.map((product) => {
       return (
-        <div>
+        <div key={product.id}>
           <label htmlFor={product.id}>{t(product.label)}</label>
           {/* <br /> */}
           <input
