@@ -3,7 +3,7 @@ import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import Header from "../components/functionalComponents/header/Header";
 import { useTranslation } from "react-i18next";
 import Form from "../components/hookComponents/form/Form";
-import { modifyDiscountFormProps } from "../utils/formUtils";
+import { addOrderFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/servicesProducts";
 import MediaCard from "../components/functionalComponents/cardImg/CardImg";
@@ -58,32 +58,10 @@ function AddOrder(props) {
               height: "80%",
               margin: "0 auto",
               display: "flex",
+              marginTop: "50px",
               justifyContent: "center",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 50,
-                width: "50%",
-              }}
-            >
-              <h2>{state.product?.brand + " " + state.product?.name}</h2>
-              <MediaCard
-                imageSrc="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/c42ec98f-d993-4b3b-a045-6dbc885ee722/scarpa-da-training-metcon-8-Msjwbs.png"
-                height={{ height: 300 }}
-                title="Shoe"
-                width={{ width: 300 }}
-                style={{
-                  boxShadow: "10px 10px 50px #0371bc",
-                  borderRadius: "25px",
-                }}
-              />
-              <p>{state.product?.description}</p>
-            </div>
             <div
               style={{
                 display: "flex",
@@ -94,7 +72,7 @@ function AddOrder(props) {
               }}
             >
               <Form
-                propsData={modifyDiscountFormProps}
+                propsData={addOrderFormProps}
                 abilitatePictures={canUploadPictures}
                 buttonTitle={addTitle}
                 products={state.productArr}

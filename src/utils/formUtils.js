@@ -154,7 +154,7 @@ const modifyDiscountFormProps = [
   },
 ];
 
-const addOrdertFormProps = [
+const addOrderFormProps = [
   {
     label: "name",
     type: "text",
@@ -268,6 +268,6 @@ export {
   addProductFormProps,
   addDiscountFormProps,
   modifyDiscountFormProps,
-  addOrdertFormProps,
+  addOrderFormProps,
   addCouponFormProps,
 };
