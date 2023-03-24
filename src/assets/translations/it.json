@@ -52,6 +52,7 @@
     "transactionDate": "Data della transazione",
     "authority": "Ruolo",
     "products": "Prodotti",
+    "id": "Id",
     "userId": "Id utente",
     "status": "Stato",
     "transaction": "Transazione",
@@ -78,6 +79,7 @@
     "addDescriptionIt": "Aggiungi una descrizione in Italiano",
     "addDescriptionEn": "Aggiungi una descrizione in Inglese",
 
+    "modify": "Modifica",
     "modifyProduct": "Modifica prodotto",
     "modifyOrder": "Modifica ordine",
     "modifyCoupon": "Modifica coupon",
