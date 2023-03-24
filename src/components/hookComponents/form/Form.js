@@ -141,6 +141,7 @@ function Form(props) {
           name={field.name}
           accept={field.accept}
           required={field.required}
+          defaultValue={field.defaultValue}
           //onChange={field.accept ? checkInputType : null}
           onChange={field.accept ? checkInputType : null}
           className="form-input"
@@ -216,7 +217,6 @@ function Form(props) {
       );
     });
   }
-
   function filterId(event) {
     let shoe = props.products.filter((product) => {
       return String(product.id).includes(event.target.value);
@@ -258,9 +258,7 @@ function Form(props) {
                 />
               }
             </div>
-            {/*{mapProducts(props.products)}*/}
-            {/*} {
-              props.arrayAddresses && map()}*/}
+            {/*} {props.arrayAddresses && map()}*/}
             {/* {<input type="submit" value={props.buttonTitle}></input>} */}
           </form>
           {/* <form onSubmit={testSubmitForm}>
