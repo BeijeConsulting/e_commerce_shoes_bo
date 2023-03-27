@@ -334,56 +334,71 @@ const modifyCouponFormProps = [
   },
 ];
 
-const addUserFormProps = [
-  // name, surname, email, password, telephone(optional), birthDate
+// PERSONAL AREA
+
+const personalAreaFormProps = [
   {
     label: "name",
     type: "text",
     id: "name",
     name: "name",
-    required: true,
+    required: false,
   },
   {
     label: "surname",
     type: "text",
     id: "surname",
     name: "surname",
-    required: true,
+    required: false,
   },
   {
     label: "email",
-    type: "email",
+    type: "text",
     id: "email",
     name: "email",
-    required: true,
+    required: false,
   },
   {
     label: "password",
     type: "password",
     id: "password",
     name: "password",
-    required: true,
-  },
-  {
-    label: "telephone",
-    type: "text",
-    id: "telephone",
-    name: "telephone",
     required: false,
   },
   {
-    label: "birthDate",
+    label: "repeat password",
+    type: "password",
+    id: "repeat_password",
+    name: "repeat_password",
+    required: false,
+  },
+  {
+    label: "birthdate",
     type: "date",
-    id: "birthDate",
-    name: "birthDate",
+    id: "birthdate",
+    name: "birthdate",
     required: false,
   },
   {
-    label: "role",
-    type: "select",
-    id: "role",
-    name: "role",
-    required: true,
+    label: "phone",
+    type: "number",
+    id: "phone",
+    name: "phone",
+    required: false,
+  },
+  {
+    label: "country",
+    type: "text",
+    id: "country",
+    name: "country",
+    required: false,
+  },
+  {
+    label: "city",
+    type: "text",
+    id: "city",
+    name: "city",
+    required: false,
   },
 ];
 
@@ -394,5 +409,5 @@ export {
   addOrderFormProps,
   addCouponFormProps,
   modifyCouponFormProps,
-  addUserFormProps,
+  personalAreaFormProps,
 };
