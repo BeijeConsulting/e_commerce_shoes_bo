@@ -402,12 +402,32 @@ const personalAreaFormProps = [
   },
 ];
 
+const modifyOrderFormProps = [
+  {
+    label: "id",
+    type: "text",
+    id: "id",
+    name: "id",
+    required: true,
+    errors: checkTextInput,
+  },
+  {
+    label: "status",
+    type: "text",
+    id: "status",
+    name: "status",
+    required: true,
+    errors: checkTextInput,
+  },
+];
+
 export {
   addProductFormProps,
   addDiscountFormProps,
-  modifyDiscountFormProps,
   addOrderFormProps,
   addCouponFormProps,
+  modifyDiscountFormProps,
   modifyCouponFormProps,
+  modifyOrderFormProps,
   personalAreaFormProps,
 };
