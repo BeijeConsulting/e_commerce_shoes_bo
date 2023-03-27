@@ -237,13 +237,18 @@ function Form(props) {
             {[...props.propsData, ...state.facultativePictures].map(
               mapFormFields
             )}
-            <p>{t("searchProductsById")}</p>
-            <input
-              type="text"
-              onChange={filterId}
-              className="form-input"
-              placeholder={t("searchHere")}
-            />
+            {props.products && (
+              <>
+                <p>{t("searchProductsById")}</p>
+                <input
+                  type="text"
+                  onChange={filterId}
+                  className="form-input"
+                  placeholder={t("searchHere")}
+                />
+              </>
+            )}
+
             {state.filtereProducts && (
               <div className="shoeListWrapper">
                 {mapProducts(state.filtereProducts)}

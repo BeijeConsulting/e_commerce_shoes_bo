@@ -334,6 +334,74 @@ const modifyCouponFormProps = [
   },
 ];
 
+// PERSONAL AREA
+
+const personalAreaFormProps = [
+  {
+    label: "name",
+    type: "text",
+    id: "name",
+    name: "name",
+    required: false,
+  },
+  {
+    label: "surname",
+    type: "text",
+    id: "surname",
+    name: "surname",
+    required: false,
+  },
+  {
+    label: "email",
+    type: "text",
+    id: "email",
+    name: "email",
+    required: false,
+  },
+  {
+    label: "password",
+    type: "password",
+    id: "password",
+    name: "password",
+    required: false,
+  },
+  {
+    label: "repeat password",
+    type: "password",
+    id: "repeat_password",
+    name: "repeat_password",
+    required: false,
+  },
+  {
+    label: "birthdate",
+    type: "date",
+    id: "birthdate",
+    name: "birthdate",
+    required: false,
+  },
+  {
+    label: "phone",
+    type: "number",
+    id: "phone",
+    name: "phone",
+    required: false,
+  },
+  {
+    label: "country",
+    type: "text",
+    id: "country",
+    name: "country",
+    required: false,
+  },
+  {
+    label: "city",
+    type: "text",
+    id: "city",
+    name: "city",
+    required: false,
+  },
+];
+
 export {
   addProductFormProps,
   addDiscountFormProps,
@@ -341,4 +409,5 @@ export {
   addOrderFormProps,
   addCouponFormProps,
   modifyCouponFormProps,
+  personalAreaFormProps,
 };

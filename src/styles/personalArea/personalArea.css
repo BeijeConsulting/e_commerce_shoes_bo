@@ -1,0 +1,24 @@
+.personalArea-box {
+  display: flex;
+  width: 100%;
+}
+
+.personalArea-form .form {
+  width: calc(100vw - 300px);
+  margin: 0 auto;
+}
+
+.personalArea-user {
+  width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.personalArea-form form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 700px;
+}
