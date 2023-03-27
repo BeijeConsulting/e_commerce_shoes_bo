@@ -1,9 +1,10 @@
 {
   "translation": {
     "password": "Password",
+    "email": "Email",
+    "telephone": "Telefono",
     "showPassword": "Mostra",
     "login": "Accedi",
-    "greeting": "Ciao",
     "product": "Prodotto",
     "brand": "Marca",
     "colour": "Colore",
@@ -19,7 +20,7 @@
     "image": "Immagine",
     "name": "Nome",
     "surname": "Cognome",
-    "test": "Questo è un test",
+    "role": "Ruolo",
     "productsManagement": "Gestione prodotti",
     "couponsManagement": "Gestione coupon",
 
@@ -96,6 +97,7 @@
     "deleteUser": "Elimina utente",
 
     "manageUsers": "Gestisci utenti",
+    "addUser": "Aggiungi utente",
     "manageEmployees": "Gestisci impiegati",
     "manageProducts": "Gestisci prodotti",
     "manageOrders": "Gestisci ordini",

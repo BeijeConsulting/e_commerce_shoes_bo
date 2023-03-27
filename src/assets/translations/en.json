@@ -1,11 +1,11 @@
 {
   "translation": {
     "usernamePlaceholder": "Phone number",
+    "email": "Email",
+    "telephone": "Telephone",
     "password": "Password",
     "showPassword": "Show",
     "login": "Login",
-    "greeting": "Hello",
-    "test": "This is a test",
     "product": "Product",
     "brand": "Brand",
     "colour": "Colour",
@@ -21,6 +21,7 @@
     "image": "Image",
     "name": "Name",
     "surname": "Surname",
+    "role": "Role",
     "productsManagement": "Product management",
     "couponsManagement": "Coupons management",
 
@@ -74,6 +75,7 @@
     "errorWrongFile": "The file you tried to upload must be",
 
     "addProduct": "Add product",
+    "addUser": "Add user",
     "addOrder": "Add order",
     "addCoupon": "Add coupon",
     "addDiscount": "Add discount",
