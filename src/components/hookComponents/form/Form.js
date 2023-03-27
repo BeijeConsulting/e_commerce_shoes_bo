@@ -128,24 +128,45 @@ function Form(props) {
     }
   }
 
+  function mapOptionValues() {
+    return props.optionValues.map((option, key) => (
+      <option key={key} value={option.value}>
+        {option.label}
+      </option>
+    ));
+  }
+
   function mapFormFields(field) {
     return (
       <div className="form-group-container" key={Math.random()}>
         <label htmlFor={field.id}>{t(field.label)}</label>
         {/* <br /> */}
 
-        <input
-          {...register(field.name, field.errors)}
-          type={field.type}
-          id={field.id}
-          name={field.name}
-          accept={field.accept}
-          required={field.required}
-          defaultValue={field.defaultValue}
-          //onChange={field.accept ? checkInputType : null}
-          onChange={field.accept ? checkInputType : null}
-          className="form-input"
-        />
+        {field.type === "select" ? (
+          <select
+            {...register(field.name, field.errors)}
+            id={field.id}
+            name={field.name}
+            required={field.required}
+            className="form-input"
+          >
+            {mapOptionValues()}
+          </select>
+        ) : (
+          <input
+            {...register(field.name, field.errors)}
+            type={field.type}
+            id={field.id}
+            name={field.name}
+            accept={field.accept}
+            required={field.required}
+            defaultValue={field.defaultValue}
+            //onChange={field.accept ? checkInputType : null}
+            onChange={field.accept ? checkInputType : null}
+            className="form-input"
+          />
+        )}
+
         {
           <ErrorMessage
             errors={errors}
