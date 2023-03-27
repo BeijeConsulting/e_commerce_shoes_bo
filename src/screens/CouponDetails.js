@@ -25,11 +25,11 @@ function CouponDetails() {
       <Header />
       <div className="flex">
         <SideBar />
-        <div className="w-100 flex flex-column flex-center">
-          <div>
-            <h1>Coupon details</h1>
+        <div className="screen-bg w-100 flex flex-column flex-center">
+          <h1 className="screen-title">Coupon details</h1>
+          <div className="w-50">
+            {state.coupon && <ViewDetails details={state.coupon} />}
           </div>
-          <div>{state.coupon && <ViewDetails details={state.coupon} />}</div>
         </div>
       </div>
     </div>
