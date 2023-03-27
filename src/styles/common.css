@@ -41,10 +41,30 @@ a {
   align-items: center;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
 .flex-column {
   flex-direction: column;
 }
 
 .w-100 {
   width: 100%;
+}
+
+.w-95 {
+  width: 95%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.div-center {
+  margin: 0 auto;
 }
