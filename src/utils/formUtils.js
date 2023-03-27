@@ -334,6 +334,59 @@ const modifyCouponFormProps = [
   },
 ];
 
+const addUserFormProps = [
+  // name, surname, email, password, telephone(optional), birthDate
+  {
+    label: "name",
+    type: "text",
+    id: "name",
+    name: "name",
+    required: true,
+  },
+  {
+    label: "surname",
+    type: "text",
+    id: "surname",
+    name: "surname",
+    required: true,
+  },
+  {
+    label: "email",
+    type: "email",
+    id: "email",
+    name: "email",
+    required: true,
+  },
+  {
+    label: "password",
+    type: "password",
+    id: "password",
+    name: "password",
+    required: true,
+  },
+  {
+    label: "telephone",
+    type: "text",
+    id: "telephone",
+    name: "telephone",
+    required: false,
+  },
+  {
+    label: "birthDate",
+    type: "date",
+    id: "birthDate",
+    name: "birthDate",
+    required: false,
+  },
+  {
+    label: "role",
+    type: "select",
+    id: "role",
+    name: "role",
+    required: true,
+  },
+];
+
 export {
   addProductFormProps,
   addDiscountFormProps,
@@ -341,4 +394,5 @@ export {
   addOrderFormProps,
   addCouponFormProps,
   modifyCouponFormProps,
+  addUserFormProps,
 };
