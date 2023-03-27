@@ -19,7 +19,7 @@ export default function PersonalArea() {
         <SideBar />
         <div>
           <div className="personalArea-user">
-            <h1>Area Personale</h1>
+            <h1>{t("personalArea")}</h1>
             <div>
               {/*<img src="../assets/images/languageIcons/gb.svg" />*/}
               <img src={decodeImageBase64(immagine)} />

@@ -1,6 +1,6 @@
 {
   "translation": {
-    "usernamePlaceholder": "Phone number",
+    "phoneNumber": "Phone number",
     "email": "Email",
     "telephone": "Telephone",
     "password": "Password",
@@ -64,6 +64,8 @@
     "searchProducts": "Search products",
     "searchProductsById": "Search products by ID",
     "searchHere": "Search here",
+    "repeatPassword": "Repeat password",
+    "city": "City",
 
     "orderDetails": "Order details",
     "productDetails": "Product details",

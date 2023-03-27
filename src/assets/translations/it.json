@@ -1,5 +1,6 @@
 {
   "translation": {
+    "phoneNumber": "Numero di telefono",
     "password": "Password",
     "email": "Email",
     "telephone": "Telefono",
@@ -23,6 +24,7 @@
     "role": "Ruolo",
     "productsManagement": "Gestione prodotti",
     "couponsManagement": "Gestione coupon",
+    "repeatPassword": "Ripeti la password",
 
     "logout": "Disconettiti",
     "birthDate": "Data di nascita",
@@ -63,6 +65,7 @@
     "searchProducts": "Cerca prodotti",
     "searchProductsById": "Cerca prodotti per ID",
     "searchHere": "Cerca qui",
+    "city": "Città",
 
     "orderDetails": "Dettagli dell'ordine",
     "productDetails": "Dettagli del prodotto",

@@ -366,21 +366,21 @@ const personalAreaFormProps = [
     required: false,
   },
   {
-    label: "repeat password",
+    label: "repeatPassword",
     type: "password",
     id: "repeat_password",
     name: "repeat_password",
     required: false,
   },
   {
-    label: "birthdate",
+    label: "birthDate",
     type: "date",
     id: "birthdate",
     name: "birthdate",
     required: false,
   },
   {
-    label: "phone",
+    label: "phoneNumber",
     type: "number",
     id: "phone",
     name: "phone",
@@ -421,9 +421,64 @@ const modifyOrderFormProps = [
   },
 ];
 
+const addUserFormProps = [
+  // name, surname, email, password, telephone(optional), birthDate, role
+
+  {
+    label: "name",
+    type: "text",
+    id: "name",
+    name: "name",
+    required: true,
+  },
+  {
+    label: "surname",
+    type: "text",
+    id: "surname",
+    name: "surname",
+    required: true,
+  },
+  {
+    label: "email",
+    type: "text",
+    id: "email",
+    name: "email",
+    required: false,
+  },
+  {
+    label: "password",
+    type: "password",
+    id: "password",
+    name: "password",
+    required: true,
+  },
+  {
+    label: "telephone",
+    type: "text",
+    id: "telephone",
+    name: "telephone",
+    required: false,
+  },
+  {
+    label: "birthDate",
+    type: "date",
+    id: "birthDate",
+    name: "birthDate",
+    required: false,
+  },
+  {
+    label: "role",
+    type: "select",
+    id: "role",
+    name: "role",
+    required: true,
+  },
+];
+
 export {
   addProductFormProps,
   addDiscountFormProps,
+  addUserFormProps,
   addOrderFormProps,
   addCouponFormProps,
   modifyDiscountFormProps,
