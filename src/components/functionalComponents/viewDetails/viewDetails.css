@@ -1,0 +1,18 @@
+.viewDetailsWrap {
+  border: 1px solid black;
+  border-radius: 10px;
+  font-family: "Poppins";
+  padding: 8px 50px;
+}
+
+.viewDetails p {
+  padding: 7px;
+}
+
+.key-text {
+  font-weight: bold;
+}
+
+.value-text {
+  text-transform: capitalize;
+}

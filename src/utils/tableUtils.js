@@ -20,6 +20,60 @@ export const productsListIcons = [
   },
 ];
 
+export const ordersListIcons = [
+  {
+    icon: <VisibilityIcon />,
+    label: "View",
+    url: `/orders`,
+  },
+  {
+    icon: <EditIcon />,
+    label: "Edit",
+    url: `/orders/:id/edit`,
+  },
+  {
+    icon: <DeleteIcon />,
+    label: "Delete",
+    url: `/orders/:id/delete`,
+  },
+];
+
+export const couponsListIcons = [
+  {
+    icon: <VisibilityIcon />,
+    label: "View",
+    url: `/coupons/coupon-details`,
+  },
+  {
+    icon: <EditIcon />,
+    label: "Edit",
+    url: `/coupons/:id/edit`,
+  },
+  {
+    icon: <DeleteIcon />,
+    label: "Delete",
+    url: `/coupons/:id/delete`,
+  },
+];
+
+export const usersListIcons = [
+  {
+    icon: <VisibilityIcon />,
+    label: "View",
+    url: `/users`,
+  },
+  {
+    icon: <EditIcon />,
+    label: "Edit",
+    url: `/users/:id/edit`,
+  },
+  {
+    icon: <DeleteIcon />,
+    label: "Delete",
+    url: `/users/:id/delete`,
+  },
+];
+
 export const ordersColumns = [
   { id: "order_id", label: "id" },
   { id: "user_id", label: "userId" },

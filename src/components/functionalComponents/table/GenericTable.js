@@ -44,6 +44,7 @@ function GenericTable(props) {
 
   function mapRows() {
     return props?.fields?.map((product, key) => {
+      console.log(product, "PRODUCTS");
       return (
         <TableRow hover role="checkbox" tabIndex={-1} key={key}>
           {props.columns.map((column) => {
@@ -54,10 +55,7 @@ function GenericTable(props) {
                   ? column.format(value)
                   : value} */}
                 {column.id === "actions" && (
-                  <ActionsButton
-                    icons={productsListIcons}
-                    productId={product.id}
-                  />
+                  <ActionsButton icons={props.icons} productId={product.id} />
                 )}
 
                 {column.id === "image" ? (

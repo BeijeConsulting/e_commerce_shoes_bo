@@ -6,6 +6,9 @@ import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow
 import { useTranslation } from "react-i18next";
 import { getProducts } from "../services/servicesProducts";
 import { productsColumns } from "../utils/tableUtils";
+
+import { productsListIcons } from "../utils/tableUtils";
+
 function Products(props) {
   const [state, setState] = useState({
     productsList: null,
@@ -32,6 +35,7 @@ function Products(props) {
             <FiltersRow label={t("productsList")} />
             <GenericTable
               fields={state.productsList}
+              icons={productsListIcons}
               columns={productsColumns}
             />
           </div>

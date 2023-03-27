@@ -5,7 +5,11 @@ import Header from "../components/functionalComponents/header/Header";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { useTranslation } from "react-i18next";
 import { getCoupons } from "../services/servicesCoupons";
-import { couponsColumns } from "../utils/tableUtils";
+import {
+  couponsColumns,
+  couponsListIcons,
+  productsListIcons,
+} from "../utils/tableUtils";
 
 function Coupons(props) {
   const [state, setState] = useState({
@@ -35,6 +39,7 @@ function Coupons(props) {
               fields={state.couponsList}
               columns={couponsColumns}
               isFromCoupons={true}
+              icons={couponsListIcons}
             />
           </div>
         </div>
