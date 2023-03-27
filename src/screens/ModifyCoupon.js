@@ -20,8 +20,8 @@ function ModifyCoupon(props) {
   useEffect(() => {
     async function getResources() {
       const response = await getCouponById(id);
-      console.log("RESPONSE:", response.data[0]?.coupon);
-      setState({ ...state, coupon: response.data[0]?.coupon });
+      console.log("RESPONSE:", response.data);
+      setState({ ...state, coupon: response.data });
       modCouponFormProps(modifyCouponFormProps);
     }
     getResources();
