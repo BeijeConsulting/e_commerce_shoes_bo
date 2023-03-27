@@ -6,12 +6,12 @@ import Form from "../components/hookComponents/form/Form";
 import { addUserFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
 import { getUserById } from "../services/servicesUsers";
-import MediaCard from "../components/functionalComponents/cardImg/CardImg";
+import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
 
 function UserDetails(props) {
   const { t, i18n } = useTranslation();
   const [state, setState] = useState({
-    // product: null,
+    user: null,
   });
 
   const { id } = useParams();
@@ -21,7 +21,7 @@ function UserDetails(props) {
       const response = await getUserById(id);
       if (!response) return;
       console.log("RESPONSE:", response.data[0]);
-      setState({ ...state, product: response.data[0] });
+      setState({ ...state, user: response.data[0] });
     }
     getResources();
   }, []);
@@ -29,27 +29,12 @@ function UserDetails(props) {
   return (
     <div>
       <Header />
-      <div style={{ display: "flex" }}>
+      <div className="flex">
         <SideBar />
-        <div style={{ width: "100%" }} className="screen-bg">
+        <div className="screen-bg w-100 flex flex-column flex-center">
           <h1 className="screen-title">{t("userDetails")}</h1>
-          <div
-            style={{
-              width: "95%",
-              margin: "0 auto",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "50%",
-              }}
-            ></div>
+          <div className="w-50">
+            {state.user && <ViewDetails details={state.user} />}
           </div>
         </div>
       </div>
