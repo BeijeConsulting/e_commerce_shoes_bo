@@ -15,6 +15,7 @@ function ViewDetails(props) {
 
   const arr = props.details;
   const str = Object.entries(arr).map(([key, value]) => {
+    if (Array.isArray(value)) return null;
     return (
       <div className="viewDetails" key={key}>
         <p>
