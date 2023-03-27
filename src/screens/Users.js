@@ -4,7 +4,7 @@ import GenericTable from "../components/functionalComponents/table/GenericTable"
 import Header from "../components/functionalComponents/header/Header";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { useTranslation } from "react-i18next";
-import { usersColumns } from "../utils/tableUtils";
+import { productsListIcons, usersColumns } from "../utils/tableUtils";
 import { Tabs, Tab } from "@mui/material";
 
 import { useState } from "react";
@@ -72,6 +72,7 @@ export default function Users() {
             <GenericTable
               fields={state.user === "utenti" ? usersArr : workersArr}
               columns={usersColumns}
+              icons={productsListIcons}
             />
           </div>
         </div>

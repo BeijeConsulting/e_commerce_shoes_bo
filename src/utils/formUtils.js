@@ -406,7 +406,7 @@ const modifyOrderFormProps = [
   {
     label: "id",
     type: "text",
-    id: "id",
+    id: "order",
     name: "id",
     required: true,
     errors: checkTextInput,
