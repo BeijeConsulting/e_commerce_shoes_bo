@@ -1,42 +1,18 @@
-/* import React from "react";
-import store from "../redux/store";
-import { useTranslation } from "react-i18next";
-import LanguageSelector from "../components/functionalComponents/languageSelector/LanguageSelector";
-
-
-function Login() {
-  const { t, i18n } = useTranslation();
-
-  return (
-    <div>
-      Login
-      <h3>{t("test")}</h3>
-      <LanguageSelector />
-    </div>
-  );
-}
-
-export default Login; */
-
 import React from "react";
-import store from "../redux/store";
-import { useTranslation } from "react-i18next";
-import LanguageSelector from "../components/functionalComponents/languageSelector/LanguageSelector";
 import Form from "../components/hookComponents/form/Form";
-import { addProductFormProps } from "../utils/formUtils";
+import { loginFormProps } from "../utils/formUtils";
+import { useTranslation } from "react-i18next";
+import "../styles/login/login.css";
 
 function Login() {
-  const { t, i18n } = useTranslation();
-  const canUploadPictures = true;
+  const { t } = useTranslation();
 
   return (
-    <div>
-      Login
-      <h3>{t("test")}</h3>
-      <LanguageSelector />
+    <div className="flex flex-center screen-bg w-100 login-page-container">
       <Form
-        propsData={addProductFormProps}
-        abilitatePictures={canUploadPictures}
+        propsData={loginFormProps}
+        abilitatePictures={false}
+        buttonTitle={t("login")}
       />
     </div>
   );
