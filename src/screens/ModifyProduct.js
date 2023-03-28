@@ -74,13 +74,13 @@ function ModifyProduct() {
       const response = await getProductById(id, language);
       console.log("RESPONSE:", response.data);
       setState({ ...state, product: response.data });
+      if (!state.product) return;
       modProductFormProps(modifyProductFormProps);
     }
     getResources();
-  }, [language]);
+  }, [state.product]);
 
   function modProductFormProps(formFields) {
-    if (!state.product) return;
     let newformProps = [];
 
     for (let i = 0; i < formFields.length; i++) {
@@ -106,28 +106,29 @@ function ModifyProduct() {
       <Header />
       <div className="flex">
         <SideBar />
-        <div className="screen-bg w-100 flex flex-column flex-center">
-          <h1 className="screen-title">Modify product</h1>
-          <div className="flex w-100 align-center justify-center">
-            <MediaCard
-              imageSrc="https://shop.saravecchi.it/wp-content/uploads/2020/06/Coupon_NoText.jpg"
-              height={{ height: 300 }}
-              title="Coupon"
-              width={{ width: 300, marginRight: "40px" }}
-              style={{
-                boxShadow: "10px 10px 50px #0371bc",
-                borderRadius: "25px",
-              }}
-            />
-            {state.formProps.length > 0 && (
+        {state.formProps.length > 0 && (
+          <div className="screen-bg w-100 flex flex-column flex-center">
+            <h1 className="screen-title">Modify product</h1>
+            <div className="flex w-100 align-center justify-center">
+              <MediaCard
+                imageSrc="https://shop.saravecchi.it/wp-content/uploads/2020/06/Coupon_NoText.jpg"
+                height={{ height: 300 }}
+                title="Coupon"
+                width={{ width: 300, marginRight: "40px" }}
+                style={{
+                  boxShadow: "10px 10px 50px #0371bc",
+                  borderRadius: "25px",
+                }}
+              />
+
               <Form
                 propsData={state.formProps}
                 abilitatePictures={false}
                 buttonTitle={t("modify")}
               />
-            )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
