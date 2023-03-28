@@ -3,7 +3,7 @@ export const PROPERTIES = {
   BASE_URL: "http://shoesshop.eu-south-1.elasticbeanstalk.com",
   TIMEOUT: 2000,
   API_KEY:
-    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY3OTkzNzIxNiwiZXhwIjoxNjc5OTQwODE2fQ.1vemrwayjLdDwlU0gkoie4L3vEMrrdiyxBsyjo74Yxg",
+    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjFAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiIsIkFETUlOIl0sImlhdCI6MTY3OTk4ODcxNiwiZXhwIjoxNjc5OTg4Nzc2fQ.BW32hEsWkxkKO6GgUUUJkYmM-_AEx4xazrqJknK6MoM",
 };
 
 export const PRODUCTS_PROPERTIES = {
