@@ -16,6 +16,7 @@ const addProductFormProps = [
     required: true,
     errors: checkTextInput,
   },
+
   {
     label: "brand", // marca
     type: "text",
@@ -86,6 +87,7 @@ const addProductFormProps = [
     name: "is_listed",
     required: true,
   },
+  /*
   {
     label: "image", // immagine
     type: "file", //????
@@ -109,7 +111,7 @@ const addProductFormProps = [
     name: "image_3",
     required: false,
     accept: "image/png, image/jpeg",
-  },
+  },*/
 
   /*{
     label: "date", // immagine
