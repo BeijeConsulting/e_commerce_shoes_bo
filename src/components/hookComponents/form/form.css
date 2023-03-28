@@ -18,6 +18,10 @@
   width: 300px;
 }
 
+.form-error-message {
+  color: red;
+}
+
 .shoeListMenu {
   position: relative;
   margin: 10px;
