@@ -22,6 +22,7 @@ import ProductDetails from "../screens/ProductDetails";
 import AddDiscount from "../screens/AddDiscount";
 import ModifyDiscount from "../screens/ModifyDiscount";
 import CouponDetails from "../screens/CouponDetails";
+import UserDetails from "../screens/UserDetails";
 
 function Routing(props) {
   return (
@@ -32,6 +33,7 @@ function Routing(props) {
       <Route path="/users" element={<Users />} />
       <Route path="/users/add-user" element={<AddUser />} />
       <Route path="/users/modify-user/:id" element={<ModifyUser />} />
+      <Route path="/users/user-details/:id" element={<UserDetails />} />
 
       <Route path="/coupons" element={<Coupons />} />
       <Route path="/coupons/coupon-details/:id" element={<CouponDetails />} />
