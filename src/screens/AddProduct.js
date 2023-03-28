@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { addProductFormProps } from "../utils/formUtils";
 
 export default function AddProduct(props) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const canUploadPictures = true;
 
   return (
@@ -20,6 +20,7 @@ export default function AddProduct(props) {
             <Form
               propsData={addProductFormProps}
               abilitatePictures={canUploadPictures}
+              buttonTitle={t("addProduct")}
             />
           </div>
         </div>

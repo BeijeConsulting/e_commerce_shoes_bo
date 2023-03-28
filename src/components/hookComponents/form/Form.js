@@ -5,6 +5,12 @@ import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 import ImageListContainer from "../../functionalComponents/imageList/ImageListContainer";
 import { Button } from "../../functionalComponents/button/Button";
+import {
+  resizeFile,
+  checkImageWeight,
+  checkFileType,
+  checkImageRatio,
+} from "../../../utils/imageUtils";
 import "./form.css";
 
 function Form(props) {
@@ -42,9 +48,21 @@ function Form(props) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("data:", data);
-    const outputObject = { ...data, imagesArray: state.imagesArray };
-    console.log("outputObject:", outputObject);
+    //console.log("data:", data);
+    let outputObject = null;
+    // check if at least 3 pictures have been uploaded
+    if (state.imagesArray.length < 3) {
+      alert(
+        t("errorFewPictures1") +
+          (3 - state.imagesArray.length) +
+          t("errorFewPictures2")
+      );
+      return;
+    } else {
+      outputObject = { ...data, imagesArray: state.imagesArray };
+      console.log("outputObject:", outputObject);
+    }
+
     // reset form fields
   };
 
@@ -55,7 +73,7 @@ function Form(props) {
     filtereProducts: [],
   });
 
-  function addImage() {
+  /*function addImage() {
     let facPictures = state.facultativePictures;
     if (facPictures.length > 6) {
       alert("You can maximum insert 10 pictures.");
@@ -74,9 +92,9 @@ function Form(props) {
       ...state,
       facultativePictures: facPictures,
     });
-  }
+  }*/
 
-  function removeImage() {
+  /*function removeImage() {
     let facPictures = state.facultativePictures;
     let imgArray = state.imagesArray;
     if (facPictures.length !== 0) {
@@ -88,7 +106,7 @@ function Form(props) {
       facultativePictures: facPictures,
       imagesArray: imgArray,
     });
-  }
+  }*/
 
   function checkPictureSizes(event) {
     let areSizesGood = true;
@@ -195,25 +213,45 @@ function Form(props) {
     );
   }
 
-  function showPreview(event, imageId) {
+  const showPreview = async (event, imageId) => {
     if (event.target.files.length > 0) {
+      let isImageRatioAcceptable = await checkImageRatio(event.target.files[0]);
+      let isImageWeightAcceptable = checkImageWeight(event.target.files[0]);
+      let isFileTypeAcceptable = checkFileType(event.target.files[0]);
+      // check if the picture is too heavy
+      if (
+        !isImageWeightAcceptable ||
+        !isFileTypeAcceptable ||
+        !isImageRatioAcceptable
+      ) {
+        if (!isFileTypeAcceptable) {
+          alert(t("errorWrongFileType"));
+        } else if (!isImageWeightAcceptable) {
+          alert(t("errorHeavyImage"));
+        } else if (!isImageRatioAcceptable) {
+          alert(t("errorRatio"));
+        } else {
+          alert(t("errorTryAgain"));
+        }
+
+        event.target.value = null;
+        return;
+      }
+
       let imgArray = state.imagesArray;
-      // imgArray[parseInt(imageId.substring(6)) - 1] = URL.createObjectURL(
-      //   event.target.files[0]
-      // );
-      imgArray[imageId] = URL.createObjectURL(event.target.files[0]);
-      console.log(" event.target.files[0] :", event.target.files[0]);
-      console.log("URL.create...", URL.createObjectURL(event.target.files[0]));
-      //var src = URL.createObjectURL(event.target.files[0]);
-      //var preview = arrayReferences[parseInt(imageId.substring(6)) - 1].current;
-      //preview.src = src;
-      //preview.style.display = "block";
-      setState({
-        ...state,
-        imagesArray: imgArray,
-      });
+
+      try {
+        imgArray[imageId] = await resizeFile(event.target.files[0]);
+
+        setState({
+          ...state,
+          imagesArray: imgArray,
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
-  }
+  };
 
   /*function testSubmitForm(event) {
     event.preventDefault();
@@ -295,12 +333,13 @@ function Form(props) {
         </>
       }
 
-      {props.abilitatePictures && (
+      {/*{props.abilitatePictures && (
         <button onClick={addImage}>Aggiungi Immagini</button>
       )}
       {props.abilitatePictures && (
         <button onClick={removeImage}>Rimuovi Immagini</button>
-      )}
+      )}*/}
+
       {props.abilitatePictures && (
         <ImageListContainer
           imagesData={state.imagesArray}

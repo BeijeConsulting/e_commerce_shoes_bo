@@ -73,8 +73,12 @@
     "couponDetails": "Dettagli del coupon",
     "userDetails": "Dettagli dell'utente",
 
-    "errorHeavyImage": "L'immagine è troppo grande",
-    "errorWrongFile": "Il file deve essere di formato",
+    "errorHeavyImage": "L'immagine è troppo grande. Al massimo deve pesare 1MB",
+    "errorWrongFileType": "Il file che hai provato a caricare deve essere un'immagine",
+    "errorRatio": "Le proporzioni dell'immagine devono essere 4:5",
+    "errorTryAgain": "Qualcosa è andato storto. Riprova",
+    "errorFewPictures1": "Devi inserire almeno ",
+    "errorFewPictures2": " immagini in più",
 
     "addProduct": "Aggiungi prodotto",
     "addOrder": "Aggiungi ordine",

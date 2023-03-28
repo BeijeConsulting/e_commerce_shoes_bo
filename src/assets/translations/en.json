@@ -73,8 +73,12 @@
     "couponDetails": "Coupon details",
     "userDetails": "User details",
 
-    "errorHeavyImage": "The image is too big",
-    "errorWrongFile": "The file you tried to upload must be",
+    "errorHeavyImage": "The image is too big. It must be maximum 1MB",
+    "errorWrongFileType": "The file you tried to upload must be a picture",
+    "errorRatio": "The ratio of the picture must be 4:5",
+    "errorTryAgain": "Something went wrong. Try again",
+    "errorFewPictures1": "You have to insert ",
+    "errorFewPictures2": " more pictures",
 
     "addProduct": "Add product",
     "addUser": "Add user",
