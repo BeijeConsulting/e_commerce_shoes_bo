@@ -15,7 +15,7 @@ import "./genericTable.css";
 
 function GenericTable(props) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const { t, i18n } = useTranslation();
 
@@ -24,7 +24,7 @@ function GenericTable(props) {
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
+    setRowsPerPage(parseInt(event.target.value));
     setPage(0);
   };
 
@@ -43,40 +43,42 @@ function GenericTable(props) {
   }
 
   function mapRows() {
-    return props?.fields?.map((product, key) => {
-      console.log(product, "PRODUCTS");
-      return (
-        <TableRow hover role="checkbox" tabIndex={-1} key={key}>
-          {props.columns.map((column) => {
-            const value = product[column.id];
-            return (
-              <TableCell key={column.id} align={column.align}>
-                {/* {column.format && typeof value === "number"
+    return props?.fields
+      ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      .map((product, key) => {
+        console.log(product, "PRODUCTS");
+        return (
+          <TableRow hover role="checkbox" tabIndex={-1} key={key}>
+            {props.columns.map((column) => {
+              const value = product[column.id];
+              return (
+                <TableCell key={column.id} align={column.align}>
+                  {/* {column.format && typeof value === "number"
                   ? column.format(value)
                   : value} */}
-                {column.id === "actions" && (
-                  <ActionsButton icons={props.icons} productId={product.id} />
-                )}
+                  {column.id === "actions" && (
+                    <ActionsButton icons={props.icons} productId={product.id} />
+                  )}
 
-                {column.id === "image" ? (
-                  <img
-                    src={value ? value : emptyShoes}
-                    alt="product"
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "12px",
-                    }}
-                  />
-                ) : (
-                  value
-                )}
-              </TableCell>
-            );
-          })}
-        </TableRow>
-      );
-    });
+                  {column.id === "image" ? (
+                    <img
+                      src={value ? value : emptyShoes}
+                      alt="product"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "12px",
+                      }}
+                    />
+                  ) : (
+                    value
+                  )}
+                </TableCell>
+              );
+            })}
+          </TableRow>
+        );
+      });
   }
 
   return (
@@ -101,11 +103,11 @@ function GenericTable(props) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 50]}
+        rowsPerPageOptions={[2, 5, 10]}
         component="div"
         count={props?.fields?.length || 0}
         rowsPerPage={rowsPerPage}
-        page={page}
+        page={page} // {page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />

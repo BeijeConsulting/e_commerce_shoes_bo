@@ -475,6 +475,153 @@ const addUserFormProps = [
   },
 ];
 
+const modifyUserFormProps = [
+  {
+    label: "id",
+    type: "number",
+    id: "id",
+    name: "id",
+    required: true,
+  },
+  {
+    label: "surname",
+    type: "text",
+    id: "surname",
+    name: "surname",
+    required: true,
+  },
+  {
+    label: "name",
+    type: "text",
+    id: "name",
+    name: "name",
+    required: true,
+  },
+  {
+    label: "telephone",
+    type: "text",
+    id: "telephone",
+    name: "telephone",
+    required: false,
+  },
+  {
+    label: "email",
+    type: "text",
+    id: "email",
+    name: "email",
+    required: false,
+  },
+  {
+    label: "birthDate",
+    type: "date",
+    id: "birthDate",
+    name: "birthDate",
+    required: false,
+  },
+  {
+    label: "role",
+    type: "select",
+    id: "role",
+    name: "role",
+    required: true,
+  },
+];
+
+const modifyProductFormProps = [
+  // name, description_it, description_eng, is_listed, color, sizes, images, brand, listedPrice, type, category, id, quantity
+  {
+    label: "name",
+    type: "text",
+    id: "name",
+    name: "name",
+    required: true,
+  },
+  {
+    label: "description_it",
+    type: "text",
+    id: "description_it",
+    name: "description_it",
+    required: false,
+  },
+  {
+    label: "description_en",
+    type: "text",
+    id: "description_en",
+    name: "description_en",
+    required: false,
+  },
+  {
+    label: "is_listed",
+    type: "checkbox",
+    id: "is_listed",
+    name: "is_listed",
+    required: true,
+  },
+  {
+    label: "color",
+    type: "text",
+    id: "color",
+    name: "color",
+    required: true,
+  },
+  {
+    label: "sizes",
+    type: "text",
+    id: "sizes",
+    name: "sizes",
+    required: true,
+  },
+  {
+    label: "images",
+    type: "text",
+    id: "images",
+    name: "images",
+    required: true,
+  },
+  {
+    label: "brand",
+    type: "text",
+    id: "brand",
+    name: "brand",
+    required: true,
+  },
+  {
+    label: "listedPrice",
+    type: "number",
+    id: "listedPrice",
+    name: "listedPrice",
+    required: true,
+  },
+  {
+    label: "type",
+    type: "text",
+    id: "type",
+    name: "type",
+    required: true,
+  },
+  {
+    label: "category",
+    type: "text",
+    id: "category",
+    name: "category",
+    required: true,
+  },
+  {
+    label: "id",
+    type: "text",
+    id: "id",
+    name: "id",
+    required: true,
+  },
+  {
+    label: "quantity",
+    type: "number",
+    id: "quantity",
+    name: "quantity",
+    required: true,
+  },
+];
+
 export {
   addProductFormProps,
   addDiscountFormProps,
@@ -485,4 +632,6 @@ export {
   modifyCouponFormProps,
   modifyOrderFormProps,
   personalAreaFormProps,
+  modifyProductFormProps,
+  modifyUserFormProps,
 };

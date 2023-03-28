@@ -32,13 +32,13 @@ function Routing(props) {
 
       <Route path="/users" element={<Users />} />
       <Route path="/users/add-user" element={<AddUser />} />
-      <Route path="/users/modify-user/:id" element={<ModifyUser />} />
+      <Route path="/users/edit-user/:id" element={<ModifyUser />} />
       <Route path="/users/user-details/:id" element={<UserDetails />} />
 
       <Route path="/coupons" element={<Coupons />} />
       <Route path="/coupons/coupon-details/:id" element={<CouponDetails />} />
       <Route path="/coupons/add-coupon" element={<AddCoupon />} />
-      <Route path="/coupons/modify-coupon/:id" element={<ModifyCoupon />} />
+      <Route path="/coupons/edit-coupon/:id" element={<ModifyCoupon />} />
 
       <Route path="/orders" element={<Orders />} />
       <Route path="/orders/add-order" element={<AddOrder />} />
@@ -47,7 +47,7 @@ function Routing(props) {
       <Route path="/products" element={<Products />} />
       <Route path="/products/:id" element={<ProductDetails />} />
       <Route path="/products/add-product" element={<AddProduct />} />
-      <Route path="/products/modify-product/:id" element={<ModifyProduct />} />
+      <Route path="/products/edit-product/:id" element={<ModifyProduct />} />
 
       <Route path="/products/:id/discount" element={<AddDiscount />} />
       <Route

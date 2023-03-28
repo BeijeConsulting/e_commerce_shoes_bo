@@ -21,7 +21,7 @@ function ModifyCoupon(props) {
     async function getResources() {
       const response = await getCouponById(id);
       console.log("RESPONSE:", response.data);
-      setState({ ...state, coupon: response.data });
+      setState({ ...state, coupon: response.data[0] });
       modCouponFormProps(modifyCouponFormProps);
     }
     getResources();

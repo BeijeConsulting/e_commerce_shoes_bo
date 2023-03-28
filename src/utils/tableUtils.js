@@ -11,7 +11,7 @@ export const productsListIcons = [
   {
     icon: <EditIcon />,
     label: "Edit",
-    url: `/products/:id/edit`,
+    url: `/products/edit-product`,
   },
   {
     icon: <DeleteIcon />,
@@ -47,7 +47,7 @@ export const couponsListIcons = [
   {
     icon: <EditIcon />,
     label: "Edit",
-    url: `/coupons/:id/edit`,
+    url: `/coupons/edit-coupon`,
   },
   {
     icon: <DeleteIcon />,
@@ -60,12 +60,12 @@ export const usersListIcons = [
   {
     icon: <VisibilityIcon />,
     label: "View",
-    url: `/users`,
+    url: `/users/user-details`,
   },
   {
     icon: <EditIcon />,
     label: "Edit",
-    url: `/users/:id/edit`,
+    url: `/users/edit-user`,
   },
   {
     icon: <DeleteIcon />,
@@ -112,7 +112,6 @@ export const usersColumns = [
   { id: "surname", label: "surname" },
   { id: "email", label: "email" },
   { id: "telephone", label: "telephone" },
-  { id: "birthdate", label: "birthdate" },
-  { id: "address", label: "address" },
+  { id: "birthDate", label: "birthdate" },
   { id: "actions", label: "actions" },
 ];
