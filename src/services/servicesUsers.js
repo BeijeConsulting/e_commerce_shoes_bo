@@ -38,6 +38,12 @@ async function getUserById(id) {
   );
 }
 
+async function getUserByIdAuth(id) {
+  return await getDataAuth(
+    PROPERTIES.BASE_URL + `/search/page=0/size=1?id=${id}`
+  );
+}
+
 async function getEmployees(page, size) {
   return await getData(
     PROPERTIES.BASE_URL + `/search/page=${page}/size=${size}?staff=true`,
@@ -61,6 +67,7 @@ async function getEmployeesAuth(page, size) {
 export {
   getUsers,
   getUserById,
+  getUserByIdAuth,
   getEmployees,
   getUsersAuth,
   getEmployeesAuth,
