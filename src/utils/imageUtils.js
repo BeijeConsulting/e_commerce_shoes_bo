@@ -50,32 +50,6 @@ function checkFileType(file) {
   return isTypeAcceptable;
 }
 
-/*function checkImageRatio(file) {
-  let isRatioAcceptable = true;
-  let imgRatio = null;
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = async () => {
-    const img = new Image();
-    img.src = reader.result;
-    img.onload = () => {
-      imgRatio = img.width / img.height;
-      console.log("IMG ratio", imgRatio);
-      if (
-        imgRatio <= ratioStandard - ratioTolerance ||
-        imgRatio >= ratioStandard + ratioTolerance
-      ) {
-        isRatioAcceptable = false;
-        alert("The ratio is fucked up!");
-        console.log("isRationAcceptable", isRatioAcceptable);
-        return isRatioAcceptable;
-      }
-    };
-  };
-  console.log("isRationAcceptable", isRatioAcceptable);
-  return isRatioAcceptable;
-}*/
-
 async function checkImageRatio(file) {
   let isRatioAcceptable = true;
   let imgRatio = null;
