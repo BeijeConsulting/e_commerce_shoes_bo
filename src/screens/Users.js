@@ -9,6 +9,7 @@ import { Tabs, Tab } from "@mui/material";
 import { getUsers, getEmployees } from "../services/servicesUsers";
 
 import { useState, useEffect } from "react";
+import { getUsersAuth, getEmployeesAuth } from "../services/servicesUsers";
 
 export default function Users() {
   const { t, i18n } = useTranslation();
@@ -21,13 +22,14 @@ export default function Users() {
 
   useEffect(() => {
     async function getResources() {
-      const response = await getUsers(0, 10);
-      const responseEmployees = await getEmployees(0, 10);
-      console.log("RESPONSE USERS:", response.data);
+      const response = await getUsersAuth(0, 10);
+      const responseEmployees = await getEmployeesAuth(0, 10);
+      console.log("RESPONSE USERS:", response.data.usersDTO);
+      console.log("RESPONSE EMPLOYEES:", responseEmployees);
       setState({
         ...state,
-        users: response.data,
-        employees: responseEmployees.data,
+        users: response.data.usersDTO,
+        employees: responseEmployees.data.usersDTO,
       });
     }
     getResources();
