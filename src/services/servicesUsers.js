@@ -3,9 +3,11 @@ import { PROPERTIES } from "../utils/properties";
 import {
   getData,
   getDataAuth,
+  postDataAuth,
   postData,
   putData,
   deleteData,
+  deleteDataAuth,
 } from "../genericAxios/genericAxios";
 
 async function getUsers(page, size) {
@@ -19,6 +21,14 @@ async function getUsersAuth(page, size) {
   return await getDataAuth(
     PROPERTIES.BASE_URL + `/search/page=${page}/size=${size}`
   );
+}
+
+async function addUserAuth(obj) {
+  return await postDataAuth(PROPERTIES.BASE_URL + `/admin/user`, obj);
+}
+
+async function deleteUserAuthById(id) {
+  return await deleteDataAuth(PROPERTIES.BASE_URL + `/admin/user/${id}`);
 }
 
 async function getUserById(id) {
@@ -48,4 +58,12 @@ async function getEmployeesAuth(page, size) {
 
 // http://shoesshop.eu-south-1.elasticbeanstalk.com/search/page=0/size=1?id=5
 
-export { getUsers, getUserById, getEmployees, getUsersAuth, getEmployeesAuth };
+export {
+  getUsers,
+  getUserById,
+  getEmployees,
+  getUsersAuth,
+  getEmployeesAuth,
+  addUserAuth,
+  deleteUserAuthById,
+};
