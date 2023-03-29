@@ -18,8 +18,8 @@ const checkEmailInput = {
 const checkPasswordInput = {
   required: "Password is required.",
   minLength: {
-    value: 8,
-    message: "Password must be at least 8 characters",
+    value: 3,
+    message: "Password must be at least 3 characters",
   },
   // pattern: {
   //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
