@@ -6,7 +6,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./actionsButton.css";
 import { Link } from "react-router-dom";
 
-export default function ActionsButton({ icons, labels, productId }) {
+export default function ActionsButton({ icons, labels, productId, ...props }) {
   console.log("PROPS ACTIONSBUTTON:", productId);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -25,8 +25,8 @@ export default function ActionsButton({ icons, labels, productId }) {
   function mapIcons(icon, index) {
     return (
       <MenuItem key={index} onClick={handleClose}>
-        <Link to={`${icon.url}/${productId}`}>
-          <div style={{ display: "flex", gap: 10 }}>
+        <Link to={icon.url ? `${icon.url}/${productId}` : null}>
+          <div style={{ display: "flex", gap: 10 }} onClick={props.onclick}>
             {icon.icon} {icon.label}
           </div>
         </Link>
