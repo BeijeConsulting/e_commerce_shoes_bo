@@ -59,7 +59,6 @@ function Form(props) {
     let outputObject = null;
     // check if at least 3 pictures have been uploaded
     if (state.imagesArray.length < 3 && props.abilitatePictures) {
-    if (state.imagesArray.length < 3 && props.abilitatePictures) {
       alert(
         t("errorFewPictures1") +
           (3 - state.imagesArray.length) +
@@ -368,5 +367,4 @@ function Form(props) {
     </div>
   );
 }
-
 export default Form;
