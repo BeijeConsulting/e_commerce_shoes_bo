@@ -1,0 +1,48 @@
+import React from "react";
+import Chart from "react-apexcharts";
+
+function LineChart(props) {
+  const options = {
+    chart: {
+      id: "basic-bar",
+    },
+    xaxis: {
+      categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+    },
+  };
+
+  const series = [
+    {
+      name: props.dataName,
+      data: [30, 40, 45, 50, 49, 60, 70, 91, 80, 30, 20, 11],
+    },
+  ];
+
+  //var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+  return (
+    <div>
+      {" "}
+      <Chart
+        options={options}
+        series={series}
+        width="500"
+        type="bar" /*type="line"*/
+      />
+    </div>
+  );
+}
+
+export default LineChart;
