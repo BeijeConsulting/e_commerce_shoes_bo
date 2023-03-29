@@ -7,7 +7,7 @@ import { ordersColumns } from "../utils/tableUtils";
 
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { getOrders } from "../services/servicesOrders";
+import { getOrders, getOrdersAuth } from "../services/servicesOrders";
 import { ordersListIcons } from "../utils/tableUtils";
 
 export default function Orders() {
@@ -18,7 +18,7 @@ export default function Orders() {
 
   useEffect(() => {
     async function getResources() {
-      const response = await getOrders();
+      const response = await getOrdersAuth();
       console.log("RESPONSE orders:", response.data);
       setState({ ordersList: response.data?.orders });
     }

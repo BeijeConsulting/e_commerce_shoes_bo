@@ -1,12 +1,17 @@
 import { PROPERTIES } from "../utils/properties";
 
-import { getData } from "../genericAxios/genericAxios";
+import { getData, getDataAuth } from "../genericAxios/genericAxios";
+import { func } from "prop-types";
 
 async function getCoupons() {
   return await getData(
     PROPERTIES.BASE_URL + "/coupons/list_coupons",
     PROPERTIES.API_KEY
   );
+}
+
+async function getCouponsAuth() {
+  return await getDataAuth(PROPERTIES.BASE_URL + "/coupons/list_coupons");
 }
 
 async function getCouponById(id) {
@@ -16,4 +21,4 @@ async function getCouponById(id) {
   );
 }
 
-export { getCoupons, getCouponById };
+export { getCoupons, getCouponById, getCouponsAuth };

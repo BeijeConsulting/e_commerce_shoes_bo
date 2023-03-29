@@ -4,7 +4,7 @@ import GenericTable from "../components/functionalComponents/table/GenericTable"
 import Header from "../components/functionalComponents/header/Header";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { useTranslation } from "react-i18next";
-import { getCoupons } from "../services/servicesCoupons";
+import { getCoupons, getCouponsAuth } from "../services/servicesCoupons";
 import {
   couponsColumns,
   couponsListIcons,
@@ -19,7 +19,7 @@ function Coupons(props) {
 
   useEffect(() => {
     async function getResources() {
-      const response = await getCoupons();
+      const response = await getCouponsAuth();
       console.log("RESPONSE:", response.data);
       setState({ couponsList: response.data });
     }

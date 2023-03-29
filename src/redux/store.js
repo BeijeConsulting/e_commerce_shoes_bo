@@ -10,11 +10,13 @@ import logger from "redux-logger";
 //DUCK
 import tokenDuck from "./duck/token/tokenDuck";
 import languageDuck from "./duck/language/languageDuck";
+import userDuck from "./duck/user/userDuck";
 
 const reducer = combineReducers({
   // here we will be adding reducers
   languageDuck,
   tokenDuck,
+  userDuck,
 });
 
 const store = configureStore({

@@ -5,6 +5,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 import ImageListContainer from "../../functionalComponents/imageList/ImageListContainer";
 import { Button } from "../../functionalComponents/button/Button";
+import InputPassword from "../../functionalComponents/inputPassword/InputPassword";
 import {
   resizeFile,
   checkImageWeight,
@@ -143,7 +144,7 @@ function Form(props) {
         <label htmlFor={field.id}>{t(field.label)}</label>
         {/* <br /> */}
 
-        {field.type === "select" ? (
+        {/* {field.type === "select" ? (
           <select
             {...register(field.name, field.errors)}
             id={field.id}
@@ -154,27 +155,73 @@ function Form(props) {
             {mapOptionValues()}
           </select>
         ) : (
-          field.type !== "image" && (
-            <input
-              {...register(field.name, field.errors)}
-              type={field.type}
-              id={field.id}
-              name={field.name}
-              accept={field.accept}
-              required={field.required}
-              defaultValue={field.defaultValue}
-              //onChange={field.accept ? checkInputType : null}
-              onChange={field.accept ? checkInputType : null}
-              className="form-input"
-            />
-          )
+          <input
+            {...register(field.name, field.errors)}
+            type={field.type}
+            id={field.id}
+            name={field.name}
+            accept={field.accept}
+            required={field.required}
+            defaultValue={field.defaultValue}
+            placeholder={field.placeholder}
+            //onChange={field.accept ? checkInputType : null}
+            onChange={field.accept ? checkInputType : null}
+            className="form-input"
+          />
+        )} */}
+
+        {field.type !== "select" && field.type !== "password" && (
+          <input
+            {...register(field.name, field.errors)}
+            type={field.type}
+            id={field.id}
+            name={field.name}
+            accept={field.accept}
+            required={field.required}
+            defaultValue={field.defaultValue}
+            placeholder={field.placeholder}
+            //onChange={field.accept ? checkInputType : null}
+            onChange={field.accept ? checkInputType : null}
+            className="form-input"
+          />
+        )}
+
+        {field.type === "select" && (
+          <select
+            {...register(field.name, field.errors)}
+            id={field.id}
+            name={field.name}
+            required={field.required}
+            className="form-input"
+          >
+            {mapOptionValues()}
+          </select>
+        )}
+
+        {field.type === "password" && (
+          <InputPassword field={field} register={register} />
+          // <input
+          //   {...register(field.name, field.errors)}
+          //   type={field.type}
+          //   id={field.id}
+          //   name={field.name}
+          //   accept={field.accept}
+          //   required={field.required}
+          //   defaultValue={field.defaultValue}
+          //   placeholder={field.placeholder}
+          //   //onChange={field.accept ? checkInputType : null}
+          //   onChange={field.accept ? checkInputType : null}
+          //   className="form-input"
+          // />
         )}
 
         {
           <ErrorMessage
             errors={errors}
             name={field.name}
-            render={({ message }) => <p>{message}</p>}
+            render={({ message }) => (
+              <p className="form-error-message">{message}</p>
+            )}
           />
         }
         <br />
@@ -254,7 +301,13 @@ function Form(props) {
     <div className="form">
       {
         <>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form
+            onSubmit={
+              props.isFromLogin
+                ? handleSubmit(props.onSubmit)
+                : handleSubmit(onSubmit)
+            }
+          >
             {[...props.propsData, ...state.facultativePictures].map(
               mapFormFields
             )}
@@ -314,5 +367,4 @@ function Form(props) {
     </div>
   );
 }
-
 export default Form;

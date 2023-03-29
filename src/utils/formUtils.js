@@ -6,6 +6,28 @@ const checkTextInput = {
     message: "This input must exceed 10 characters",
   },
 };
+
+const checkEmailInput = {
+  required: "Email is required.",
+  pattern: {
+    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+    message: "Invalid email address",
+  },
+};
+
+const checkPasswordInput = {
+  required: "Password is required.",
+  minLength: {
+    value: 3,
+    message: "Password must be at least 3 characters",
+  },
+  // pattern: {
+  //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+  //   message:
+  //     "Password must contain at least one uppercase letter, one lowercase letter and one number",
+  // },
+};
+
 // inputs
 const addProductFormProps = [
   {
@@ -624,6 +646,27 @@ const modifyProductFormProps = [
   },
 ];
 
+const loginFormProps = [
+  {
+    label: "email",
+    type: "text",
+    id: "email",
+    name: "email",
+    placeholder: "email",
+    required: true,
+    errors: checkEmailInput,
+  },
+  {
+    label: "password",
+    type: "password",
+    id: "password",
+    name: "password",
+    placeholder: "password",
+    required: true,
+    errors: checkPasswordInput,
+  },
+];
+
 export {
   addProductFormProps,
   addDiscountFormProps,
@@ -636,4 +679,5 @@ export {
   personalAreaFormProps,
   modifyProductFormProps,
   modifyUserFormProps,
+  loginFormProps,
 };
