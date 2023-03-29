@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import Header from "../components/functionalComponents/header/Header";
 import { useTranslation } from "react-i18next";
-import Form from "../components/hookComponents/form/Form";
-import { addUserFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
-import { getUserById } from "../services/servicesUsers";
+import { getUserByIdAuth } from "../services/servicesUsers";
 import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
 
 function UserDetails(props) {
@@ -18,10 +16,10 @@ function UserDetails(props) {
 
   useEffect(() => {
     async function getResources() {
-      const response = await getUserById(id);
+      const response = await getUserByIdAuth(id);
       if (!response) return;
-      console.log("RESPONSE:", response.data[0]);
-      setState({ ...state, user: response.data[0] });
+      console.log("RESPONSE:", response.data?.usersDTO[0]);
+      setState({ ...state, user: response.data?.usersDTO[0] });
     }
     getResources();
   }, []);
