@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import Form from "../components/hookComponents/form/Form";
 import { modifyCouponFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
-import { getCouponById } from "../services/servicesCoupons";
+import { getCouponByIdAuth } from "../services/servicesCoupons";
 
 function ModifyCoupon(props) {
   const { t } = useTranslation();
@@ -19,7 +19,7 @@ function ModifyCoupon(props) {
 
   useEffect(() => {
     async function getResources() {
-      const response = await getCouponById(id);
+      const response = await getCouponByIdAuth(id);
       console.log("RESPONSE:", response.data);
       setState({ ...state, coupon: response.data[0] });
       modCouponFormProps(modifyCouponFormProps);
