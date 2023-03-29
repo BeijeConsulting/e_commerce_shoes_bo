@@ -24,6 +24,8 @@
     "images": "Immagini",
     "name": "Nome",
     "surname": "Cognome",
+    "lastName": "Cognome",
+    "authorities": "Ruoli",
     "role": "Ruolo",
     "productsManagement": "Gestione prodotti",
     "couponsManagement": "Gestione coupon",
