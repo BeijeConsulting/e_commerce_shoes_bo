@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { modifyProductFormProps } from "../utils/formUtils";
 import Header from "../components/functionalComponents/header/Header";
 import SideBar from "../components/functionalComponents/sideBar/Sidebar";
-import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
+//import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
 import MediaCard from "../components/functionalComponents/cardImg/CardImg";
 import Form from "../components/hookComponents/form/Form";
 
@@ -16,58 +16,39 @@ function ModifyProduct() {
     formProps: [],
   });
   const language = i18n.language;
-
+  const canUploadPictures = true;
+  const screenName = "ModifyProduct";
+  //---------------- POI DA ELIMINARE ----------------//
+  /*  const image1 =
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
+  let images = [
+    {
+      type: "image",
+      image: image1,
+    },
+    {
+      type: "image2",
+      image: image1,
+    },
+    {
+      type: "image3",
+      image: image1,
+    },
+    {
+      type: "image4",
+      image: image1,
+    },
+    {
+      type: "image5",
+      image: image1,
+    },
+    {
+      type: "image6",
+      image: image1,
+    },
+  ];*/
+  //--------------------------------------------------//
   const { id } = useParams();
-
-  // const optionImagesValues = [
-  //   // { value: null, label: "Customer" },
-  //   // { value: "admin", label: "Admin" },
-  //   // { value: "data-entry", label: "Data Entry" },
-  //   // { value: "marketing", label: "Marketing" },
-  // ];
-
-  // function generateSizes() {
-  //   if (!state.product) return;
-  //   // I need to push this object in the formProps array
-  //  /* {
-  //   label: "name",
-  //   type: "text",
-  //   id: "name",
-  //   name: "name",
-  //   required: true,
-  // }, */
-  //   let sizes = state.product.sizes;
-  //   let newSizes = [];
-  //   for (let i = 0; i < sizes.length; i++) {
-  //     newSizes.push({
-  //       label: sizes[i].name,
-  //       type: "text",
-  //       id: sizes[i].name,
-  //       name: sizes[i].name,
-  //       required: true,
-  //     });
-  //   }
-  //   return newSizes;
-  // }
-
-  // function addExtraFields(formProps) {
-  //   let newFormProps = [...formProps];
-  //   newFormProps.push({
-  //     type: "select",
-  //     name: "images",
-  //     label: "Images",
-  //     options: optionImagesValues,
-  //     isMulti: true,
-  //   });
-  //   newFormProps.push({
-  //     type: "select",
-  //     name: "sizes",
-  //     label: "Sizes",
-  //     options: optionSizesValues,
-  //     isMulti: true,
-  //   });
-  //   return newFormProps;
-  // }
 
   useEffect(() => {
     async function getResources() {
@@ -84,11 +65,6 @@ function ModifyProduct() {
     let newformProps = [];
 
     for (let i = 0; i < formFields.length; i++) {
-      // if (Array.isArray(formFields[i])) {
-      //   formFields[i].forEach((el) => {
-      //     console.log("EL", el);
-      //   });
-      // }
       newformProps.push({
         ...formFields[i],
         defaultValue: Object.values(state.product)[i],
@@ -96,9 +72,11 @@ function ModifyProduct() {
     }
     console.log("OLD FORM PROPS", modifyProductFormProps);
     console.log("NEW FORM PROPS", newformProps);
+    //let concatenazione = [...newformProps, ...images];
+    //console.log("CONCATENAZIONE ", concatenazione);
 
     setState({ ...state, formProps: newformProps });
-    // return newformProps;
+    //setState({ ...state, formProps: concatenazione });
   }
 
   return (
@@ -123,7 +101,8 @@ function ModifyProduct() {
 
               <Form
                 propsData={state.formProps}
-                abilitatePictures={false}
+                abilitatePictures={canUploadPictures}
+                screenName={screenName}
                 buttonTitle={t("modify")}
               />
             </div>

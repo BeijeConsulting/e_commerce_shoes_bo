@@ -16,6 +16,12 @@ import "./form.css";
 function Form(props) {
   const { t, i18n } = useTranslation();
   const refImg = useRef(null);
+  //-----------------------------------------------------------------
+  const image1 =
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
+  let images = [image1, image1, image1, image1, image1, image1];
+
+  //_-------------------------------------------------
 
   const image1Ref = useRef(null);
   const image2Ref = useRef(null);
@@ -60,6 +66,7 @@ function Form(props) {
       return;
     } else {
       outputObject = { ...data, imagesArray: state.imagesArray };
+      console.log("state.imagesArray:", state.imagesArray);
       console.log("outputObject:", outputObject);
     }
 
@@ -73,40 +80,16 @@ function Form(props) {
     filtereProducts: [],
   });
 
-  /*function addImage() {
-    let facPictures = state.facultativePictures;
-    if (facPictures.length > 6) {
-      alert("You can maximum insert 10 pictures.");
-      return;
-    }
-    facPictures.push({
-      label: "image", // immagine
-      type: "file",
-      id: "image_" + (facPictures.length + 4),
-      name: "image_" + (facPictures.length + 4),
-      required: true,
-      accept: "image/png, image/jpeg",
-    });
-    console.log("facPictures:", facPictures);
+  useEffect(() => {
+    let starterPicturesArray = null;
+    props.screenName === "ModifyProduct"
+      ? (starterPicturesArray = images)
+      : (starterPicturesArray = []);
     setState({
       ...state,
-      facultativePictures: facPictures,
+      imagesArray: starterPicturesArray,
     });
-  }*/
-
-  /*function removeImage() {
-    let facPictures = state.facultativePictures;
-    let imgArray = state.imagesArray;
-    if (facPictures.length !== 0) {
-      facPictures.pop(); // remove one pictures from the facultatives
-      imgArray[3 + facPictures.length] = "";
-    }
-    setState({
-      ...state,
-      facultativePictures: facPictures,
-      imagesArray: imgArray,
-    });
-  }*/
+  }, []);
 
   function checkPictureSizes(event) {
     let areSizesGood = true;
@@ -171,18 +154,20 @@ function Form(props) {
             {mapOptionValues()}
           </select>
         ) : (
-          <input
-            {...register(field.name, field.errors)}
-            type={field.type}
-            id={field.id}
-            name={field.name}
-            accept={field.accept}
-            required={field.required}
-            defaultValue={field.defaultValue}
-            //onChange={field.accept ? checkInputType : null}
-            onChange={field.accept ? checkInputType : null}
-            className="form-input"
-          />
+          field.type !== "image" && (
+            <input
+              {...register(field.name, field.errors)}
+              type={field.type}
+              id={field.id}
+              name={field.name}
+              accept={field.accept}
+              required={field.required}
+              defaultValue={field.defaultValue}
+              //onChange={field.accept ? checkInputType : null}
+              onChange={field.accept ? checkInputType : null}
+              className="form-input"
+            />
+          )
         )}
 
         {
@@ -192,22 +177,6 @@ function Form(props) {
             render={({ message }) => <p>{message}</p>}
           />
         }
-        {/*field.accept && (
-          /*<CardImg
-            width={{ width: 150 }}
-            height={{ height: 140 }}
-            id={field.id + "-preview"}
-            title="image"
-            ref={arrayReferences[parseInt(field.id.substring(6)) - 1]}
-            imageSrc={EmptyImage} // style={{ width: "100%", marginRight: "400px" }}
-          />
-          <img
-            id={field.id + "-preview"}
-            alt="shoe"
-            ref={arrayReferences[parseInt(field.id.substring(6)) - 1]}
-            src={EmptyImage}
-          />
-        )*/}
         <br />
       </div>
     );
@@ -252,13 +221,6 @@ function Form(props) {
       }
     }
   };
-
-  /*function testSubmitForm(event) {
-    event.preventDefault();
-    console.log("testSubmitForm");
-    console.log("event.target.files[0]", event.target.name.value);
-    console.log("event.target.files[0]", event.target.file.value);
-  }*/
 
   function mapProducts(products) {
     return products?.map((product) => {
@@ -322,42 +284,35 @@ function Form(props) {
                 />
               }
             </div>
-            {/*} {props.arrayAddresses && map()}*/}
-            {/* {<input type="submit" value={props.buttonTitle}></input>} */}
           </form>
-          {/* <form onSubmit={testSubmitForm}>
-            <input id="file" type="file" name="file" />
-            <input id="name" name="name"></input>
-            <input type="submit" label="Invia qui" name="Invia" />
-          </form> */}
         </>
       }
 
-      {/*{props.abilitatePictures && (
-        <button onClick={addImage}>Aggiungi Immagini</button>
+      {props.abilitatePictures && props.screenName !== "ModifyProduct" && (
+        <>
+          <h5>NAME SCREEN: {props.screenName}</h5>
+          <ImageListContainer
+            imagesData={state.imagesArray}
+            state={state}
+            setImagesData={setState}
+            showPreview={showPreview}
+          />
+        </>
       )}
-      {props.abilitatePictures && (
-        <button onClick={removeImage}>Rimuovi Immagini</button>
-      )}*/}
 
-      {props.abilitatePictures && (
-        <ImageListContainer
-          imagesData={state.imagesArray}
-          state={state}
-          setImagesData={setState}
-          showPreview={showPreview}
-          // callbackButtonAdd={addImageCata}
-        />
+      {props.abilitatePictures && props.screenName === "ModifyProduct" && (
+        <>
+          <h5>NAME SCREEN: {props.screenName}</h5>
+          <ImageListContainer
+            imagesData={state.imagesArray}
+            state={state}
+            setImagesData={setState}
+            showPreview={showPreview}
+          />
+        </>
       )}
     </div>
   );
 }
 
 export default Form;
-
-// const imageListData = [
-//   { image: 'path/to/image1.jpg', ref: myRef1 },
-//   { image: 'path/to/image2.jpg', ref: myRef2 },
-//   { image: 'path/to/image3.jpg', ref: myRef3 },
-//   //...
-// ];
