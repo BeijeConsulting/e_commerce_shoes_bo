@@ -32,4 +32,16 @@ async function getCouponById(id) {
   );
 }
 
-export { getCoupons, getCouponById, getCouponsAuth, addCouponAuth };
+async function getCouponByIdAuth(id) {
+  return await getDataAuth(
+    PROPERTIES.BASE_URL + `/coupons/search_coupon?id=${id}`
+  );
+}
+
+export {
+  getCoupons,
+  getCouponById,
+  getCouponsAuth,
+  addCouponAuth,
+  getCouponByIdAuth,
+};
