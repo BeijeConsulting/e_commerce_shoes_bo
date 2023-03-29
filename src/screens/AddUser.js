@@ -7,6 +7,7 @@ import { addUserFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/servicesProducts";
 import MediaCard from "../components/functionalComponents/cardImg/CardImg";
+import { addUserAuth } from "../services/servicesUsers";
 
 function AddUser(props) {
   const { t, i18n } = useTranslation();
@@ -18,11 +19,20 @@ function AddUser(props) {
   const { id } = useParams();
 
   const optionValues = [
-    { value: null, label: "Customer" },
-    { value: "admin", label: "Admin" },
-    { value: "data-entry", label: "Data Entry" },
-    { value: "marketing", label: "Marketing" },
+    { value: "USER", label: "Customer" },
+    { value: "ADMIN", label: "Admin" },
+    { value: "DATA_ENTRY", label: "Data Entry" },
+    { value: "MARKETING", label: "Marketing" },
   ];
+
+  const addUser = (data) => {
+    Object.keys(data).forEach((item) => {
+      if (item === "authorities") {
+        return (data[item] = ["USER", data[item]]);
+      }
+    });
+    addUserAuth(data);
+  };
 
   // useEffect(() => {
   //   async function getResources() {
@@ -63,6 +73,7 @@ function AddUser(props) {
                 abilitatePictures={false}
                 buttonTitle={t("add")}
                 language={language}
+                onSubmit={addUser}
               />
             </div>
           </div>
