@@ -24,8 +24,8 @@ export default function Users() {
     async function getResources() {
       const response = await getUsersAuth(0, 10);
       const responseEmployees = await getEmployeesAuth(0, 10);
-      console.log("RESPONSE USERS:", response.data.usersDTO);
-      console.log("RESPONSE EMPLOYEES:", responseEmployees);
+      console.log("RESPONSE USERS:", response.data);
+      console.log("RESPONSE EMPLOYEES:", responseEmployees.data);
       setState({
         ...state,
         users: response.data.usersDTO,
