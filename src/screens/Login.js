@@ -26,12 +26,13 @@ function Login() {
 
     if (response.status === 200) {
       const user = await getUser(response.data.token);
+      console.log("user", user);
 
       dispatch(
         setUserCredentials({
           name: user.data.name,
           surname: user.data.surname,
-          authorities: user.data.authorities,
+          authorities: response.data.permission,
           email: user.data.email,
           isLogged: true,
         })
