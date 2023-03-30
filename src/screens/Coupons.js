@@ -55,7 +55,7 @@ function Coupons(props) {
           <div style={{ width: "95%", margin: "0 auto" }}>
             <FiltersRow
               label={t("couponsList")}
-              addLabel={"Coupon"}
+              addLabel={t("addCoupon")}
               addUrl={"/coupons/add-coupon"}
             />
             <GenericTable
