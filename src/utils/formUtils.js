@@ -508,17 +508,17 @@ const modifyUserFormProps = [
     required: true,
   },
   {
-    label: "surname",
+    label: "lastName",
     type: "text",
-    id: "surname",
-    name: "surname",
+    id: "lastName",
+    name: "lastName",
     required: true,
   },
   {
     label: "name",
     type: "text",
-    id: "name",
-    name: "name",
+    id: "firstName",
+    name: "firstName",
     required: true,
   },
   {
@@ -545,8 +545,8 @@ const modifyUserFormProps = [
   {
     label: "role",
     type: "select",
-    id: "role",
-    name: "role",
+    id: "authorities",
+    name: "authorities",
     required: true,
   },
 ];
