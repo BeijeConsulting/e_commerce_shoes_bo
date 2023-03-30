@@ -14,19 +14,25 @@ import emptyShoes from "../../../assets/images/emptyImage/emptyShoes.png";
 import "./genericTable.css";
 
 function GenericTable(props) {
+  console.log(props.results);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const { t, i18n } = useTranslation();
 
   const handleChangePage = (event, newPage) => {
+    console.log("NEW PAGE:", newPage);
+    console.log("TOTAL ROWS:", props.results);
     setPage(newPage);
+    console.log("Rows per page:", rowsPerPage);
+    props.getResources(newPage, rowsPerPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value));
-    setPage(0);
-  };
+  // const handleChangeRowsPerPage = (event) => {
+  //   setRowsPerPage(parseInt(event.target.value));
+  //   // props.getResources(page, rowsPerPage);
+  //   // setPage(page); //setPage(0);
+  // };
 
   function mapColumns() {
     return props?.columns?.map((column) => {
@@ -41,12 +47,10 @@ function GenericTable(props) {
       );
     });
   }
-
   function mapRows() {
     return props?.fields
-      ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      ?.slice(0, page === 0 ? 1 * rowsPerPage : rowsPerPage)
       .map((product, key) => {
-        console.log(product, "PRODUCTS");
         return (
           <TableRow hover role="checkbox" tabIndex={-1} key={key}>
             {props.columns.map((column) => {
@@ -103,13 +107,13 @@ function GenericTable(props) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[2, 5, 10]}
+        rowsPerPageOptions={[10]}
         component="div"
-        count={props?.fields?.length || 0}
+        count={props.results} //{props?.fields?.length || 0}
         rowsPerPage={rowsPerPage}
         page={page} // {page}
         onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
+        // onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
   );
