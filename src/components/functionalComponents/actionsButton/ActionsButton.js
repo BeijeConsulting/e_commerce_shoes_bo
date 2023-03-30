@@ -13,7 +13,6 @@ export default function ActionsButton({ icons, labels, productId, ...props }) {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    console.log("CLICK", productId);
     setAnchorEl(null);
   };
 
