@@ -9,7 +9,11 @@ import { Tabs, Tab } from "@mui/material";
 import { getUsers, getEmployees } from "../services/servicesUsers";
 
 import { useState, useEffect } from "react";
-import { getUsersAuth, getEmployeesAuth } from "../services/servicesUsers";
+import {
+  getUsersAuth,
+  getEmployeesAuth,
+  deleteUserAuthById,
+} from "../services/servicesUsers";
 
 export default function Users() {
   const { t, i18n } = useTranslation();
@@ -70,6 +74,18 @@ export default function Users() {
     });
   }
 
+  async function deleteUser(id) {
+    alert(`Are you sure you want to delete user with id ${id}?`);
+    const response = await deleteUserAuthById(id);
+    console.log("RESPONSE DELETE:", response);
+    if (response.status === 200) {
+      alert("Usuario eliminado correctamente");
+      window.location.reload();
+    } else {
+      alert("Error al eliminar usuario");
+    }
+  }
+
   return (
     <div>
       <Header />
@@ -107,6 +123,7 @@ export default function Users() {
                 columns={usersColumns}
                 icons={usersListIcons}
                 getResources={getResources}
+                deleteAction={deleteUser}
               />
             </div>
           )}
