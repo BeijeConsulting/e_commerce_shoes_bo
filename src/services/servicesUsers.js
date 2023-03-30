@@ -6,6 +6,7 @@ import {
   postDataAuth,
   postData,
   putData,
+  putDataAuth,
   deleteData,
   deleteDataAuth,
 } from "../genericAxios/genericAxios";
@@ -62,7 +63,9 @@ async function getEmployeesAuth(page, size) {
   );
 }
 
-// http://shoesshop.eu-south-1.elasticbeanstalk.com/search/page=0/size=1?id=5
+async function editUserByIdAuth(id, obj) {
+  return await putDataAuth(PROPERTIES.BASE_URL + `/admin/user/${id}`, obj);
+}
 
 export {
   getUsers,
@@ -73,4 +76,5 @@ export {
   getEmployeesAuth,
   addUserAuth,
   deleteUserAuthById,
+  editUserByIdAuth,
 };
