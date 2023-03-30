@@ -61,7 +61,11 @@ function GenericTable(props) {
                   ? column.format(value)
                   : value} */}
                   {column.id === "actions" && (
-                    <ActionsButton icons={props.icons} productId={product.id} />
+                    <ActionsButton
+                      icons={props.icons}
+                      productId={product.id}
+                      deleteAction={props.deleteAction}
+                    />
                   )}
 
                   {column.id === "image" ? (
