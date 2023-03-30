@@ -21,24 +21,52 @@ export default function Users() {
   });
 
   useEffect(() => {
-    async function getResources() {
+    async function getData() {
       const response = await getUsersAuth(0, 10);
       const responseEmployees = await getEmployeesAuth(0, 10);
-      console.log("RESPONSE USERS:", response.data.usersDTO);
-      console.log("RESPONSE EMPLOYEES:", responseEmployees);
+      let results_employees = null;
+      let results_users = null;
+      results_users = response.data.total_element;
+      results_employees = responseEmployees.data.total_element;
+
+      console.log("RESULTS USERS:", results_users);
+      console.log("RESULTS EMPLOYEES:", results_employees);
+
+      console.log("RESPONSE USERS:", response.data);
+      console.log("RESPONSE EMPLOYEES:", responseEmployees.data);
       setState({
         ...state,
-        users: response.data.usersDTO,
-        employees: responseEmployees.data.usersDTO,
+        users: response.data,
+        employees: responseEmployees.data,
       });
     }
-    getResources();
+    getData();
   }, []);
 
   function changeUser(e) {
     setState({
       ...state,
       authority: e.target.textContent.toLowerCase(),
+    });
+  }
+
+  async function getResources(page, perPage) {
+    const response = await getUsersAuth(page, perPage);
+    const responseEmployees = await getEmployeesAuth(page, perPage);
+    let results_employees = null;
+    let results_users = null;
+    results_users = response.data.total_element;
+    results_employees = responseEmployees.data.total_element;
+
+    console.log("RESULTS USERS:", results_users);
+    console.log("RESULTS EMPLOYEES:", results_employees);
+
+    console.log("RESPONSE USERS:", response.data);
+    console.log("RESPONSE EMPLOYEES:", responseEmployees.data);
+    setState({
+      ...state,
+      users: response.data,
+      employees: responseEmployees.data,
     });
   }
 
@@ -67,10 +95,18 @@ export default function Users() {
               </Tabs>
               <GenericTable
                 fields={
-                  state.authority === "users" ? state.users : state.employees
+                  state.authority === "users"
+                    ? state.users.usersDTO
+                    : state.employees.usersDTO
+                }
+                results={
+                  state.authority === "users"
+                    ? state.users.total_element
+                    : state.employees.total_element
                 }
                 columns={usersColumns}
                 icons={usersListIcons}
+                getResources={getResources}
               />
             </div>
           )}

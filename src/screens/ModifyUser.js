@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getUserById } from "../services/servicesUsers";
+import { getUserByIdAuth, editUserByIdAuth } from "../services/servicesUsers";
 import { modifyUserFormProps } from "../utils/formUtils";
 import Header from "../components/functionalComponents/header/Header";
 import SideBar from "../components/functionalComponents/sideBar/Sidebar";
@@ -14,23 +14,22 @@ function ModifyUser() {
     formProps: [],
   });
 
-  const optionValues = [
-    { value: null, label: "Customer" },
-    { value: "admin", label: "Admin" },
-    { value: "data-entry", label: "Data Entry" },
-    { value: "marketing", label: "Marketing" },
-  ];
-
-  const { t, i18n } = useTranslation();
-
+  const { t } = useTranslation();
   const { id } = useParams();
+
+  const optionValues = [
+    { value: "", label: "Customer" },
+    { value: "ADMIN", label: "Admin" },
+    { value: "DATA_ENTRY", label: "Data Entry" },
+    { value: "MARKETING", label: "Marketing" },
+  ];
 
   useEffect(() => {
     async function getResources() {
-      const response = await getUserById(id);
+      const response = await getUserByIdAuth(id);
       if (!response) return;
-      console.log("RESPONSE:", response.data[0]);
-      setState({ ...state, user: response.data[0] });
+      console.log("RESPONSE:", response.data?.usersDTO[0]);
+      setState({ ...state, user: response.data?.usersDTO[0] });
       modUserFormProps(modifyUserFormProps);
     }
     getResources();
@@ -50,8 +49,19 @@ function ModifyUser() {
     console.log("NEW FORM PROPS", newformProps);
 
     setState({ ...state, formProps: newformProps });
-    // return newformProps;
   }
+
+  const editUser = (data) => {
+    console.log("DATA", data);
+    delete data.id;
+    console.log("DATA2", data);
+    Object.keys(data).forEach((item) => {
+      if (item === "authorities") {
+        return (data[item] = ["USER", data[item]]);
+      }
+    });
+    editUserByIdAuth(id, data);
+  };
 
   return (
     <div>
@@ -60,14 +70,25 @@ function ModifyUser() {
         <SideBar />
         <div className="screen-bg w-100 flex flex-column flex-center">
           <h1 className="screen-title">Modify user</h1>
+          <p>
+            <span className="bold">Previous roles: </span>
+            {state.user?.authories
+              .toString()
+              .toLowerCase()
+              .split(",")
+              .join(", ")}
+          </p>
           <div className="flex w-100 align-center justify-center">
             {state.formProps.length > 0 && (
-              <Form
-                propsData={state.formProps}
-                abilitatePictures={false}
-                buttonTitle={t("modify")}
-                optionValues={optionValues}
-              />
+              <>
+                <Form
+                  propsData={state.formProps}
+                  abilitatePictures={false}
+                  buttonTitle={t("modify")}
+                  optionValues={optionValues}
+                  onSubmit={editUser}
+                />
+              </>
             )}
           </div>
         </div>

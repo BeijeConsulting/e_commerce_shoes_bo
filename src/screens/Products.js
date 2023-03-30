@@ -8,21 +8,37 @@ import { getProducts } from "../services/servicesProducts";
 import { productsColumns } from "../utils/tableUtils";
 
 import { productsListIcons } from "../utils/tableUtils";
+import { getProductsAuth } from "../services/servicesProducts";
 
 function Products(props) {
   const [state, setState] = useState({
     productsList: null,
+    results: null,
   });
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
     async function getResources() {
-      const response = await getProducts();
+      const response = await getProductsAuth(0, 5);
       console.log("RESPONSE:", response.data);
-      setState({ productsList: response.data });
+      setState({
+        ...state,
+        results: response.data?.results,
+        productsList: response.data?.products,
+      });
     }
-    getResources();
+    getResources(0, 5);
   }, []);
+
+  async function getResourcesTest(page, perPage) {
+    const response = await getProductsAuth(page, perPage);
+    console.log("RESPONSE:", response.data?.products);
+    setState({
+      ...state,
+      results: response.data?.results,
+      productsList: response.data?.products,
+    });
+  }
 
   return (
     <div>
@@ -33,11 +49,15 @@ function Products(props) {
           <h1 className="screen-title">{t("productsManagement")}</h1>
           <div style={{ width: "95%", margin: "0 auto" }}>
             <FiltersRow label={t("productsList")} />
-            <GenericTable
-              fields={state.productsList}
-              icons={productsListIcons}
-              columns={productsColumns}
-            />
+            {state.productsList && (
+              <GenericTable
+                fields={state.productsList}
+                icons={productsListIcons}
+                columns={productsColumns}
+                getResources={getResourcesTest}
+                results={state?.results}
+              />
+            )}
           </div>
         </div>
       </div>

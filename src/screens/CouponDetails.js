@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getCouponById } from "../services/servicesCoupons";
+import { getCouponByIdAuth } from "../services/servicesCoupons";
 import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
 import Header from "../components/functionalComponents/header/Header";
 import SideBar from "../components/functionalComponents/sideBar/Sidebar";
@@ -13,7 +13,8 @@ function CouponDetails() {
 
   useEffect(() => {
     async function getResources() {
-      const response = await getCouponById(id);
+      const response = await getCouponByIdAuth(id);
+      if (!response) return;
       console.log("RESPONSE:", response.data);
       setState({ ...state, coupon: response.data[0] });
     }

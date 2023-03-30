@@ -24,6 +24,8 @@
     "images": "Images",
     "name": "Name",
     "surname": "Surname",
+    "lastName": "Last name",
+    "authorities": "Authorities",
     "role": "Role",
     "productsManagement": "Product management",
     "couponsManagement": "Coupons management",

@@ -7,6 +7,7 @@ import { addCouponFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/servicesProducts";
 import MediaCard from "../components/functionalComponents/cardImg/CardImg";
+import { addCouponAuth } from "../services/servicesCoupons";
 
 function AddCoupon(props) {
   const { t, i18n } = useTranslation();
@@ -16,6 +17,39 @@ function AddCoupon(props) {
   const language = i18n.language;
 
   const { id } = useParams();
+
+  const addCoupon = async (data) => {
+    console.log("Success");
+    console.log(data);
+    return await addCouponAuth(data);
+    // return await addUserAuth(data);
+    // const response = await signin({
+    //   email: data.email,
+    //   password: data.password,
+    // });
+
+    // if (response.status === 200) {
+    //   const user = await getUser(response.data.token);
+    //   console.log("user", user);
+
+    //   dispatch(
+    //     setUserCredentials({
+    //       name: user.data.name,
+    //       surname: user.data.surname,
+    //       authorities: response.data.permission,
+    //       email: user.data.email,
+    //       isLogged: true,
+    //     })
+    //   );
+
+    //   setLocalStorage("token", response.data.token);
+    //   setLocalStorage("refreshToken", response.data.refreshToken);
+
+    //   navigate(`/`);
+    // }
+
+    // console.log(response);
+  };
 
   // useEffect(() => {
   //   async function getResources() {
@@ -76,6 +110,7 @@ function AddCoupon(props) {
                 abilitatePictures={false}
                 buttonTitle={t("add")}
                 language={language}
+                onSubmit={addCoupon}
               />
             </div>
           </div>

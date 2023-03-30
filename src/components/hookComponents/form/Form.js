@@ -301,13 +301,7 @@ function Form(props) {
     <div className="form">
       {
         <>
-          <form
-            onSubmit={
-              props.isFromLogin
-                ? handleSubmit(props.onSubmit)
-                : handleSubmit(onSubmit)
-            }
-          >
+          <form onSubmit={handleSubmit(props.onSubmit)}>
             {[...props.propsData, ...state.facultativePictures].map(
               mapFormFields
             )}

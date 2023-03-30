@@ -3,9 +3,12 @@ import { PROPERTIES } from "../utils/properties";
 import {
   getData,
   getDataAuth,
+  postDataAuth,
   postData,
   putData,
+  putDataAuth,
   deleteData,
+  deleteDataAuth,
 } from "../genericAxios/genericAxios";
 
 async function getUsers(page, size) {
@@ -21,10 +24,24 @@ async function getUsersAuth(page, size) {
   );
 }
 
+async function addUserAuth(obj) {
+  return await postDataAuth(PROPERTIES.BASE_URL + `/admin/user`, obj);
+}
+
+async function deleteUserAuthById(id) {
+  return await deleteDataAuth(PROPERTIES.BASE_URL + `/admin/user/${id}`);
+}
+
 async function getUserById(id) {
   return await getData(
     PROPERTIES.BASE_URL + `/search/page=0/size=1?id=${id}`,
     PROPERTIES.API_KEY
+  );
+}
+
+async function getUserByIdAuth(id) {
+  return await getDataAuth(
+    PROPERTIES.BASE_URL + `/search/page=0/size=1?id=${id}`
   );
 }
 
@@ -46,6 +63,18 @@ async function getEmployeesAuth(page, size) {
   );
 }
 
-// http://shoesshop.eu-south-1.elasticbeanstalk.com/search/page=0/size=1?id=5
+async function editUserByIdAuth(id, obj) {
+  return await putDataAuth(PROPERTIES.BASE_URL + `/admin/user/${id}`, obj);
+}
 
-export { getUsers, getUserById, getEmployees, getUsersAuth, getEmployeesAuth };
+export {
+  getUsers,
+  getUserById,
+  getUserByIdAuth,
+  getEmployees,
+  getUsersAuth,
+  getEmployeesAuth,
+  addUserAuth,
+  deleteUserAuthById,
+  editUserByIdAuth,
+};
