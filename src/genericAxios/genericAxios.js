@@ -161,7 +161,7 @@ export async function deleteData(resource, header = null) {
 
 // DELETE with Authentication
 export async function deleteDataAuth(resource, header = null) {
-  const response = await axiosInstance.put(resource, {
+  const response = await axiosInstanceToken.delete(resource, {
     headers: header !== null ? { Authorization: `Bearer ${header}` } : null,
   });
 
