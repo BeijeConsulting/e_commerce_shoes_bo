@@ -4,6 +4,8 @@
     "email": "Email",
     "telephone": "Telephone",
     "password": "Password",
+    "English": "English",
+    "Italian": "Italian",
     "showPassword": "Show",
     "login": "Login",
     "user": "User",
