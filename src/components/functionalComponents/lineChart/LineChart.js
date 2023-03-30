@@ -26,7 +26,7 @@ function LineChart(props) {
   const series = [
     {
       name: props.dataName,
-      data: [30, 40, 45, 50, 49, 60, 70, 91, 80, 30, 20, 11],
+      data: props.data,
     },
   ];
 

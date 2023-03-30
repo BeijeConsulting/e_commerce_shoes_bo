@@ -85,6 +85,12 @@ export const ordersColumns = [
   { id: "actions", label: "actions" },
 ];
 
+export const recentOrdersColumns = [
+  { id: "user_id", label: "userId" },
+  { id: "created_at", label: "date" },
+  { id: "payment_status", label: "paymentStatus" },
+];
+
 export const productsColumns = [
   { id: "id", label: "id" },
   { id: "image", label: "image" },

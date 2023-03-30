@@ -70,6 +70,8 @@
     "repeatPassword": "Repeat password",
     "city": "City",
     "isListed": "Is listed",
+    "numberOrders": "Number of orders",
+    "monthlyIncome": "Monthly income",
 
     "orderDetails": "Order details",
     "productDetails": "Product details",
