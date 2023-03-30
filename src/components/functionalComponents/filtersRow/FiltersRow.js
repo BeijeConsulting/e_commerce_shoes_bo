@@ -13,7 +13,7 @@ function filtersRow(props) {
         <h3>Filtro</h3>
         <Link to={props.addUrl}>
           <Button variant="contained" disableElevation startIcon={<AddIcon />}>
-            Add {props.addLabel}
+            {props.addLabel}
           </Button>
         </Link>
       </div>
