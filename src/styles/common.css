@@ -88,3 +88,7 @@ a {
 .h-50 {
   height: 50%;
 }
+
+.bold {
+  font-weight: bold;
+}
