@@ -4,6 +4,7 @@ import {
   getData,
   getDataAuth,
   postDataAuth,
+  deleteDataAuth,
 } from "../genericAxios/genericAxios";
 import { func } from "prop-types";
 
@@ -14,8 +15,10 @@ async function getCoupons() {
   );
 }
 
-async function getCouponsAuth() {
-  return await getDataAuth(PROPERTIES.BASE_URL + "/coupons/list_coupons");
+async function getCouponsAuth(page, size) {
+  return await getDataAuth(
+    PROPERTIES.BASE_URL + `/coupons/all/page=${page}/size=${size}`
+  );
 }
 
 async function addCouponAuth(obj) {
@@ -38,10 +41,17 @@ async function getCouponByIdAuth(id) {
   );
 }
 
+async function deleteCouponByIdAuth(id) {
+  return await deleteDataAuth(
+    PROPERTIES.BASE_URL + `/coupons/disable_coupon?idcoup=${id}`
+  );
+}
+
 export {
   getCoupons,
   getCouponById,
   getCouponsAuth,
   addCouponAuth,
   getCouponByIdAuth,
+  deleteCouponByIdAuth,
 };
