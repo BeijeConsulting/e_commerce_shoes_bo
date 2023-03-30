@@ -71,7 +71,6 @@ export const usersListIcons = [
   {
     icon: <DeleteIcon />,
     label: "Delete",
-    onclick: () => console.log("CLICK"),
   },
 ];
 
