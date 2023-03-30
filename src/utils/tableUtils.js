@@ -1,7 +1,6 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { deleteUserAuthById } from "../services/servicesUsers";
 
 export const productsListIcons = [
   {
@@ -53,7 +52,6 @@ export const couponsListIcons = [
   {
     icon: <DeleteIcon />,
     label: "Delete",
-    url: `/coupons/:id/delete`,
   },
 ];
 
