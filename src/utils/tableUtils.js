@@ -114,10 +114,10 @@ export const couponsColumns = [
 
 export const usersColumns = [
   { id: "id", label: "id" },
-  { id: "name", label: "name" },
-  { id: "surname", label: "surname" },
+  { id: "first_name", label: "name" },
+  { id: "last_name", label: "surname" },
   { id: "email", label: "email" },
   { id: "telephone", label: "telephone" },
-  { id: "birthDate", label: "birthdate" },
+  { id: "birth_date", label: "birthdate" },
   { id: "actions", label: "actions" },
 ];
