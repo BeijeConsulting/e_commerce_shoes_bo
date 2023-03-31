@@ -12,8 +12,15 @@ function AddCoupon(props) {
   const { t } = useTranslation();
 
   const addCoupon = async (data) => {
-    console.log(data);
-    addCouponAuth(data);
+    console.log("FORM DATA:", data);
+    const response = await addCouponAuth(data);
+    console.log("RESPONSE:", response);
+    if (response.status === 200) {
+      alert("Coupon added successfully");
+      window.location.href = "/coupons";
+    } else {
+      alert("Error adding coupon");
+    }
   };
 
   return (
