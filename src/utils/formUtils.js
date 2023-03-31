@@ -291,7 +291,7 @@ const modifyCouponFormProps = [
     type: "number",
     id: "id",
     name: "id",
-    required: false,
+    required: true,
   },
   {
     label: "code", //  prezzo
@@ -303,8 +303,8 @@ const modifyCouponFormProps = [
   {
     label: "maxUsages",
     type: "number",
-    id: "maxUsages",
-    name: "maxUsages",
+    id: "max_usages",
+    name: "max_usages",
     required: true,
   },
   {
@@ -317,8 +317,8 @@ const modifyCouponFormProps = [
   {
     label: "expireDate",
     type: "date",
-    id: "expireDate",
-    name: "expireDate",
+    id: "expire_date",
+    name: "expire_date",
     required: false,
   },
   {
@@ -338,8 +338,8 @@ const modifyCouponFormProps = [
   {
     label: "minOrder",
     type: "number",
-    id: "minOrder",
-    name: "minOrder",
+    id: "min_order",
+    name: "min_order",
     required: false,
   },
   {
@@ -352,8 +352,8 @@ const modifyCouponFormProps = [
   {
     label: "descriptionEn",
     type: "text",
-    id: "description",
-    name: "description_en",
+    id: "description_eng",
+    name: "description_eng",
     required: false,
   },
 ];
