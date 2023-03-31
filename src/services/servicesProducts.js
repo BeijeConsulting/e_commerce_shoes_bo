@@ -1,10 +1,11 @@
-import { PRODUCTS_PROPERTIES } from "../utils/properties";
+import { PRODUCTS_PROPERTIES, PROPERTIES } from "../utils/properties";
 
 import {
   getData,
   getDataAuth,
   postDataAuth,
   putDataAuth,
+  deleteDataAuth,
   postData,
   putData,
   deleteData,
@@ -46,6 +47,10 @@ async function editProductByIdAuth(id, obj) {
   );
 }
 
+async function deleteProductAuthById(id) {
+  return await deleteDataAuth(PROPERTIES.BASE_URL + `/products/delete/${id}`);
+}
+
 export {
   getProducts,
   getProductById,
@@ -53,4 +58,5 @@ export {
   getProductsAuth,
   addProductAuth,
   editProductByIdAuth,
+  deleteProductAuthById,
 };

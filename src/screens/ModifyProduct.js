@@ -24,18 +24,6 @@ function ModifyProduct() {
 
   const { id } = useParams();
 
-  const editUser = (data) => {
-    console.log("DATA", data);
-    delete data.id;
-    console.log("DATA2", data);
-    /*Object.keys(data).forEach((item) => {
-      if (item === "authorities") {
-        return (data[item] = ["USER", data[item]]);
-      }
-    });*/
-    editProductByIdAuth(id, data);
-  };
-
   useEffect(() => {
     async function getResources() {
       const response = await getProductById(id, language);
@@ -90,6 +78,7 @@ function ModifyProduct() {
                 abilitatePictures={canUploadPictures}
                 screenName={screenName}
                 buttonTitle={t("modify")}
+                modifyProductAuth={editProductByIdAuth}
               />
             </div>
           </div>

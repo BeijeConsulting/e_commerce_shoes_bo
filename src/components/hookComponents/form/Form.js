@@ -58,6 +58,7 @@ function Form(props) {
   const onSubmit = (data) => {
     //console.log("data:", data);
     let outputObject = null;
+    let response = null;
     // check if at least 3 pictures have been uploaded
     if (state.imagesArray.length < 3 && props.abilitatePictures) {
       alert(
@@ -73,7 +74,12 @@ function Form(props) {
       console.log("state.imagesArray:", convertedImagesArray);
       console.log("outputObject:", outputObject);
 
-      const response = props.addProductAuth(outputObject);
+      if (props.addProductAuth) {
+        response = props.addProductAuth(outputObject);
+      }
+      if (props.editProductByIdAuth) {
+        response = props.editProductByIdAuth(outputObject);
+      }
       console.log("RESPONSE:", response);
       if (response.status === 200) {
         alert("Product added successfully");
