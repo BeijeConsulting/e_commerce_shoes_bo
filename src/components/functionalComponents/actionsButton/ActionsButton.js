@@ -13,7 +13,6 @@ export default function ActionsButton({ icons, labels, productId, ...props }) {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    console.log("CLICK", productId);
     setAnchorEl(null);
   };
 
@@ -21,8 +20,15 @@ export default function ActionsButton({ icons, labels, productId, ...props }) {
     return icons.map((icon, index) => {
       return (
         <MenuItem key={index} onClick={handleClose}>
-          <Link to={icon.url ? `${icon.url}/${productId}` : null}>
-            <div style={{ display: "flex", gap: 10 }} onClick={props.onclick}>
+          <Link
+            to={icon.url ? `${icon.url}/${productId}` : null}
+            onClick={
+              icon.action === "delete"
+                ? () => props.deleteAction(productId)
+                : null
+            }
+          >
+            <div style={{ display: "flex", gap: 10 }}>
               {icon.icon} {icon.label}
             </div>
           </Link>

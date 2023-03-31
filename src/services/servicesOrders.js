@@ -6,6 +6,9 @@ import {
   postData,
   putData,
   deleteData,
+  postDataAuth,
+  putDataAuth,
+  deleteDataAuth,
 } from "../genericAxios/genericAxios";
 
 async function getOrders() {
@@ -22,8 +25,26 @@ async function getOrdersAuth() {
   );
 }*/
 
-async function getDetailOrder(id) {
-  return await getData(ORDERS_PROPERTIES.DETAIL_URL + `/${id}`);
+async function addOrderAuth(obj) {
+  return await postDataAuth(PROPERTIES.BASE_URL + "/orders/add_order", obj);
 }
 
-export { getOrders, /*getOrderById,*/ getDetailOrder, getOrdersAuth };
+async function getDetailOrderAuth(id) {
+  return await getDataAuth(PROPERTIES.BASE_URL + `/orders/details/${id}`);
+}
+
+async function editOrderByIdAuth(obj) {
+  return await putDataAuth(PROPERTIES.BASE_URL + `/orders/modify_order`, obj);
+}
+
+// async function deleteOrderByIdAuth(id){
+//   return await deleteDataAuth(PROPERTIES.BASE_URL)
+// }
+
+export {
+  getOrders,
+  /*getOrderById,*/ getDetailOrderAuth,
+  getOrdersAuth,
+  addOrderAuth,
+  editOrderByIdAuth,
+};

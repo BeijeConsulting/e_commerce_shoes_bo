@@ -14,7 +14,6 @@ import emptyShoes from "../../../assets/images/emptyImage/emptyShoes.png";
 import "./genericTable.css";
 
 function GenericTable(props) {
-  console.log(props.results);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -61,7 +60,11 @@ function GenericTable(props) {
                   ? column.format(value)
                   : value} */}
                   {column.id === "actions" && (
-                    <ActionsButton icons={props.icons} productId={product.id} />
+                    <ActionsButton
+                      icons={props.icons}
+                      productId={product.id}
+                      deleteAction={props.deleteAction}
+                    />
                   )}
 
                   {column.id === "image" ? (
@@ -109,7 +112,7 @@ function GenericTable(props) {
       <TablePagination
         rowsPerPageOptions={[10]}
         component="div"
-        count={props.results} //{props?.fields?.length || 0}
+        count={props?.results || 0} //{props?.fields?.length || 0}
         rowsPerPage={rowsPerPage}
         page={page} // {page}
         onPageChange={handleChangePage}

@@ -4,10 +4,21 @@ import Header from "../components/functionalComponents/header/Header";
 import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import { useTranslation } from "react-i18next";
 import { addProductFormProps } from "../utils/formUtils";
+import { addProductAuth } from "../services/servicesProducts";
 
 export default function AddProduct(props) {
   const { t, i18n } = useTranslation();
   const canUploadPictures = true;
+
+  const addProduct = (data) => {
+    /* Object.keys(data).forEach((item) => {
+      if (item === "authorities") {
+        return (data[item] = [data[item]]);
+      }
+    });*/
+    console.log(data);
+    addProductAuth(data);
+  };
 
   return (
     <div>
@@ -21,6 +32,8 @@ export default function AddProduct(props) {
               propsData={addProductFormProps}
               abilitatePictures={canUploadPictures}
               buttonTitle={t("addProduct")}
+              // onSubmit={addProduct}
+              addProductAuth={addProductAuth}
             />
           </div>
         </div>

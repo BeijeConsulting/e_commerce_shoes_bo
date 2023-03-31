@@ -98,8 +98,16 @@ export async function postData(resource, obj, header = null) {
 
 // POST with Authentication
 export async function postDataAuth(resource, obj) {
-  const response = await axiosInstanceToken.post(resource, obj);
-  return response;
+  // const response = await axiosInstanceToken.post(resource, obj);
+  // return response;
+  return axiosInstanceToken
+    .post(resource, obj)
+    .then((response) => {
+      return responseApi(response);
+    })
+    .catch((error) => {
+      return responseApiError(error);
+    });
 }
 
 export async function getData(resource, header = null) {
@@ -161,7 +169,7 @@ export async function deleteData(resource, header = null) {
 
 // DELETE with Authentication
 export async function deleteDataAuth(resource, header = null) {
-  const response = await axiosInstance.put(resource, {
+  const response = await axiosInstanceToken.delete(resource, {
     headers: header !== null ? { Authorization: `Bearer ${header}` } : null,
   });
 

@@ -16,10 +16,11 @@ function Products(props) {
     results: null,
   });
   const { t, i18n } = useTranslation();
+  const language = i18n.language;
 
   useEffect(() => {
     async function getResources() {
-      const response = await getProductsAuth(0, 5);
+      const response = await getProductsAuth(0, 10, language);
       console.log("RESPONSE:", response.data);
       setState({
         ...state,

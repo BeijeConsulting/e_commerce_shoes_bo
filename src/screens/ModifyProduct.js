@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../services/servicesProducts";
+import {
+  getProductById,
+  editProductByIdAuth,
+} from "../services/servicesProducts";
 import { useTranslation } from "react-i18next";
 import { modifyProductFormProps } from "../utils/formUtils";
 import Header from "../components/functionalComponents/header/Header";
@@ -18,37 +21,20 @@ function ModifyProduct() {
   const language = i18n.language;
   const canUploadPictures = true;
   const screenName = "ModifyProduct";
-  //---------------- POI DA ELIMINARE ----------------//
-  /*  const image1 =
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
-  let images = [
-    {
-      type: "image",
-      image: image1,
-    },
-    {
-      type: "image2",
-      image: image1,
-    },
-    {
-      type: "image3",
-      image: image1,
-    },
-    {
-      type: "image4",
-      image: image1,
-    },
-    {
-      type: "image5",
-      image: image1,
-    },
-    {
-      type: "image6",
-      image: image1,
-    },
-  ];*/
-  //--------------------------------------------------//
+
   const { id } = useParams();
+
+  const editUser = (data) => {
+    console.log("DATA", data);
+    delete data.id;
+    console.log("DATA2", data);
+    /*Object.keys(data).forEach((item) => {
+      if (item === "authorities") {
+        return (data[item] = ["USER", data[item]]);
+      }
+    });*/
+    editProductByIdAuth(id, data);
+  };
 
   useEffect(() => {
     async function getResources() {

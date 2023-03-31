@@ -4,10 +4,7 @@ import { alpha } from "@mui/material/styles";
 import { Box, MenuItem, Stack, IconButton, Popover } from "@mui/material";
 import enFlag from "../../../assets/images/languageIcons/gb.svg";
 import itFlag from "../../../assets/images/languageIcons/it.svg";
-import {
-  setLanguage,
-  initLanguage,
-} from "../../../redux/duck/language/languageDuck";
+import { setLanguage } from "../../../redux/duck/language/languageDuck";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 // ----------------------------------------------------------------------
@@ -54,7 +51,7 @@ export default function LanguagePopover() {
   useEffect(() => {
     setState({
       ...state,
-      lang: i18n.language,
+      lang: i18n.language ? i18n.language : "en",
     });
   }, []);
 
@@ -67,6 +64,25 @@ export default function LanguagePopover() {
       ...state,
       lang: languageChosen,
     });
+  }
+
+  function mapLanguages() {
+    return LANGS.map((option) => (
+      <MenuItem
+        key={option.value}
+        selected={option.value === state.lang}
+        onClick={() => handleLanguage(option.value)}
+      >
+        <Box
+          component="img"
+          alt={option.label}
+          src={option.icon}
+          sx={{ width: 28, mr: 2 }}
+        />
+
+        {t(option.label)}
+      </MenuItem>
+    ));
   }
 
   return (
@@ -87,8 +103,8 @@ export default function LanguagePopover() {
         }}
       >
         <img
-          src={LANGS.filter((lang) => lang.value === state.lang)[0]}
-          alt={LANGS[0].label}
+          src={state.lang === "en" ? enFlag : itFlag}
+          alt={"Language flag"}
           style={{ borderRadius: "10px" }}
         />
       </IconButton>
@@ -113,24 +129,7 @@ export default function LanguagePopover() {
           },
         }}
       >
-        <Stack spacing={0.75}>
-          {LANGS.map((option) => (
-            <MenuItem
-              key={option.value}
-              selected={option.value === LANGS[0].value}
-              onClick={() => handleLanguage(option.value)}
-            >
-              <Box
-                component="img"
-                alt={option.label}
-                src={option.icon}
-                sx={{ width: 28, mr: 2 }}
-              />
-
-              {option.label}
-            </MenuItem>
-          ))}
-        </Stack>
+        <Stack spacing={0.75}>{mapLanguages()}</Stack>
       </Popover>
     </>
   );

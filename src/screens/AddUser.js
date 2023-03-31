@@ -11,9 +11,7 @@ import { addUserAuth } from "../services/servicesUsers";
 
 function AddUser(props) {
   const { t, i18n } = useTranslation();
-  const [state, setState] = useState({
-    // product: null,
-  });
+  const [state, setState] = useState({});
   const language = i18n.language;
 
   const { id } = useParams();
@@ -28,7 +26,7 @@ function AddUser(props) {
   const addUser = (data) => {
     Object.keys(data).forEach((item) => {
       if (item === "authorities") {
-        return (data[item] = ["USER", data[item]]);
+        return (data[item] = [data[item]]);
       }
     });
     addUserAuth(data);

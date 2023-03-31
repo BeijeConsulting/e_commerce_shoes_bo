@@ -83,6 +83,20 @@ async function checkImageRatio(file) {
   return isRatioAcceptable;
 }
 
+function convertArrayImages(arr) {
+  const productImages = arr.map((item) => {
+    return {
+      image_path: item,
+      alt_eng: "image",
+      alt_it: "immagine",
+      image_number: 0,
+      product_id: 0,
+      type: "xxx",
+    };
+  });
+  return productImages;
+}
+
 export {
   encodeImageBase64,
   decodeImageBase64,
@@ -90,4 +104,5 @@ export {
   checkImageWeight,
   checkFileType,
   checkImageRatio,
+  convertArrayImages,
 };
