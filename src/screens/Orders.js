@@ -33,7 +33,11 @@ export default function Orders() {
         <div style={{ width: "100%" }} className="screen-bg">
           <h1 className="screen-title">Gestione ordini</h1>
           <div style={{ width: "95%", margin: "0 auto" }}>
-            <FiltersRow label={t("ordersList")} />
+            <FiltersRow
+              label={t("ordersList")}
+              addLabel={t("addOrder")}
+              addUrl="/orders/add-order"
+            />
             <GenericTable
               fields={state.ordersList}
               columns={ordersColumns}
