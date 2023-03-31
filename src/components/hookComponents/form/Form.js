@@ -11,6 +11,7 @@ import {
   checkImageWeight,
   checkFileType,
   checkImageRatio,
+  convertArrayImages,
 } from "../../../utils/imageUtils";
 import "./form.css";
 
@@ -63,14 +64,26 @@ function Form(props) {
         t("errorFewPictures1") +
           (3 - state.imagesArray.length) +
           t("errorFewPictures2")
+        // test
       );
       return;
     } else {
-      outputObject = { ...data, imagesArray: state.imagesArray };
-      console.log("state.imagesArray:", state.imagesArray);
+      let convertedImagesArray = convertArrayImages(state.imagesArray);
+      outputObject = { ...data, productImages: convertedImagesArray };
+      console.log("state.imagesArray:", convertedImagesArray);
       console.log("outputObject:", outputObject);
+
+      const response = props.addProductAuth(outputObject);
+      console.log("RESPONSE:", response);
+      if (response.status === 200) {
+        alert("Product added successfully");
+        window.location.href = "/products";
+      } else {
+        alert("Error adding product");
+      }
     }
 
+    // props.addProductAuth(outputObject);
     // reset form fields
   };
 
@@ -301,7 +314,9 @@ function Form(props) {
     <div className="form">
       {
         <>
-          <form onSubmit={handleSubmit(props.onSubmit)}>
+          <form
+            onSubmit={handleSubmit(props.onSubmit ? props.onSubmit : onSubmit)}
+          >
             {[...props.propsData, ...state.facultativePictures].map(
               mapFormFields
             )}

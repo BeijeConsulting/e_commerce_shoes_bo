@@ -33,7 +33,7 @@ const addProductFormProps = [
   {
     label: "name", // prodotto
     type: "text",
-    id: "product",
+    id: "name",
     name: "name",
     required: true,
     errors: checkTextInput,
@@ -49,31 +49,38 @@ const addProductFormProps = [
   {
     label: "color", // colore
     type: "text",
-    id: "colur",
+    id: "color",
     name: "color",
     required: true,
   },
-  {
+  /*{
     label: "size", // taglia
     type: "number",
     id: "size",
     name: "size",
     required: true,
-  },
+  },*/
   {
-    label: "price", //  prezzo
+    label: "starting_price", //  prezzo
     type: "number",
-    id: "price",
-    name: "price",
+    id: "starting_price",
+    name: "starting_price",
     required: true,
   },
   {
+    label: "listed_price", //  prezzo
+    type: "number",
+    id: "listed_price",
+    name: "listed_price",
+    required: true,
+  },
+  /*{
     label: "quantity", // quantità
     type: "number",
     id: "quantity",
     name: "quantity",
     required: true,
-  },
+  },*/
   {
     label: "type", // tipo
     type: "text",
@@ -91,8 +98,8 @@ const addProductFormProps = [
   {
     label: "description", // descrizione en
     type: "text",
-    id: "description_en",
-    name: "description_en",
+    id: "description_eng",
+    name: "description_eng",
     required: true,
   },
   {
