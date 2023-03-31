@@ -187,13 +187,21 @@ const modifyDiscountFormProps = [
 
 const addOrderFormProps = [
   {
-    label: "name",
+    label: "paymentStatus",
     type: "text",
-    id: "name",
-    name: "name",
+    id: "payment_status",
+    name: "payment_status",
     required: true,
     errors: checkTextInput,
   },
+  // {
+  //   label: "products",
+  //   type: "text",
+  //   id: "products",
+  //   name: "products",
+  //   required: true,
+  //   errors: checkTextInput,
+  // },
   {
     label: "status",
     type: "text",
@@ -203,25 +211,17 @@ const addOrderFormProps = [
     errors: checkTextInput,
   },
   {
-    label: "paymentStatus",
-    type: "text",
-    id: "paymentStatus",
-    name: "paymentStatus",
+    label: "transaction",
+    type: "number",
+    id: "transaction",
+    name: "transaction",
     required: true,
-    errors: checkTextInput,
   },
   {
     label: "userId",
     type: "number",
     id: "userId",
     name: "userId",
-    required: true,
-  },
-  {
-    label: "transaction", //  prezzo
-    type: "number",
-    id: "transaction",
-    name: "transaction",
     required: true,
   },
 ];
@@ -244,22 +244,22 @@ const addCouponFormProps = [
   {
     label: "maxUsages",
     type: "number",
-    id: "maxUsages",
-    name: "maxUsages",
+    id: "max_usages",
+    name: "max_usages",
     required: true,
   },
   {
     label: "userId",
     type: "number",
-    id: "userId",
-    name: "userId",
+    id: "user_id",
+    name: "user_id",
     required: false,
   },
   {
     label: "expireDate",
     type: "date",
-    id: "expireDate",
-    name: "expireDate",
+    id: "expire_date",
+    name: "expire_date",
     required: false,
   },
   {
@@ -272,22 +272,22 @@ const addCouponFormProps = [
   {
     label: "minOrder",
     type: "number",
-    id: "minOrder",
-    name: "minOrder",
+    id: "min_order",
+    name: "min_order",
     required: false,
   },
   {
     label: "descriptionIt",
     type: "text",
-    id: "description",
+    id: "description_it",
     name: "description_it",
     required: false,
   },
   {
     label: "descriptionEn",
     type: "text",
-    id: "description",
-    name: "description_en",
+    id: "description_eng",
+    name: "description_eng",
     required: false,
   },
 ];
@@ -298,7 +298,7 @@ const modifyCouponFormProps = [
     type: "number",
     id: "id",
     name: "id",
-    required: false,
+    required: true,
   },
   {
     label: "code", //  prezzo
@@ -310,22 +310,22 @@ const modifyCouponFormProps = [
   {
     label: "maxUsages",
     type: "number",
-    id: "maxUsages",
-    name: "maxUsages",
+    id: "max_usages",
+    name: "max_usages",
     required: true,
   },
   {
     label: "userId",
     type: "number",
-    id: "userId",
-    name: "userId",
+    id: "user_id",
+    name: "user_id",
     required: false,
   },
   {
     label: "expireDate",
     type: "date",
-    id: "expireDate",
-    name: "expireDate",
+    id: "expire_date",
+    name: "expire_date",
     required: false,
   },
   {
@@ -345,8 +345,8 @@ const modifyCouponFormProps = [
   {
     label: "minOrder",
     type: "number",
-    id: "minOrder",
-    name: "minOrder",
+    id: "min_order",
+    name: "min_order",
     required: false,
   },
   {
@@ -359,8 +359,8 @@ const modifyCouponFormProps = [
   {
     label: "descriptionEn",
     type: "text",
-    id: "description",
-    name: "description_en",
+    id: "description_eng",
+    name: "description_eng",
     required: false,
   },
 ];
@@ -435,14 +435,6 @@ const personalAreaFormProps = [
 
 const modifyOrderFormProps = [
   {
-    label: "id",
-    type: "text",
-    id: "id",
-    name: "id",
-    required: true,
-    errors: checkTextInput,
-  },
-  {
     label: "status",
     type: "text",
     id: "status",
@@ -458,15 +450,15 @@ const addUserFormProps = [
   {
     label: "name",
     type: "text",
-    id: "firstName",
-    name: "firstName",
+    id: "first_name",
+    name: "first_name",
     required: true,
   },
   {
     label: "lastName",
     type: "text",
-    id: "lastName",
-    name: "lastName",
+    id: "last_name",
+    name: "last_name",
     required: true,
   },
   {
@@ -493,8 +485,8 @@ const addUserFormProps = [
   {
     label: "birthDate",
     type: "date",
-    id: "birthDate",
-    name: "birthDate",
+    id: "birth_date",
+    name: "birth_date",
     required: false,
   },
   {

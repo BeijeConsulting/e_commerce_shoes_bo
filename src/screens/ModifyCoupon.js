@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import Form from "../components/hookComponents/form/Form";
 import { modifyCouponFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
-import { getCouponByIdAuth } from "../services/servicesCoupons";
+import { getCouponByIdAuth, editCouponAuth } from "../services/servicesCoupons";
 
 function ModifyCoupon(props) {
   const { t } = useTranslation();
@@ -44,6 +44,18 @@ function ModifyCoupon(props) {
     // return newformProps;
   }
 
+  async function editCoupon(data) {
+    console.log("FORM DATA", data);
+    const response = await editCouponAuth(data);
+    console.log("RESPONSE:", response);
+    if (response.status === 200) {
+      alert("Coupon modified successfully");
+      window.location.href = "/coupons";
+    } else {
+      alert("Error modifying coupon");
+    }
+  }
+
   return (
     <div>
       <Header />
@@ -73,6 +85,7 @@ function ModifyCoupon(props) {
                   propsData={state.formProps}
                   abilitatePictures={false}
                   buttonTitle={t("modify")}
+                  onSubmit={editCoupon}
                 />
               )}
             </div>

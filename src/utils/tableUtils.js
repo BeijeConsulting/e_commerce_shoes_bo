@@ -1,13 +1,12 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { deleteUserAuthById } from "../services/servicesUsers";
 
 export const productsListIcons = [
   {
     icon: <VisibilityIcon />,
     label: "View",
-    url: `/products`,
+    url: `/products/product-details`,
   },
   {
     icon: <EditIcon />,
@@ -17,7 +16,7 @@ export const productsListIcons = [
   {
     icon: <DeleteIcon />,
     label: "Delete",
-    url: `/products/:id/delete`,
+    action: "delete",
   },
 ];
 
@@ -25,17 +24,17 @@ export const ordersListIcons = [
   {
     icon: <VisibilityIcon />,
     label: "View",
-    url: `/orders`,
+    url: `/orders/order-details`,
   },
   {
     icon: <EditIcon />,
     label: "Edit",
-    url: `/orders/:id/edit`,
+    url: `/orders/edit-order`,
   },
   {
     icon: <DeleteIcon />,
     label: "Delete",
-    url: `/orders/:id/delete`,
+    action: "delete",
   },
 ];
 
@@ -53,7 +52,7 @@ export const couponsListIcons = [
   {
     icon: <DeleteIcon />,
     label: "Delete",
-    url: `/coupons/:id/delete`,
+    action: "delete",
   },
 ];
 
@@ -71,11 +70,12 @@ export const usersListIcons = [
   {
     icon: <DeleteIcon />,
     label: "Delete",
+    action: "delete",
   },
 ];
 
 export const ordersColumns = [
-  { id: "order_id", label: "id" },
+  { id: "id", label: "id" },
   { id: "user_id", label: "userId" },
   { id: "created_at", label: "date" },
   { id: "payment_status", label: "paymentStatus" },
@@ -114,10 +114,10 @@ export const couponsColumns = [
 
 export const usersColumns = [
   { id: "id", label: "id" },
-  { id: "name", label: "name" },
-  { id: "surname", label: "surname" },
+  { id: "first_name", label: "name" },
+  { id: "last_name", label: "surname" },
   { id: "email", label: "email" },
   { id: "telephone", label: "telephone" },
-  { id: "birthDate", label: "birthdate" },
+  { id: "birth_date", label: "birthdate" },
   { id: "actions", label: "actions" },
 ];
