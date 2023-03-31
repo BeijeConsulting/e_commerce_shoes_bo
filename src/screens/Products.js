@@ -64,7 +64,11 @@ function Products(props) {
         <div style={{ width: "100%" }} className="screen-bg">
           <h1 className="screen-title">{t("productsManagement")}</h1>
           <div style={{ width: "95%", margin: "0 auto" }}>
-            <FiltersRow label={t("productsList")} />
+            <FiltersRow
+              label={t("productsList")}
+              addLabel={t("addProduct")}
+              addUrl="/products/add-product"
+            />
             {state.productsList && (
               <GenericTable
                 fields={state.productsList}
