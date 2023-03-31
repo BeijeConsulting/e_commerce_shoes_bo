@@ -4,9 +4,9 @@ import {
   getData,
   getDataAuth,
   postDataAuth,
+  putDataAuth,
   deleteDataAuth,
 } from "../genericAxios/genericAxios";
-import { func } from "prop-types";
 
 async function getCoupons() {
   return await getData(
@@ -41,6 +41,10 @@ async function getCouponByIdAuth(id) {
   );
 }
 
+async function editCouponAuth(obj) {
+  return await putDataAuth(PROPERTIES.BASE_URL + `/coupons/modify_coupon`, obj);
+}
+
 async function deleteCouponByIdAuth(id) {
   return await deleteDataAuth(
     PROPERTIES.BASE_URL + `/coupons/disable_coupon?idcoup=${id}`
@@ -53,5 +57,6 @@ export {
   getCouponsAuth,
   addCouponAuth,
   getCouponByIdAuth,
+  editCouponAuth,
   deleteCouponByIdAuth,
 };
