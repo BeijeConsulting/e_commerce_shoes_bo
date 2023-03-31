@@ -10,15 +10,15 @@ export default function AddProduct(props) {
   const { t, i18n } = useTranslation();
   const canUploadPictures = true;
 
-  const addProduct = (data) => {
-    /* Object.keys(data).forEach((item) => {
+  // const addProduct = (data) => {
+  /* Object.keys(data).forEach((item) => {
       if (item === "authorities") {
         return (data[item] = [data[item]]);
       }
     });*/
-    console.log(data);
-    addProductAuth(data);
-  };
+  //console.log(data);
+  //addProductAuth(data);
+  //};
 
   return (
     <div>

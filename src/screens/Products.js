@@ -8,7 +8,10 @@ import { getProducts } from "../services/servicesProducts";
 import { productsColumns } from "../utils/tableUtils";
 
 import { productsListIcons } from "../utils/tableUtils";
-import { getProductsAuth } from "../services/servicesProducts";
+import {
+  getProductsAuth,
+  deleteProductAuthById,
+} from "../services/servicesProducts";
 
 function Products(props) {
   const [state, setState] = useState({
@@ -20,7 +23,7 @@ function Products(props) {
 
   useEffect(() => {
     async function getResources() {
-      const response = await getProductsAuth(0, 10, language);
+      const response = await getProductsAuth(1, 10, language);
       console.log("RESPONSE:", response.data);
       setState({
         ...state,
@@ -30,6 +33,18 @@ function Products(props) {
     }
     getResources(0, 5);
   }, []);
+
+  async function deleteProduct(id) {
+    alert(`Are you sure you want to delete product with id ${id}?`);
+    const response = await deleteProductAuthById(id);
+    console.log("RESPONSE DELETE:", response);
+    if (response.status === 200) {
+      alert("Usuario eliminado correctamente");
+      window.location.reload();
+    } else {
+      alert("Error al eliminar usuario");
+    }
+  }
 
   async function getResourcesTest(page, perPage) {
     const response = await getProductsAuth(page, perPage);
@@ -57,6 +72,7 @@ function Products(props) {
                 columns={productsColumns}
                 getResources={getResourcesTest}
                 results={state?.results}
+                deleteAction={deleteProduct}
               />
             )}
           </div>
