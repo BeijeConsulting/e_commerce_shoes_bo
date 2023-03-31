@@ -22,7 +22,11 @@ export default function ActionsButton({ icons, labels, productId, ...props }) {
         <MenuItem key={index} onClick={handleClose}>
           <Link
             to={icon.url ? `${icon.url}/${productId}` : null}
-            onClick={() => props.deleteAction(productId)}
+            onClick={
+              icon.action === "delete"
+                ? () => props.deleteAction(productId)
+                : null
+            }
           >
             <div style={{ display: "flex", gap: 10 }}>
               {icon.icon} {icon.label}

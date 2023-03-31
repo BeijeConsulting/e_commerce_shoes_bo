@@ -5,8 +5,9 @@ import { useTranslation } from "react-i18next";
 import Form from "../components/hookComponents/form/Form";
 import { addOrderFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../services/servicesProducts";
+import { getProductById, getProductsAuth } from "../services/servicesProducts";
 import { getProducts } from "../services/servicesProducts";
+import { addOrderAuth } from "../services/servicesOrders";
 
 function AddOrder(props) {
   const { t, i18n } = useTranslation();
@@ -21,7 +22,8 @@ function AddOrder(props) {
   // USEFFECT CHE CHIAMA I PRODOTTI E VENGONO PASSATI IN UN ARRAY AL FORM E VISUALIZZATI NELLA SCREEN DI ADD-ORDER
   useEffect(() => {
     async function getResourcesProd() {
-      const response = await getProducts();
+      const response = await getProductsAuth();
+      console.log(response.data);
       setState({
         ...state,
         productArr: response.data,

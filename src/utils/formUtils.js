@@ -180,13 +180,21 @@ const modifyDiscountFormProps = [
 
 const addOrderFormProps = [
   {
-    label: "name",
+    label: "paymentStatus",
     type: "text",
-    id: "name",
-    name: "name",
+    id: "payment_status",
+    name: "payment_status",
     required: true,
     errors: checkTextInput,
   },
+  // {
+  //   label: "products",
+  //   type: "text",
+  //   id: "products",
+  //   name: "products",
+  //   required: true,
+  //   errors: checkTextInput,
+  // },
   {
     label: "status",
     type: "text",
@@ -196,25 +204,17 @@ const addOrderFormProps = [
     errors: checkTextInput,
   },
   {
-    label: "paymentStatus",
-    type: "text",
-    id: "paymentStatus",
-    name: "paymentStatus",
+    label: "transaction",
+    type: "number",
+    id: "transaction",
+    name: "transaction",
     required: true,
-    errors: checkTextInput,
   },
   {
     label: "userId",
     type: "number",
     id: "userId",
     name: "userId",
-    required: true,
-  },
-  {
-    label: "transaction", //  prezzo
-    type: "number",
-    id: "transaction",
-    name: "transaction",
     required: true,
   },
 ];
@@ -427,14 +427,6 @@ const personalAreaFormProps = [
 ];
 
 const modifyOrderFormProps = [
-  {
-    label: "id",
-    type: "text",
-    id: "id",
-    name: "id",
-    required: true,
-    errors: checkTextInput,
-  },
   {
     label: "status",
     type: "text",
