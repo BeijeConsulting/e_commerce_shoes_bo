@@ -349,7 +349,7 @@ function Form(props) {
                 <Button
                   type="submit"
                   title={props.buttonTitle}
-                  color="success"
+                  color={props.buttonColor ? props.buttonColor : "success"}
                 />
               }
             </div>
