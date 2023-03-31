@@ -95,7 +95,11 @@ export default function Users() {
           <h1 className="screen-title">{t("manageUsers")}</h1>
           {state.users && (
             <div style={{ width: "95%", margin: "0 auto" }}>
-              <FiltersRow label={t("usersList")} />
+              <FiltersRow
+                label={t("usersList")}
+                addLabel={t("addUser")}
+                addUrl={"/users/add-user"}
+              />
               <Tabs
                 value={state.authority}
                 onChange={changeUser}
