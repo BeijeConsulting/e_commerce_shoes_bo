@@ -26,8 +26,8 @@ export default function Users() {
 
   useEffect(() => {
     async function getData() {
-      const response = await getUsersAuth(0, 10);
-      const responseEmployees = await getEmployeesAuth(0, 10);
+      const response = await getUsersAuth(1, 10);
+      const responseEmployees = await getEmployeesAuth(1, 10);
       let results_employees = null;
       let results_users = null;
       results_users = response.data.total_element;
