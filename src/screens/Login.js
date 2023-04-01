@@ -22,6 +22,7 @@ function Login() {
       email: data.email,
       password: data.password,
     });
+    console.log("response", response);
 
     if (response.status === 200) {
       const user = await getUser(response.data.token);
@@ -42,10 +43,8 @@ function Login() {
 
       navigate(`/dashboard`);
     } else {
-      alert("Wrong credentials");
+      alert(response.error.response.data.message);
     }
-
-    console.log(response);
 
     // setState({
     //   ...state,
