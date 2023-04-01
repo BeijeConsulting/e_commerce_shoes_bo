@@ -15,7 +15,7 @@ export async function authCheck() {
 export async function signin(credentials) {
   const response = await postData("/signin", credentials);
 
-  return { status: response?.status, data: response?.data };
+  return response;
 }
 
 export async function signUp(obj) {
