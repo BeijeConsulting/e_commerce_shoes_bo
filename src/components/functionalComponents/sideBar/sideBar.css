@@ -1,5 +1,5 @@
 .sideNavWrapper {
-  width: 300px;
+  min-width: 250px;
   height: calc(100vh - 70px);
   padding: 20px 30px;
   border: 1px solid #ddd;
