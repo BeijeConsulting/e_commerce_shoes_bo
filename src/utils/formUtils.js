@@ -1,3 +1,19 @@
+function modifyFormProps(formFields, stateEntity) {
+  if (!stateEntity) return;
+  let newformProps = [];
+
+  for (let i = 0; i < formFields.length; i++) {
+    newformProps.push({
+      ...formFields[i],
+      defaultValue: stateEntity[formFields[i].name],
+    });
+  }
+  console.log("OLD FORM PROPS", personalAreaFormProps);
+  console.log("NEW FORM PROPS", newformProps);
+
+  return newformProps;
+}
+
 // check standard
 const checkTextInput = {
   required: "This input is required.",
@@ -379,15 +395,15 @@ const personalAreaFormProps = [
   {
     label: "name",
     type: "text",
-    id: "name",
-    name: "name",
+    id: "first_name",
+    name: "first_name",
     required: true,
   },
   {
     label: "surname",
     type: "text",
-    id: "surname",
-    name: "surname",
+    id: "last_name",
+    name: "last_name",
     required: true,
   },
   {
@@ -414,15 +430,15 @@ const personalAreaFormProps = [
   {
     label: "birthDate",
     type: "date",
-    id: "birthdate",
-    name: "birthdate",
+    id: "birth_date",
+    name: "birth_date",
     required: true,
   },
   {
     label: "phoneNumber",
     type: "number",
-    id: "phone",
-    name: "phone",
+    id: "telephone",
+    name: "telephone",
     required: true,
   },
   {
@@ -674,6 +690,58 @@ const loginFormProps = [
   },
 ];
 
+const addAddressFormProps = [
+  {
+    label: "label",
+    type: "text",
+    id: "label",
+    name: "label",
+    required: true,
+  },
+  {
+    label: "nameSurname",
+    type: "text",
+    id: "name_surname",
+    name: "name_surname",
+    required: true,
+  },
+  {
+    label: "streetAddress",
+    type: "text",
+    id: "street_address",
+    name: "street_address",
+    required: true,
+  },
+  {
+    label: "zipcode",
+    type: "text",
+    id: "zipcode",
+    name: "zipcode",
+    required: true,
+  },
+  {
+    label: "telephone",
+    type: "text",
+    id: "telephone",
+    name: "telephone",
+    required: true,
+  },
+  {
+    label: "country",
+    type: "text",
+    id: "country",
+    name: "country",
+    required: true,
+  },
+  {
+    label: "instructions",
+    type: "text",
+    id: "instructions",
+    name: "instructions",
+    required: false,
+  },
+];
+
 export {
   addProductFormProps,
   addDiscountFormProps,
@@ -687,4 +755,6 @@ export {
   modifyProductFormProps,
   modifyUserFormProps,
   loginFormProps,
+  addAddressFormProps,
+  modifyFormProps,
 };
