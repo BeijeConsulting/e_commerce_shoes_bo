@@ -421,13 +421,6 @@ const personalAreaFormProps = [
     required: true,
   },
   {
-    label: "repeatPassword",
-    type: "password",
-    id: "repeat_password",
-    name: "repeat_password",
-    required: true,
-  },
-  {
     label: "birthDate",
     type: "date",
     id: "birth_date",
@@ -439,20 +432,6 @@ const personalAreaFormProps = [
     type: "number",
     id: "telephone",
     name: "telephone",
-    required: true,
-  },
-  {
-    label: "country",
-    type: "text",
-    id: "country",
-    name: "country",
-    required: true,
-  },
-  {
-    label: "city",
-    type: "text",
-    id: "city",
-    name: "city",
     required: true,
   },
 ];
