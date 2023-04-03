@@ -26,6 +26,8 @@ const userDuck = createSlice({
     email: "",
     authorities: [],
     isLogged: false,
+    addresses: [],
+    birthDate: "",
   },
   reducers: {
     setUserCredentialsAction: (state, action) => {
@@ -34,6 +36,8 @@ const userDuck = createSlice({
       state.email = action.payload.email;
       state.authorities = action.payload.authorities;
       state.isLogged = action.payload.isLogged;
+      state.addresses = action.payload.addresses;
+      state.birthDate = action.payload.birthDate;
     },
     initUserCredentialsAction: (state) => {
       state.name = "";
@@ -41,6 +45,8 @@ const userDuck = createSlice({
       state.email = "";
       state.authorities = [];
       state.isLogged = false;
+      state.addresses = [];
+      state.birthDate = "";
     },
   },
 });
