@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import GenericTable from "../components/functionalComponents/table/GenericTable";
-import Header from "../components/functionalComponents/header/Header";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { useTranslation } from "react-i18next";
 import {
@@ -9,12 +7,17 @@ import {
   deleteCouponByIdAuth,
 } from "../services/servicesCoupons";
 import { couponsColumns, couponsListIcons } from "../utils/tableUtils";
+import {
+  notifyDeleteSuccess,
+  notifyDeleteError,
+} from "../utils/notificationsUtils";
 
 function Coupons(props) {
+  const { t } = useTranslation();
+
   const [state, setState] = useState({
     couponsList: null,
   });
-  const { t } = useTranslation();
 
   useEffect(() => {
     async function getData() {
@@ -38,38 +41,34 @@ function Coupons(props) {
     const response = await deleteCouponByIdAuth(id);
     console.log("RESPONSE DELETE:", response);
     if (response.status === 200) {
-      alert("Coupon deleted correctly");
-      window.location.reload();
+      notifyDeleteSuccess("Coupon");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } else {
-      alert("Error while deleting the coupon");
+      notifyDeleteError("coupon");
     }
   }
 
   return (
-    <div>
-      <Header />
-      <div style={{ display: "flex" }}>
-        <SideBar />
-        <div style={{ width: "100%" }} className="screen-bg">
-          <h1 className="screen-title">{t("couponsManagement")}</h1>
-          <div style={{ width: "95%", margin: "0 auto" }}>
-            <FiltersRow
-              label={t("couponsList")}
-              addLabel={t("addCoupon")}
-              addUrl={"/coupons/add-coupon"}
-            />
-            <GenericTable
-              fields={state.couponsList?.coupons}
-              columns={couponsColumns}
-              icons={couponsListIcons}
-              results={state.couponsList?.total_element}
-              getResources={getResources}
-              deleteAction={deleteCoupon}
-            />
-          </div>
-        </div>
+    <>
+      <h1 className="screen-title">{t("couponsManagement")}</h1>
+      <div style={{ width: "95%", margin: "0 auto" }}>
+        <FiltersRow
+          label={t("couponsList")}
+          addLabel={t("addCoupon")}
+          addUrl={"/coupons/add-coupon"}
+        />
+        <GenericTable
+          fields={state.couponsList?.coupons}
+          columns={couponsColumns}
+          icons={couponsListIcons}
+          results={state.couponsList?.total_element}
+          getResources={getResources}
+          deleteAction={deleteCoupon}
+        />
       </div>
-    </div>
+    </>
   );
 }
 
