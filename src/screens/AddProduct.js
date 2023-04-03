@@ -38,7 +38,7 @@ export default function AddProduct(props) {
               buttonTitle={t("addProduct")}
               // onSubmit={addProduct}
               addProductAuth={addProductAuth}
-              productDetails={true}
+              productDetails={addProductDetailsFormProps}
             />
           </div>
         </div>
