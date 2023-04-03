@@ -28,7 +28,7 @@
   gap: 10px;
   margin: 0 auto;
   margin-top: 20px;
-  width: fit-content;
+  min-width: max-content;
   padding: 40px 30px;
   border: 2px solid #0171bc;
   border-radius: 10px;
