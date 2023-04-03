@@ -98,6 +98,7 @@ function Form(props) {
     facultativePictures: [],
     imagesArray: [],
     filtereProducts: [],
+    productDetails: null,
   });
 
   useEffect(() => {
@@ -108,6 +109,7 @@ function Form(props) {
     setState({
       ...state,
       imagesArray: starterPicturesArray,
+      productDetails: props.propsProductDetails,
     });
   }, []);
 
@@ -326,6 +328,8 @@ function Form(props) {
             {[...props.propsData, ...state.facultativePictures].map(
               mapFormFields
             )}
+
+            {props.productDetails && <button>Add product details</button>}
 
             {props.products && (
               <div>

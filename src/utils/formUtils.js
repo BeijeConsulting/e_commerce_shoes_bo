@@ -151,6 +151,39 @@ const addProductFormProps = [
   },*/
 ];
 
+const addProductDetailsFormProps = [
+  {
+    label: "is_listed", // prodotto
+    type: "text",
+    id: "is_listed",
+    name: "is_listed",
+    required: true,
+    errors: checkTextInput,
+  },
+  {
+    label: "quantity", // prodotto
+    type: "number",
+    id: "quantity",
+    name: "quantity",
+    required: true,
+  },
+  {
+    label: "selling_price", // prodotto
+    type: "number",
+    id: "selling_price",
+    name: "selling_price",
+    required: true,
+  },
+  {
+    label: "size", // prodotto
+    type: "text",
+    id: "size",
+    name: "size",
+    required: true,
+    errors: checkTextInput,
+  },
+];
+
 const addDiscountFormProps = [
   {
     label: "value", //  prezzo
@@ -687,4 +720,5 @@ export {
   modifyProductFormProps,
   modifyUserFormProps,
   loginFormProps,
+  addProductDetailsFormProps,
 };

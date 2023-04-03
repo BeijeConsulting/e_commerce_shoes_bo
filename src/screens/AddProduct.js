@@ -3,7 +3,10 @@ import Form from "../components/hookComponents/form/Form";
 import Header from "../components/functionalComponents/header/Header";
 import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import { useTranslation } from "react-i18next";
-import { addProductFormProps } from "../utils/formUtils";
+import {
+  addProductFormProps,
+  addProductDetailsFormProps,
+} from "../utils/formUtils";
 import { addProductAuth } from "../services/servicesProducts";
 
 export default function AddProduct(props) {
@@ -30,10 +33,12 @@ export default function AddProduct(props) {
           <div style={{ width: "95%", margin: "0 auto" }}>
             <Form
               propsData={addProductFormProps}
+              propsProductDetails={addProductDetailsFormProps}
               abilitatePictures={canUploadPictures}
               buttonTitle={t("addProduct")}
               // onSubmit={addProduct}
               addProductAuth={addProductAuth}
+              productDetails={true}
             />
           </div>
         </div>
