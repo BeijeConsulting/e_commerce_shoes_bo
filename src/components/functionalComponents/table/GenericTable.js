@@ -7,7 +7,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { productsColumns, productsListIcons } from "../../../utils/tableUtils";
 import ActionsButton from "../../functionalComponents/actionsButton/ActionsButton";
 import { useTranslation } from "react-i18next";
 import emptyShoes from "../../../assets/images/emptyImage/emptyShoes.png";
@@ -24,7 +23,7 @@ function GenericTable(props) {
     console.log("TOTAL ROWS:", props.results);
     setPage(newPage + 1);
     console.log("Rows per page:", rowsPerPage);
-    props.getResources(newPage, rowsPerPage);
+    props.getResources(newPage + 1, rowsPerPage);
   };
 
   // const handleChangeRowsPerPage = (event) => {

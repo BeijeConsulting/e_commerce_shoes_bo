@@ -24,6 +24,10 @@ import ModifyDiscount from "../screens/ModifyDiscount";
 import CouponDetails from "../screens/CouponDetails";
 import UserDetails from "../screens/UserDetails";
 import OrderDetails from "../screens/OrderDetails";
+import Layout from "../screens/Layout";
+import UserAddresses from "../screens/UserAddresses";
+import AddAddress from "../screens/AddAddress";
+import ModifyAddress from "../screens/ModifyAddress";
 
 function Routing(props) {
   return (
@@ -60,7 +64,20 @@ function Routing(props) {
         element={<ModifyDiscount />}
       />
 
-      <Route path="/personal-area" element={<PersonalArea />} />
+      <Route path="/" element={<Layout />}>
+        <Route path="/dashboard" element={<Dashboard />} />{" "}
+        <Route path="/personal-area" element={<PersonalArea />} />
+        <Route path="/personal-area/addresses" element={<UserAddresses />} />
+        <Route
+          path="/personal-area/addresses/add-address"
+          element={<AddAddress />}
+        />
+        <Route
+          path="/personal-area/addresses/modify-address/:id"
+          element={<ModifyAddress />}
+        />
+      </Route>
+
       <Route path="/dashboard" element={<Dashboard />} />
 
       <Route path="/language" element={<LanguageTestHook />} />
