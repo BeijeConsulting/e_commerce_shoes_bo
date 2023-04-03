@@ -3,19 +3,22 @@ import { addAddress } from "../services/servicesAddresses";
 import { useTranslation } from "react-i18next";
 import { addAddressFormProps } from "../utils/formUtils";
 import Form from "../components/hookComponents/form/Form";
+import { notifyAddSuccess, notifyAddError } from "../utils/notificationsUtils";
+import { useNavigate } from "react-router-dom";
 
 function AddAddress() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   async function addNewAddress(data) {
     console.log("FORM DATA:", data);
     const response = await addAddress(data);
     console.log("RESPONSE:", response);
     if (response.status === 200) {
-      alert("Address added successfully");
-      window.location.href = "/personal-area/addresses";
+      notifyAddSuccess("Address");
+      navigate(`/personal-area/addresses`);
     } else {
-      alert("Error adding address");
+      notifyAddError("address");
     }
   }
 
