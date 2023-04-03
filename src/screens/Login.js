@@ -16,13 +16,13 @@ function Login() {
   const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
-    console.log("Success");
     console.log(data);
 
     const response = await signin({
       email: data.email,
       password: data.password,
     });
+    console.log("response", response);
 
     if (response.status === 200) {
       const user = await getUser(response.data.token);
@@ -41,10 +41,10 @@ function Login() {
       setLocalStorage("token", response.data.token);
       setLocalStorage("refreshToken", response.data.refreshToken);
 
-      navigate(`/`);
+      navigate(`/dashboard`);
+    } else {
+      alert(response.error.response.data.message);
     }
-
-    console.log(response);
 
     // setState({
     //   ...state,
@@ -54,14 +54,18 @@ function Login() {
   };
 
   return (
-    <div className="flex flex-center screen-bg w-100 login-page-container">
-      <Form
-        propsData={loginFormProps}
-        abilitatePictures={false}
-        buttonTitle={t("login")}
-        isFromLogin={true}
-        onSubmit={onSubmit}
-      />
+    <div className="login-page-container">
+      <div className="form-login-page-container">
+        <h1>CMS Shoes Shop</h1>
+        <Form
+          propsData={loginFormProps}
+          abilitatePictures={false}
+          buttonTitle={t("login")}
+          isFromLogin={true}
+          onSubmit={onSubmit}
+          buttonColor="primary"
+        />
+      </div>
     </div>
   );
 }

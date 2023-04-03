@@ -41,7 +41,7 @@ async function getUserById(id) {
 
 async function getUserByIdAuth(id) {
   return await getDataAuth(
-    PROPERTIES.BASE_URL + `/search/page=0/size=1?id=${id}`
+    PROPERTIES.BASE_URL + `/search/page=1/size=1?id=${id}`
   );
 }
 
@@ -67,6 +67,10 @@ async function editUserByIdAuth(id, obj) {
   return await putDataAuth(PROPERTIES.BASE_URL + `/admin/user/${id}`, obj);
 }
 
+async function editUserAuth(obj) {
+  return await putDataAuth(PROPERTIES.BASE_URL + `/user`, obj);
+}
+
 export {
   getUsers,
   getUserById,
@@ -77,4 +81,5 @@ export {
   addUserAuth,
   deleteUserAuthById,
   editUserByIdAuth,
+  editUserAuth,
 };

@@ -23,23 +23,22 @@ function AddUser(props) {
     { value: "MARKETING", label: "Marketing" },
   ];
 
-  const addUser = (data) => {
+  const addUser = async (data) => {
+    console.log("DATA", data);
     Object.keys(data).forEach((item) => {
       if (item === "authorities") {
         return (data[item] = [data[item]]);
       }
     });
-    addUserAuth(data);
+    const response = await addUserAuth(data);
+    console.log("RESPONSE", response);
+    if (response.status === 200) {
+      alert("User added successfully");
+      window.location.href = "/users";
+    } else {
+      alert("Error adding user");
+    }
   };
-
-  // useEffect(() => {
-  //   async function getResources() {
-  //     const response = await getProductById(id, language);
-  //     console.log("RESPONSE:", response.data);
-  //     setState({ ...state, product: response.data });
-  //   }
-  //   getResources();
-  // }, [language]);
 
   return (
     <div>

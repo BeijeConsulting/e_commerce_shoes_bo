@@ -79,7 +79,8 @@ export function responseApiError(error) {
   //general function in case of wrong api call
   return {
     message: error?.message,
-    status: error?.status,
+    status: error?.response?.status,
+    error,
   };
 }
 
