@@ -342,12 +342,14 @@ function Form(props) {
             onSubmit={handleSubmit(props.onSubmit ? props.onSubmit : onSubmit)}
           >
             {state.productDetails !== [] &&
+              props.productDetails &&
               [
                 ...props.propsData,
                 ...state.productDetails,
                 ...state.facultativePictures,
               ].map(mapFormFields)}
             {state.productDetails === [] &&
+              props.productDetails &&
               [...props.propsData, ...state.facultativePictures].map(
                 mapFormFields
               )}
