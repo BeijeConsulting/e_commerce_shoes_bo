@@ -24,17 +24,16 @@ export async function signUp(obj) {
   return { status: response?.status, data: response?.data };
 }
 
-export async function signOut() {
-  const refreshTokenStorage = getLocalStorage("refreshToken");
-  const tokenStorage = getLocalStorage("token");
-
-  const response = await postData(
+export async function signOut(refreshToken, TOKEN) {
+  const response = await postDataAuth(
     "/sign_out",
-    { refreshToken: refreshTokenStorage },
-    tokenStorage
+    { refreshToken: refreshToken },
+    TOKEN
   );
-
-  return { status: response?.status, data: response?.data };
+  if (response.status < 300) {
+    return { status: response.status, data: response.data };
+  }
+  return { status: response.status, message: response.data.message };
 }
 
 export async function refreshToken() {
@@ -47,16 +46,16 @@ export async function refreshToken() {
   return { status: response?.status, data: response?.data };
 }
 
-export async function getUser(SECRET) {
-  const response = await getData("/user", SECRET);
+export async function getUser(TOKEN) {
+  const response = await getData("/user", TOKEN);
 
   return { status: response?.status, data: response?.data };
 }
 
 // GET user data with Authentication
-export async function getUserAuth() {
-  const tokenStorage = getLocalStorage("token");
-  const response = await getDataAuth("/user", tokenStorage);
+export async function getUserAuth(TOKEN) {
+  // const tokenStorage = getLocalStorage("token");
+  const response = await getDataAuth("/user", TOKEN);
 
   return { status: response?.status, data: response?.data };
 }
