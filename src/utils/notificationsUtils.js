@@ -42,6 +42,20 @@ function notifyAddError(item) {
   });
 }
 
+function notifyEditSuccess(item) {
+  toast.success(`${item} edited succesfully`, {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 1500,
+  });
+}
+
+function notifyEditError(item) {
+  toast.error(`Something went wrong while editing ${item}`, {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 2000,
+  });
+}
+
 function notifyDeleteSuccess(item) {
   toast.success(`${item} deleted succesfully`, {
     position: toast.POSITION.TOP_CENTER,
@@ -84,6 +98,8 @@ export {
   notifyLoginError,
   notifyAddSuccess,
   notifyAddError,
+  notifyEditSuccess,
+  notifyEditError,
   notifyDeleteSuccess,
   notifyDeleteError,
   notifyNotAuthorized,
