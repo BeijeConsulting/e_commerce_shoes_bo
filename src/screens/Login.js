@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "../components/hookComponents/form/Form";
-import { loginFormProps } from "../utils/formUtils";
+import { loginFormProps, addAddressFormProps } from "../utils/formUtils";
 import { useTranslation } from "react-i18next";
 import { setLocalStorage } from "../utils/localStorageUtils";
 import { signin, getUser } from "../services/servicesAuth";
@@ -35,14 +35,12 @@ function Login() {
 
       dispatch(
         setUserCredentials({
-          name: user.data.first_name,
-          surname: user.data.last_name,
-          email: user.data.email,
-          adresses: [...user.data.addresses],
-          authorities: response.data.permission,
-          birthDate: user.data.birth_date,
-          isLogged: true,
-          isLoading: false,
+          name: user.data?.first_name,
+          surname: user.data?.last_name,
+          email: user.data?.email,
+          adresses: [...user.data?.addresses],
+          authorities: [...response.data?.permission],
+          birthDate: user.data?.birth_date,
         })
       );
 
@@ -56,6 +54,7 @@ function Login() {
       setLocalStorage("token", response.data.token);
       setLocalStorage("refreshToken", response.data.refreshToken);
       setLocalStorage("isLogged", true);
+      setLocalStorage("authorities", response.data.permission);
 
       navigate(`/dashboard`);
     } else {
@@ -67,10 +66,9 @@ function Login() {
   return (
     <div className="login-page-container">
       <div className="form-login-page-container">
-        <h1>CMS Shoes Shop</h1>
+        <h1>CMS Beije Shoes</h1>
         <Form
           propsData={loginFormProps}
-          abilitatePictures={false}
           buttonTitle={t("login")}
           onSubmit={onSubmit}
           buttonColor="primary"
