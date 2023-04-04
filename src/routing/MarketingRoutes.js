@@ -3,7 +3,7 @@ import { getLocalStorage } from "../utils/localStorageUtils";
 import { notifyAccessDenied } from "../utils/notificationsUtils";
 
 const MarketingRoutes = () => {
-  const authority = getLocalStorage("authorities")[1];
+  const authority = getLocalStorage("authorities");
   return authority.includes("ADMIN") || authority.includes("MARKETING") ? (
     <Outlet />
   ) : (
