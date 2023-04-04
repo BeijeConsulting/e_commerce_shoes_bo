@@ -7,9 +7,11 @@ import { getUserAuth } from "../services/servicesAuth";
 import { Button } from "@mui/material";
 import { editUserAuth } from "../services/servicesUsers";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function PersonalArea() {
   const { t } = useTranslation();
+  const token = useSelector((state) => state.tokenDuck.token);
 
   const [state, setState] = useState({
     user: null,
@@ -27,7 +29,7 @@ export default function PersonalArea() {
   }, []);
 
   async function getUserDetails() {
-    const response = await getUserAuth();
+    const response = await getUserAuth(token);
     if (!response) return;
     console.log(response.data);
     setState({
@@ -43,7 +45,7 @@ export default function PersonalArea() {
     if (response.status === 200) {
       alert("User data modified successfully");
     } else {
-      alert("Error modifying coupon");
+      alert("Error modifying user data");
     }
     window.location.reload();
   }

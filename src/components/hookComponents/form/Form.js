@@ -36,6 +36,52 @@ function Form(props) {
   const image9Ref = useRef(null);
   const image10Ref = useRef(null);
 
+  const testObject = {
+    product: {
+      brand: "Adidas",
+      category: "Cross Training",
+      color: "Lilla",
+      descriptionEng: "AAAAAAAAAAAAAAAAA",
+      descriptionIt: "BBBBBBBBB",
+      imagePreview: "/aiuto",
+      isListed: "1",
+      listedPrice: 300,
+      name: "Test 7",
+      startingPrice: 0,
+      type: "m",
+    },
+    productDetails: [
+      {
+        is_listed: true,
+        quantity: 37,
+        selling_price: 90,
+        size: "M40",
+      },
+      {
+        is_listed: true,
+        quantity: 100,
+        selling_price: 400,
+        size: "M41",
+      },
+    ],
+    productImages: [
+      {
+        altEng: "efwefwe",
+        altIt: "testest",
+        imageNumber: 0,
+        imagePath: "/provaancora",
+        type: "desktop",
+      },
+      {
+        altEng: "efwefwwere",
+        altIt: "testewerst",
+        imageNumber: 0,
+        imagePath: "/provawerancora",
+        type: "desktop",
+      },
+    ],
+  };
+
   const arrayReferences = [
     image1Ref,
     image2Ref,
@@ -59,6 +105,7 @@ function Form(props) {
     //console.log("data:", data);
     let outputObject = null;
     let response = null;
+    let newOutputObj = {};
     // check if at least 3 pictures have been uploaded
     if (state.imagesArray.length < 3 && props.abilitatePictures) {
       alert(
@@ -70,23 +117,32 @@ function Form(props) {
       return;
     } else {
       let convertedImagesArray = convertArrayImages(state.imagesArray);
-      outputObject = { ...data, productImages: convertedImagesArray };
+      outputObject = {
+        product: { ...data, isListed: 1, imagePreview: "/nopreview" },
+        productDetails: state.outputProductDetails,
+        productImages: convertedImagesArray,
+      };
       console.log("state.imagesArray:", convertedImagesArray);
       console.log("outputObject:", outputObject);
 
       if (props.addProductAuth) {
-        response = props.addProductAuth(outputObject);
+        //props.addProductAuth(testObject);
+        props.addProductAuth({
+          product: { ...data, isListed: 1, imagePreview: "/nopreview" },
+          productDetails: state.outputProductDetails,
+          productImages: convertedImagesArray,
+        });
       }
       if (props.editProductByIdAuth) {
         response = props.editProductByIdAuth(outputObject);
       }
-      console.log("RESPONSE:", response);
-      if (response.status === 200) {
-        alert("Product added successfully");
-        window.location.href = "/products";
-      } else {
-        alert("Error adding product");
-      }
+      // console.log("RESPONSE:", response);
+      // if (response.status === 200) {
+      //   alert("Product added successfully");
+      //   window.location.href = "/products";
+      // } else {
+      //   alert("Error adding product");
+      // }
     }
 
     // props.addProductAuth(outputObject);
@@ -98,6 +154,8 @@ function Form(props) {
     facultativePictures: [],
     imagesArray: [],
     filtereProducts: [],
+    productDetails: [],
+    outputProductDetails: [],
   });
 
   useEffect(() => {
@@ -108,6 +166,15 @@ function Form(props) {
     setState({
       ...state,
       imagesArray: starterPicturesArray,
+      productDetails: props.propsProductDetails,
+      outputProductDetails: [
+        {
+          is_listed: true,
+          quantity: "",
+          selling_price: "",
+          size: "",
+        },
+      ],
     });
   }, []);
 
@@ -161,33 +228,6 @@ function Form(props) {
     return (
       <div className="form-group-container" key={Math.random()}>
         <label htmlFor={field.id}>{t(field.label)}</label>
-        {/* <br /> */}
-
-        {/* {field.type === "select" ? (
-          <select
-            {...register(field.name, field.errors)}
-            id={field.id}
-            name={field.name}
-            required={field.required}
-            className="form-input"
-          >
-            {mapOptionValues()}
-          </select>
-        ) : (
-          <input
-            {...register(field.name, field.errors)}
-            type={field.type}
-            id={field.id}
-            name={field.name}
-            accept={field.accept}
-            required={field.required}
-            defaultValue={field.defaultValue}
-            placeholder={field.placeholder}
-            //onChange={field.accept ? checkInputType : null}
-            onChange={field.accept ? checkInputType : null}
-            className="form-input"
-          />
-        )} */}
 
         {field.type !== "select" && field.type !== "password" && (
           <input
@@ -199,7 +239,6 @@ function Form(props) {
             required={field.required}
             defaultValue={field.defaultValue}
             placeholder={field.placeholder}
-            //onChange={field.accept ? checkInputType : null}
             onChange={field.accept ? checkInputType : null}
             className="form-input"
           />
@@ -219,19 +258,6 @@ function Form(props) {
 
         {field.type === "password" && (
           <InputPassword field={field} register={register} />
-          // <input
-          //   {...register(field.name, field.errors)}
-          //   type={field.type}
-          //   id={field.id}
-          //   name={field.name}
-          //   accept={field.accept}
-          //   required={field.required}
-          //   defaultValue={field.defaultValue}
-          //   placeholder={field.placeholder}
-          //   //onChange={field.accept ? checkInputType : null}
-          //   onChange={field.accept ? checkInputType : null}
-          //   className="form-input"
-          // />
         )}
 
         {
@@ -304,6 +330,22 @@ function Form(props) {
       );
     });
   }
+
+  /*function addProductDetails() {
+    let productDetailsArray = state.productDetails;
+    console.log("productDetailsArray IN THE START ", productDetailsArray);
+    console.log("PROPS.PRODUCTDETAILS IN THE START ", props.productDetails);
+    productDetailsArray = [...productDetailsArray, ...props.productDetails];
+    //productDetailsArray.push(props.productDetails);
+
+    console.log("productDetailsArray!!!!!!!!!!!!!!!!! ", productDetailsArray);
+
+    setState({
+      ...state,
+      productDetails: productDetailsArray,
+    });
+  }*/
+
   function filterId(event) {
     let shoe = props?.products?.filter((product) => {
       return String(product.id).includes(event.target.value);
@@ -316,6 +358,100 @@ function Form(props) {
       filtereProducts: shoe,
     });
   }
+
+  function handleProductDetails(event) {
+    //let productDetails = state.outputProductDetails;
+    let property = event.target.name;
+    let index = parseInt(event.target.id.substring(property.length));
+    let newProductDetails = state.outputProductDetails;
+    console.log("newProductDetail", newProductDetails);
+    console.log("index", index - 1);
+    console.log("newProductDetails[index - 1]", newProductDetails[index - 1]);
+    console.log("newProductDetails COMPLETO", newProductDetails);
+    if (property === "size") {
+      newProductDetails[index - 1].size = event.target.value;
+    } else if (property === "is_listed") {
+      newProductDetails[index - 1].is_listed = event.target.value;
+    } else if (property === "quantity") {
+      newProductDetails[index - 1].quantity = event.target.value;
+    } else if (property === "selling_price") {
+      newProductDetails[index - 1].selling_price = event.target.value;
+    }
+    setState({
+      ...state,
+      outputProductDetails: newProductDetails,
+    });
+  }
+
+  function createOutputProductDetails() {
+    let newOutput = state.outputProductDetails;
+    let objToPush = {
+      is_listed: true,
+      quantity: null,
+      selling_price: null,
+      size: null,
+    };
+    newOutput.push(objToPush);
+    console.log("PUSHIIIIIIIIIIING", newOutput);
+    setState({
+      ...state,
+      outputProductDetails: newOutput,
+    });
+  }
+
+  function mapProductDetailsInputs() {
+    let counter = 0;
+    return state.outputProductDetails?.map((key) => {
+      counter++;
+      return (
+        <div key={Math.random()}>
+          <label htmlFor={"size"}>{t("size")}</label>
+          <input
+            type={"text"}
+            id={"size" + counter}
+            name={"size"}
+            required={true}
+            onBlur={handleProductDetails}
+            className="form-input"
+            defaultValue={state.outputProductDetails[counter - 1]?.size}
+          />
+          <label htmlFor={"quantity"}>{t("quantity")}</label>
+          <input
+            type={"number"}
+            id={"quantity" + counter}
+            name={"quantity"}
+            required={true}
+            onBlur={handleProductDetails}
+            className="form-input"
+            defaultValue={state.outputProductDetails[counter - 1]?.quantity}
+          />
+          <label htmlFor={"selling_price"}>{t("sellingPrice")}</label>
+          <input
+            type={"number"}
+            id={"selling_price" + counter}
+            name={"selling_price"}
+            required={true}
+            onBlur={handleProductDetails}
+            className="form-input"
+            defaultValue={
+              state.outputProductDetails[counter - 1]?.selling_price
+            }
+          />
+          {/*<label htmlFor={"is_listed"}>{t("isListed")}</label>
+          <input
+            type={"checkbox"}
+            id={"is_listed" + counter}
+            name={"is_listed"}
+            required={true}
+            onChange={handleProductDetails}
+            className="form-input"
+            checked={state.outputProductDetails[counter - 1]?.is_listed}
+          />*/}
+        </div>
+      );
+    });
+  }
+
   return (
     <div className="form">
       {
@@ -323,9 +459,18 @@ function Form(props) {
           <form
             onSubmit={handleSubmit(props.onSubmit ? props.onSubmit : onSubmit)}
           >
-            {[...props.propsData, ...state.facultativePictures].map(
-              mapFormFields
-            )}
+            {/*} {state.productDetails !== [] &&
+              [
+                ...props.propsData,
+                ...state.productDetails,
+                ...state.facultativePictures,
+              ].map(mapFormFields)}*/}
+            {
+              /*state.productDetails === [] &&*/
+              [...props.propsData, ...state.facultativePictures].map(
+                mapFormFields
+              )
+            }
 
             {props.isFromAddOrder && (
               <div>
@@ -359,18 +504,27 @@ function Form(props) {
           </form>
         </>
       }
-
-      {props.abilitatePictures && props.screenName !== "ModifyProduct" && (
-        <>
-          <h5>NAME SCREEN: {props.screenName}</h5>
-          <ImageListContainer
-            imagesData={state.imagesArray}
-            state={state}
-            setImagesData={setState}
-            showPreview={showPreview}
+      <div>
+        {props.productDetails && <>{mapProductDetailsInputs()}</>}
+        {props.productDetails && (
+          <input
+            type="button"
+            onClick={createOutputProductDetails}
+            value="Add product details"
           />
-        </>
-      )}
+        )}
+        {props.abilitatePictures && props.screenName !== "ModifyProduct" && (
+          <>
+            {/*<h5>NAME SCREEN: {props.screenName}</h5>*/}
+            <ImageListContainer
+              imagesData={state.imagesArray}
+              state={state}
+              setImagesData={setState}
+              showPreview={showPreview}
+            />
+          </>
+        )}
+      </div>
 
       {props.abilitatePictures && props.screenName === "ModifyProduct" && (
         <>

@@ -2,12 +2,16 @@ import React from "react";
 import Form from "../components/hookComponents/form/Form";
 import { loginFormProps } from "../utils/formUtils";
 import { useTranslation } from "react-i18next";
-import { getLocalStorage, setLocalStorage } from "../utils/localStorageUtils";
-import { signin, getUser, getUserAuth } from "../services/servicesAuth";
+import { setLocalStorage } from "../utils/localStorageUtils";
+import { signin, getUser } from "../services/servicesAuth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUserCredentials } from "../redux/duck/user/userDuck";
-
+import { setToken } from "../redux/duck/token/tokenDuck";
+import {
+  notifyLoginSuccess,
+  notifyLoginError,
+} from "../utils/notificationsUtils";
 import "../styles/login/login.css";
 
 function Login() {
@@ -22,35 +26,42 @@ function Login() {
       email: data.email,
       password: data.password,
     });
-    console.log("response", response);
+    console.log("Response signin", response);
 
     if (response.status === 200) {
       const user = await getUser(response.data.token);
       console.log("user", user);
+      notifyLoginSuccess();
 
       dispatch(
         setUserCredentials({
-          name: user.data.name,
-          surname: user.data.surname,
-          authorities: response.data.permission,
+          name: user.data.first_name,
+          surname: user.data.last_name,
           email: user.data.email,
+          adresses: [...user.data.addresses],
+          authorities: response.data.permission,
+          birthDate: user.data.birth_date,
           isLogged: true,
+          isLoading: false,
+        })
+      );
+
+      dispatch(
+        setToken({
+          token: response.data.token,
+          refreshToken: response.data.refreshToken,
         })
       );
 
       setLocalStorage("token", response.data.token);
       setLocalStorage("refreshToken", response.data.refreshToken);
+      setLocalStorage("isLogged", true);
 
       navigate(`/dashboard`);
     } else {
-      alert(response.error.response.data.message);
+      notifyLoginError(response.error.response.data.message);
+      // alert(response.error.response.data.message);
     }
-
-    // setState({
-    //   ...state,
-    //   invalidEmail: false,
-    //   invalidPassword: false,
-    // });
   };
 
   return (
@@ -61,7 +72,6 @@ function Login() {
           propsData={loginFormProps}
           abilitatePictures={false}
           buttonTitle={t("login")}
-          isFromLogin={true}
           onSubmit={onSubmit}
           buttonColor="primary"
         />

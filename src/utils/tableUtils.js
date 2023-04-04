@@ -106,6 +106,7 @@ export const couponsColumns = [
   { id: "code", label: "code" },
   { id: "max_usages", label: "maxUsages" },
   { id: "expire_date", label: "expireDate" },
+  { id: "status", label: "status" },
   { id: "type", label: "type" },
   { id: "value", label: "value" },
   { id: "min_order", label: "minOrder" },

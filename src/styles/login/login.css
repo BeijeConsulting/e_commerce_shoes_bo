@@ -1,6 +1,6 @@
 .login-page-container {
   background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-    url("https://cdn.pixabay.com/photo/2020/11/02/06/24/shoes-5705833_1280.png");
+    url("../../assets/images/login/login-bg.png");
   filter: grayscale(10%);
   background-repeat: no-repeat;
   background-size: cover;

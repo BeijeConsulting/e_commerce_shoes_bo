@@ -86,12 +86,11 @@ async function checkImageRatio(file) {
 function convertArrayImages(arr) {
   const productImages = arr.map((item) => {
     return {
-      image_path: item,
-      alt_eng: "image",
-      alt_it: "immagine",
-      image_number: 0,
-      product_id: 0,
-      type: "xxx",
+      imagePath: item,
+      altEng: "image",
+      altIt: "immagine",
+      imageNumber: 0,
+      type: "desktop",
     };
   });
   return productImages;

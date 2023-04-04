@@ -77,17 +77,17 @@ const addProductFormProps = [
     required: true,
   },*/
   {
-    label: "starting_price", //  prezzo
+    label: "startingPrice", //  prezzo
     type: "number",
-    id: "starting_price",
-    name: "starting_price",
+    id: "startingPrice",
+    name: "startingPrice",
     required: true,
   },
   {
-    label: "listed_price", //  prezzo
+    label: "listedPrice", //  prezzo
     type: "number",
-    id: "listed_price",
-    name: "listed_price",
+    id: "listedPrice",
+    name: "listedPrice",
     required: true,
   },
   /*{
@@ -105,17 +105,17 @@ const addProductFormProps = [
     required: true,
   },
   {
-    label: "description", // descrizione it
+    label: "descriptionIt", // descrizione it
     type: "text",
-    id: "description_it",
-    name: "description_it",
+    id: "descriptionIt",
+    name: "descriptionIt",
     required: true,
   },
   {
-    label: "description", // descrizione en
+    label: "descriptionEn", // descrizione en
     type: "text",
-    id: "description_eng",
-    name: "description_eng",
+    id: "descriptionEng",
+    name: "descriptionEng",
     required: true,
   },
   {
@@ -125,13 +125,14 @@ const addProductFormProps = [
     name: "category",
     required: true,
   },
+  /*
   {
     label: "listed", // in vendita ?
     type: "number",
     id: "is_listed",
     name: "is_listed",
     required: true,
-  },
+  },*/
   /*
   {
     label: "image", // immagine
@@ -165,6 +166,37 @@ const addProductFormProps = [
     name: "date",
     required: true,
   },*/
+];
+
+const addProductDetailsFormProps = [
+  {
+    label: "isListed", //  prezzo
+    type: "checkbox",
+    id: "is_listed",
+    name: "is_listed",
+    required: true,
+  },
+  {
+    label: "quantity", //  prezzo
+    type: "number",
+    id: "quantity",
+    name: "quantity",
+    required: true,
+  },
+  {
+    label: "sellingPrice", //  prezzo
+    type: "number",
+    id: "selling_price",
+    name: "selling_price",
+    required: true,
+  },
+  {
+    label: "size",
+    type: "text",
+    id: "size",
+    name: "size",
+    required: false,
+  },
 ];
 
 const addDiscountFormProps = [
@@ -741,4 +773,5 @@ export {
   loginFormProps,
   addAddressFormProps,
   modifyFormProps,
+  addProductDetailsFormProps,
 };
