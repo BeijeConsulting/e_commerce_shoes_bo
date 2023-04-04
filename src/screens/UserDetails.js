@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
-import Header from "../components/functionalComponents/header/Header";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { getUserByIdAuth } from "../services/servicesUsers";
@@ -25,18 +23,14 @@ function UserDetails(props) {
   }, []);
 
   return (
-    <div>
-      <Header />
-      <div className="flex">
-        <SideBar />
-        <div className="screen-bg w-100 flex flex-column flex-center">
-          <h1 className="screen-title">{t("userDetails")}</h1>
-          <div className="w-50">
-            {state.user && <ViewDetails details={state.user} />}
-          </div>
+    <>
+      <div className=" flex flex-column flex-center">
+        <h1 className="screen-title">{t("userDetails")}</h1>
+        <div className="w-50">
+          {state.user && <ViewDetails details={state.user} />}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

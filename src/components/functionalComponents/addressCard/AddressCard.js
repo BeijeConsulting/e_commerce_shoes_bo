@@ -9,6 +9,10 @@ import { Add } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { deleteAddress } from "../../../services/servicesAddresses";
+import {
+  notifyDeleteSuccess,
+  notifyDeleteError,
+} from "../../../utils/notificationsUtils";
 import "./addressCard.css";
 
 export default function OutlinedCard(props) {
@@ -28,10 +32,12 @@ export default function OutlinedCard(props) {
     const response = await deleteAddress(id);
     console.log("RESPONSE DELETE:", response);
     if (response.status === 200) {
-      alert("Coupon deleted correctly");
-      window.location.reload();
+      notifyDeleteSuccess("Address");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } else {
-      alert("Error while deleting the coupon");
+      notifyDeleteError("address");
     }
   };
 

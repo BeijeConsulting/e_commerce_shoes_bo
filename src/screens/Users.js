@@ -87,52 +87,46 @@ export default function Users() {
   }
 
   return (
-    <div>
-      <Header />
-      <div style={{ display: "flex" }}>
-        <SideBar />
-        <div style={{ width: "100%" }} className="screen-bg">
-          <h1 className="screen-title">{t("manageUsers")}</h1>
-          {state.users && (
-            <div style={{ width: "95%", margin: "0 auto" }}>
-              <FiltersRow
-                label={t("usersList")}
-                addLabel={t("addUser")}
-                addUrl={"/users/add-user"}
-              />
-              <Tabs
-                value={state.authority}
-                onChange={changeUser}
-                style={{
-                  marginBottom: "10px",
-                  backgroundColor: "white",
-                  border: "2px solid #0171bc",
-                  borderRadius: "7px",
-                }}
-              >
-                <Tab label="Users" value="users" />
-                <Tab label="Employees" value="employees" />
-              </Tabs>
-              <GenericTable
-                fields={
-                  state.authority === "users"
-                    ? state.users.usersDTO
-                    : state.employees.usersDTO
-                }
-                results={
-                  state.authority === "users"
-                    ? state.users.total_element
-                    : state.employees.total_element
-                }
-                columns={usersColumns}
-                icons={usersListIcons}
-                getResources={getResources}
-                deleteAction={deleteUser}
-              />
-            </div>
-          )}
+    <>
+      <h1 className="screen-title">{t("manageUsers")}</h1>
+      {state.users && (
+        <div style={{ width: "95%", margin: "0 auto" }}>
+          <FiltersRow
+            label={t("usersList")}
+            addLabel={t("addUser")}
+            addUrl={"/users/add-user"}
+          />
+          <Tabs
+            value={state.authority}
+            onChange={changeUser}
+            style={{
+              marginBottom: "10px",
+              backgroundColor: "white",
+              border: "2px solid #0171bc",
+              borderRadius: "7px",
+            }}
+          >
+            <Tab label="Users" value="users" />
+            <Tab label="Employees" value="employees" />
+          </Tabs>
+          <GenericTable
+            fields={
+              state.authority === "users"
+                ? state.users.usersDTO
+                : state.employees.usersDTO
+            }
+            results={
+              state.authority === "users"
+                ? state.users.total_element
+                : state.employees.total_element
+            }
+            columns={usersColumns}
+            icons={usersListIcons}
+            getResources={getResources}
+            deleteAction={deleteUser}
+          />
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }

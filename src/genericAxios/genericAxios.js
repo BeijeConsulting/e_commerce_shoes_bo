@@ -2,6 +2,8 @@ import axios from "axios";
 import { PROPERTIES } from "../utils/properties";
 import { getLocalStorage, setLocalStorage } from "../utils/localStorageUtils";
 import { refreshToken } from "../services/servicesAuth";
+import store from "../redux/store";
+import { setToken } from "../redux/duck/token/tokenDuck";
 
 const axiosInstance = axios.create({
   //istanza
@@ -56,6 +58,14 @@ axiosInstanceToken.interceptors.response.use(
       console.log("generic Axios - UPDATETOKEN", updateToken);
       if (updateToken.status === 200) {
         const { token, refreshToken } = updateToken.data;
+
+        store.dispatch(
+          setToken({
+            token: token,
+            refreshToken: refreshToken,
+          })
+        );
+
         setLocalStorage("token", token);
         setLocalStorage("refreshToken", refreshToken);
         //riprova a fare la chiamata avendo il token aggiornato nello storage
