@@ -98,6 +98,7 @@ function Form(props) {
     facultativePictures: [],
     imagesArray: [],
     filtereProducts: [],
+    productDetails: [],
   });
 
   useEffect(() => {
@@ -108,6 +109,7 @@ function Form(props) {
     setState({
       ...state,
       imagesArray: starterPicturesArray,
+      productDetails: props.propsProductDetails,
     });
   }, []);
 
@@ -304,6 +306,21 @@ function Form(props) {
       );
     });
   }
+
+  function addProductDetails() {
+    let productDetailsArray = state.productDetails;
+    console.log("productDetailsArray IN THE START ", productDetailsArray);
+    console.log("PROPS.PRODUCTDETAILS IN THE START ", props.productDetails);
+    productDetailsArray = [...productDetailsArray, ...props.productDetails];
+    //productDetailsArray.push(props.productDetails);
+    console.log("productDetailsArray!!!!!!!!!!!!!!!!! ", productDetailsArray);
+
+    setState({
+      ...state,
+      productDetails: productDetailsArray,
+    });
+  }
+
   function filterId(event) {
     let shoe = props?.products?.filter((product) => {
       return String(product.id).includes(event.target.value);
@@ -316,6 +333,7 @@ function Form(props) {
       filtereProducts: shoe,
     });
   }
+
   return (
     <div className="form">
       {
@@ -323,8 +341,25 @@ function Form(props) {
           <form
             onSubmit={handleSubmit(props.onSubmit ? props.onSubmit : onSubmit)}
           >
-            {[...props.propsData, ...state.facultativePictures].map(
-              mapFormFields
+            {state.productDetails !== [] &&
+              props.productDetails &&
+              [
+                ...props.propsData,
+                ...state.productDetails,
+                ...state.facultativePictures,
+              ].map(mapFormFields)}
+            {state.productDetails === [] &&
+              props.productDetails &&
+              [...props.propsData, ...state.facultativePictures].map(
+                mapFormFields
+              )}
+
+            {props.productDetails && (
+              <input
+                type="button"
+                onClick={addProductDetails}
+                value="Add product details"
+              />
             )}
 
             {props.products && (
@@ -359,7 +394,7 @@ function Form(props) {
 
       {props.abilitatePictures && props.screenName !== "ModifyProduct" && (
         <>
-          <h5>NAME SCREEN: {props.screenName}</h5>
+          {/*<h5>NAME SCREEN: {props.screenName}</h5>*/}
           <ImageListContainer
             imagesData={state.imagesArray}
             state={state}

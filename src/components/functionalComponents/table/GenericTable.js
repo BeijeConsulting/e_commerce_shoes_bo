@@ -13,15 +13,15 @@ import emptyShoes from "../../../assets/images/emptyImage/emptyShoes.png";
 import "./genericTable.css";
 
 function GenericTable(props) {
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = React.useState(1);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const { t, i18n } = useTranslation();
 
   const handleChangePage = (event, newPage) => {
-    console.log("NEW PAGE:", newPage);
+    console.log("NEW PsdaAGE:", newPage);
     console.log("TOTAL ROWS:", props.results);
-    setPage(newPage);
+    setPage(newPage + 1);
     console.log("Rows per page:", rowsPerPage);
     props.getResources(newPage + 1, rowsPerPage);
   };
@@ -46,45 +46,43 @@ function GenericTable(props) {
     });
   }
   function mapRows() {
-    return props?.fields
-      ?.slice(0, page === 0 ? 1 * rowsPerPage : rowsPerPage)
-      .map((product, key) => {
-        return (
-          <TableRow hover role="checkbox" tabIndex={-1} key={key}>
-            {props.columns.map((column) => {
-              const value = product[column.id];
-              return (
-                <TableCell key={column.id} align={column.align}>
-                  {/* {column.format && typeof value === "number"
+    return props?.fields?.slice(0, rowsPerPage).map((product, key) => {
+      return (
+        <TableRow hover role="checkbox" tabIndex={-1} key={key}>
+          {props.columns.map((column) => {
+            const value = product[column.id];
+            return (
+              <TableCell key={column.id} align={column.align}>
+                {/* {column.format && typeof value === "number"
                   ? column.format(value)
                   : value} */}
-                  {column.id === "actions" && (
-                    <ActionsButton
-                      icons={props.icons}
-                      productId={product.id}
-                      deleteAction={props.deleteAction}
-                    />
-                  )}
+                {column.id === "actions" && (
+                  <ActionsButton
+                    icons={props.icons}
+                    productId={product.id}
+                    deleteAction={props.deleteAction}
+                  />
+                )}
 
-                  {column.id === "image" ? (
-                    <img
-                      src={value ? value : emptyShoes}
-                      alt="product"
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        borderRadius: "12px",
-                      }}
-                    />
-                  ) : (
-                    value
-                  )}
-                </TableCell>
-              );
-            })}
-          </TableRow>
-        );
-      });
+                {column.id === "image" ? (
+                  <img
+                    src={value ? value : emptyShoes}
+                    alt="product"
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "12px",
+                    }}
+                  />
+                ) : (
+                  value
+                )}
+              </TableCell>
+            );
+          })}
+        </TableRow>
+      );
+    });
   }
 
   return (
