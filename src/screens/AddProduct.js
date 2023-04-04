@@ -23,6 +23,18 @@ export default function AddProduct(props) {
   //addProductAuth(data);
   //};
 
+  async function addProd(data) {
+    console.log("FORM DATA:", data);
+    const response = await addProductAuth(data);
+    console.log("RESPONSE ADD PRODUCT:", response);
+    if (response.status === 200) {
+      alert("Product added successfully");
+      // window.location.href = "/products";
+    } else {
+      alert("Error adding product");
+    }
+  }
+
   return (
     <div>
       <Header />
@@ -37,8 +49,8 @@ export default function AddProduct(props) {
               abilitatePictures={canUploadPictures}
               buttonTitle={t("addProduct")}
               // onSubmit={addProduct}
-              addProductAuth={addProductAuth}
-              productDetails={addProductDetailsFormProps}
+              addProductAuth={addProd}
+              productDetails={true}
             />
           </div>
         </div>

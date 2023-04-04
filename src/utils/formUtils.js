@@ -79,15 +79,15 @@ const addProductFormProps = [
   {
     label: "startingPrice", //  prezzo
     type: "number",
-    id: "starting_price",
-    name: "starting_price",
+    id: "startingPrice",
+    name: "startingPrice",
     required: true,
   },
   {
     label: "listedPrice", //  prezzo
     type: "number",
-    id: "listed_price",
-    name: "listed_price",
+    id: "listedPrice",
+    name: "listedPrice",
     required: true,
   },
   /*{
@@ -107,15 +107,15 @@ const addProductFormProps = [
   {
     label: "descriptionIt", // descrizione it
     type: "text",
-    id: "description_it",
-    name: "description_it",
+    id: "descriptionIt",
+    name: "descriptionIt",
     required: true,
   },
   {
     label: "descriptionEn", // descrizione en
     type: "text",
-    id: "description_eng",
-    name: "description_eng",
+    id: "descriptionEng",
+    name: "descriptionEng",
     required: true,
   },
   {
