@@ -112,7 +112,7 @@ export default function LanguagePopover() {
       <Popover
         open={Boolean(state.open)}
         anchorEl={state.open}
-        onClose={handleClose}
+        onClick={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         PaperProps={{
