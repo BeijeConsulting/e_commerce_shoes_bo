@@ -56,6 +56,27 @@ function notifyDeleteError(item) {
   });
 }
 
+function notifyNotAuthorized() {
+  toast.error("You are not authorized to perform this action", {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 2000,
+  });
+}
+
+function notifyAccessDenied() {
+  toast.error("Access denied", {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 2000,
+  });
+}
+
+function notifySomethingWentWrong() {
+  toast.error("Something went wrong", {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 2000,
+  });
+}
+
 export {
   notifyLogOutSuccess,
   notifyLogOutError,
@@ -65,4 +86,6 @@ export {
   notifyAddError,
   notifyDeleteSuccess,
   notifyDeleteError,
+  notifyNotAuthorized,
+  notifyAccessDenied,
 };
