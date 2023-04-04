@@ -7,7 +7,11 @@ import { ordersColumns } from "../utils/tableUtils";
 
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { getOrders, getOrdersAuth } from "../services/servicesOrders";
+import {
+  getOrders,
+  getOrdersAuth,
+  deleteOrderByIdAuth,
+} from "../services/servicesOrders";
 import { ordersListIcons } from "../utils/tableUtils";
 
 export default function Orders() {
@@ -24,6 +28,18 @@ export default function Orders() {
     }
     getResources();
   }, []);
+
+  async function deleteOrder(id) {
+    alert(`Are you sure you want to delete order with id ${id}?`);
+    const response = await deleteOrderByIdAuth(id);
+    console.log("RESPONSE DELETE:", response);
+    if (response.status === 200) {
+      alert("Order eliminado correctamente");
+      window.location.reload();
+    } else {
+      alert("Error al eliminar order");
+    }
+  }
 
   return (
     <div>
@@ -42,6 +58,7 @@ export default function Orders() {
               fields={state.ordersList}
               columns={ordersColumns}
               icons={ordersListIcons}
+              deleteAction={deleteOrder}
             />
           </div>
         </div>
