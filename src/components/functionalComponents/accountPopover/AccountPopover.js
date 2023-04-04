@@ -53,7 +53,7 @@ function AccountPopover() {
             p: 0,
             mt: 1.5,
             ml: 0.75,
-            width: 180,
+            minWidth: 180,
             "& .MuiMenuItem-root": {
               typography: "body2",
               borderRadius: 0.75,
