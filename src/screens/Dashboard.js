@@ -14,8 +14,11 @@ import {
   yearlyIncomeStats,
 } from "../utils/dashboardUtils";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { notifyNotAuthorized } from "../utils/notificationsUtils";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     ordersList: null,
   });
@@ -25,7 +28,11 @@ export default function Dashboard() {
   useEffect(() => {
     async function getResources() {
       const response = await getOrdersAuth();
-      console.log("RESPONSE orders:", response.data);
+      if (response.status === 403) {
+        // navigate("/personal-area");
+        notifyNotAuthorized();
+      }
+      console.log("RESPONSE:", response);
       console.log(
         "yearly sells stats",
         yearlySellsStats(response.data?.orders)
