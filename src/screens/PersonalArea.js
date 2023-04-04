@@ -55,13 +55,7 @@ export default function PersonalArea() {
       <h1 className="screen-title">{t("personalArea")}</h1>
       <div className="flex flex-center">
         <div className="w-50">
-          <div
-            className={
-              state.formProps?.length > 0
-                ? "user-details-container w-70"
-                : "user-details-container w-100"
-            }
-          >
+          <div className="user-details-container w-95">
             <h3> {t("personalData")}</h3>
             <p>
               <span className="bold">{t("name")}:&nbsp;</span>{" "}
