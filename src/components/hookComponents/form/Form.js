@@ -472,12 +472,15 @@ function Form(props) {
               )
             }
 
-            {props.products && (
+            {props.isFromAddOrder && (
               <div>
                 <p>{t("searchProductsById")}</p>
                 <input
+                  {...register("products")}
+                  name="products"
+                  id="products"
                   type="text"
-                  onChange={filterId}
+                  onChange={props.filterProduct}
                   className="form-input"
                   placeholder={t("searchProduct")}
                 />

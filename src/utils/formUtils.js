@@ -248,15 +248,13 @@ const addOrderFormProps = [
     id: "address_id",
     name: "address_id",
     required: true,
-    errors: checkTextInput,
   },
   {
     label: "name",
     type: "text",
     id: "name",
     name: "name",
-    required: true,
-    errors: checkTextInput,
+    required: false,
   },
   {
     label: "status",
@@ -279,6 +277,13 @@ const addOrderFormProps = [
     id: "user_id",
     name: "user_id",
     required: true,
+  },
+  {
+    label: "coupon ID",
+    type: "number",
+    id: "coupon_id",
+    name: "coupon_id",
+    required: false,
   },
 ];
 
