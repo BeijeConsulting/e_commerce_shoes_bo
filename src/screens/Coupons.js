@@ -21,7 +21,7 @@ function Coupons(props) {
 
   useEffect(() => {
     async function getData() {
-      const response = await getCouponsAuth(0, 10);
+      const response = await getCouponsAuth(1, 10);
       if (!response.data) return;
       console.log("RESPONSE COUPONS:", response.data);
       setState({ couponsList: response.data });
