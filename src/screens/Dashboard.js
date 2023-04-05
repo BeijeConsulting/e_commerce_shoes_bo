@@ -25,7 +25,7 @@ export default function Dashboard(props) {
   useEffect(() => {
     async function getResources() {
       const response = await getOrdersAuth();
-      if (!response) return;
+      if (!response.data.orders) return;
       if (response.status === 403) {
         // navigate("/personal-area");
         notifyNotAuthorized();
