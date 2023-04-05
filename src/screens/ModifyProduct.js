@@ -6,8 +6,6 @@ import {
 } from "../services/servicesProducts";
 import { useTranslation } from "react-i18next";
 import { modifyProductFormProps } from "../utils/formUtils";
-import Header from "../components/functionalComponents/header/Header";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 //import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
 import MediaCard from "../components/functionalComponents/cardImg/CardImg";
 import Form from "../components/hookComponents/form/Form";
@@ -54,37 +52,33 @@ function ModifyProduct() {
   }
 
   return (
-    <div>
-      <Header />
-      <div className="flex">
-        <SideBar />
-        {state.formProps.length > 0 && (
-          <div className="screen-bg w-100 flex flex-column flex-center">
-            <h1 className="screen-title">Modify product</h1>
-            <div className="flex w-100 align-center justify-center">
-              <MediaCard
-                imageSrc="https://shop.saravecchi.it/wp-content/uploads/2020/06/Coupon_NoText.jpg"
-                height={{ height: 300 }}
-                title="Coupon"
-                width={{ width: 300, marginRight: "40px" }}
-                style={{
-                  boxShadow: "10px 10px 50px #0371bc",
-                  borderRadius: "25px",
-                }}
-              />
+    <>
+      {state.formProps.length > 0 && (
+        <div className="screen-bg w-100 flex flex-column flex-center">
+          <h1 className="screen-title">Modify product</h1>
+          <div className="flex w-100 align-center justify-center">
+            <MediaCard
+              imageSrc="https://shop.saravecchi.it/wp-content/uploads/2020/06/Coupon_NoText.jpg"
+              height={{ height: 300 }}
+              title="Coupon"
+              width={{ width: 300, marginRight: "40px" }}
+              style={{
+                boxShadow: "10px 10px 50px #0371bc",
+                borderRadius: "25px",
+              }}
+            />
 
-              <Form
-                propsData={state.formProps}
-                abilitatePictures={canUploadPictures}
-                screenName={screenName}
-                buttonTitle={t("modify")}
-                modifyProductAuth={editProductByIdAuth}
-              />
-            </div>
+            <Form
+              propsData={state.formProps}
+              abilitatePictures={canUploadPictures}
+              screenName={screenName}
+              buttonTitle={t("modify")}
+              modifyProductAuth={editProductByIdAuth}
+            />
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 
