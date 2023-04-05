@@ -56,7 +56,7 @@ function Login() {
       setLocalStorage("isLogged", true);
       setLocalStorage("authorities", response.data.permission);
 
-      navigate(`/dashboard`);
+      navigate(`/personal-area`);
     } else {
       notifyLoginError(response.error.response.data.message);
       // alert(response.error.response.data.message);
