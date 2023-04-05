@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import GenericTable from "../components/functionalComponents/table/GenericTable";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { ordersColumns } from "../utils/tableUtils";
@@ -8,18 +8,14 @@ import {
 } from "../utils/notificationsUtils";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  getOrders,
-  getOrdersAuth,
-  deleteOrderByIdAuth,
-} from "../services/servicesOrders";
+import { getOrdersAuth, deleteOrderByIdAuth } from "../services/servicesOrders";
 import { ordersListIcons } from "../utils/tableUtils";
 
 export default function Orders() {
   const [state, setState] = useState({
     ordersList: null,
   });
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function getResources() {

@@ -1,17 +1,14 @@
 import React from "react";
 import SideNav from "../sideNav/SideNav";
 import "./sideBar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useTranslation } from "react-i18next";
 import { signOut } from "../../../services/servicesAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { clearLocalStorage } from "../../../utils/localStorageUtils";
-import { removeToken, setToken } from "../../../redux/duck/token/tokenDuck";
-import {
-  setUserCredentials,
-  initUserCredentials,
-} from "../../../redux/duck/user/userDuck";
+import { removeToken } from "../../../redux/duck/token/tokenDuck";
+import { initUserCredentials } from "../../../redux/duck/user/userDuck";
 import { Button } from "@mui/material";
 import {
   notifyLogOutSuccess,

@@ -1,12 +1,9 @@
-import React, { Component } from "react";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
+import React from "react";
 import GenericTable from "../components/functionalComponents/table/GenericTable";
-import Header from "../components/functionalComponents/header/Header";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { useTranslation } from "react-i18next";
 import { usersListIcons, usersColumns } from "../utils/tableUtils";
 import { Tabs, Tab } from "@mui/material";
-import { getUsers, getEmployees } from "../services/servicesUsers";
 
 import { useState, useEffect } from "react";
 import {
@@ -16,7 +13,7 @@ import {
 } from "../services/servicesUsers";
 
 export default function Users() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [state, setState] = useState({
     users: null,
