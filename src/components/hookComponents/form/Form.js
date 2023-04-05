@@ -405,38 +405,44 @@ function Form(props) {
       counter++;
       return (
         <div key={Math.random()}>
-          <label htmlFor={"size"}>{t("size")}</label>
-          <input
-            type={"text"}
-            id={"size" + counter}
-            name={"size"}
-            required={true}
-            onBlur={handleProductDetails}
-            className="form-input"
-            defaultValue={state.outputProductDetails[counter - 1]?.size}
-          />
-          <label htmlFor={"quantity"}>{t("quantity")}</label>
-          <input
-            type={"number"}
-            id={"quantity" + counter}
-            name={"quantity"}
-            required={true}
-            onBlur={handleProductDetails}
-            className="form-input"
-            defaultValue={state.outputProductDetails[counter - 1]?.quantity}
-          />
-          <label htmlFor={"selling_price"}>{t("sellingPrice")}</label>
-          <input
-            type={"number"}
-            id={"selling_price" + counter}
-            name={"selling_price"}
-            required={true}
-            onBlur={handleProductDetails}
-            className="form-input"
-            defaultValue={
-              state.outputProductDetails[counter - 1]?.selling_price
-            }
-          />
+          <div className="form-group-container shoe-details">
+            <label htmlFor={"size"}>{t("size")}</label>
+            <input
+              type={"text"}
+              id={"size" + counter}
+              className="form-input"
+              name={"size"}
+              required={true}
+              onBlur={handleProductDetails}
+              defaultValue={state.outputProductDetails[counter - 1]?.size}
+            />
+          </div>
+          <div className="form-group-container shoe-details">
+            <label htmlFor={"quantity"}>{t("quantity")}</label>
+            <input
+              type={"number"}
+              id={"quantity" + counter}
+              className="form-input  "
+              name={"quantity"}
+              required={true}
+              onBlur={handleProductDetails}
+              defaultValue={state.outputProductDetails[counter - 1]?.quantity}
+            />
+          </div>
+          <div className="form-group-container shoe-details">
+            <label htmlFor={"selling_price"}>{t("sellingPrice")}</label>
+            <input
+              type={"number"}
+              id={"selling_price" + counter}
+              className="form-input"
+              name={"selling_price"}
+              required={true}
+              onBlur={handleProductDetails}
+              defaultValue={
+                state.outputProductDetails[counter - 1]?.selling_price
+              }
+            />
+          </div>
           {/*<label htmlFor={"is_listed"}>{t("isListed")}</label>
           <input
             type={"checkbox"}
@@ -510,7 +516,8 @@ function Form(props) {
           <input
             type="button"
             onClick={createOutputProductDetails}
-            value="Add product details"
+            value={t("addProductDetails")}
+            className="form-add-button"
           />
         )}
         {props.abilitatePictures && props.screenName !== "ModifyProduct" && (
