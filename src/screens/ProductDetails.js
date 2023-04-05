@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/servicesProducts";
-import LanguageSelector from "../components/functionalComponents/languageSelector/LanguageSelector";
 import { useTranslation } from "react-i18next";
 
-import Header from "../components/functionalComponents/header/Header";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
 import MediaCard from "../components/functionalComponents/cardImg/CardImg";
 

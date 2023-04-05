@@ -4,13 +4,9 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ClearIcon from "@mui/icons-material/Clear";
 import emptyImage from "../../../assets/images/emptyImage/emptyImage.jpg";
 import "./imageListContainer.css";
-import { useTranslation } from "react-i18next";
-import { t, i18n } from "i18next";
 
 export default function ImageListContainer(props) {
   console.log("PROPS:", props);
-
-  const { t } = useTranslation();
 
   function removeImg(index) {
     console.log("INDEX removeImg:", index);
@@ -25,11 +21,8 @@ export default function ImageListContainer(props) {
       cols={3}
       rowHeight={164}
     >
-      {/*{itemData.map((item, index) => (*/}
       {emptyImagesNumber(props.imagesData).map((item, index) => (
         <ImageListItem key={Math.random()}>
-          {/*<button onClick={callbackButton}>ADD</button>*/}
-          {/* <p style={{ position: "absolute" }}>BOTTONE AGGIUNGI</p> */}
           {props.imagesData.length === index && (
             <div>
               <label for={"file-ip-" + index} className="form-input-file-label">

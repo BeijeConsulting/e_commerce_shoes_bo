@@ -6,11 +6,7 @@ import {
   postDataAuth,
   putDataAuth,
   deleteDataAuth,
-  postData,
-  putData,
-  deleteData,
 } from "../genericAxios/genericAxios";
-import { any } from "prop-types";
 
 async function getProducts() {
   return await getData(PRODUCTS_PROPERTIES.BASE_URL + "/products");
