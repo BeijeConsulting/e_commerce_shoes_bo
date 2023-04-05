@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
-import GenericTable from "../components/functionalComponents/table/GenericTable";
-import Header from "../components/functionalComponents/header/Header";
 import "../styles/dashboard/dashboard.css";
 import LineChart from "../components/functionalComponents/lineChart/LineChart";
 import DonutChart from "../components/functionalComponents/donutChart/DonutChart";
 import { getOrdersAuth } from "../services/servicesOrders";
-import { recentOrdersColumns } from "../utils/tableUtils";
 import {
   yearlySellsStats,
   top5mostRecentOrders,
@@ -24,7 +20,7 @@ export default function Dashboard(props) {
     mostRecentOrders: [],
   });
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function getResources() {
