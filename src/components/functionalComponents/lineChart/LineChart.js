@@ -38,7 +38,7 @@ function LineChart(props) {
       <Chart
         options={options}
         series={series}
-        width="500"
+        width="400"
         type="bar" /*type="line"*/
       />
     </div>

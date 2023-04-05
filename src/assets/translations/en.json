@@ -95,8 +95,11 @@
     "nameSurname": "Name and surname",
     "streetAddress": "Street address",
     "zipcode": "ZIP code",
-    "sellingPrice" : "Selling price",
+    "sellingPrice": "Selling price",
     "startingPrice": "Starting price",
+    "countrySells": "Sales by state",
+    "yearlyIncome": "Yearly income",
+    "yearlySales": "Yearly sales",
 
     "orderDetails": "Order details",
     "productDetails": "Product details",

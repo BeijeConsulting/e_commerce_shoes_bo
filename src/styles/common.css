@@ -64,6 +64,10 @@ a {
   justify-content: center;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
 .align-center {
   align-items: center;
 }
@@ -110,4 +114,23 @@ a {
 
 .text-center {
   text-align: center;
+}
+
+.mtmb-20 {
+  margin: 20px 0;
+}
+
+.bg-charts {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgb(3, 113, 188) 10px 10px 50px;
+}
+
+.m-pie-chart {
+  margin: 1rem auto;
+  width: 50%;
+}
+
+.m-bar-chart {
+  margin: 1rem;
 }

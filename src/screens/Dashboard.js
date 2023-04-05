@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 export default function Dashboard() {
   const [state, setState] = useState({
     ordersList: null,
+    mostRecentOrders: [],
   });
 
   const { t, i18n } = useTranslation();
@@ -38,37 +39,44 @@ export default function Dashboard() {
     getResources();
   }, []);
 
+  function mapRecentOrders(orders) {
+    return orders.map((order) => {
+      console.log(order.id);
+      return <p>{order.id}</p>;
+    });
+  }
+
   return (
     <>
-      <div className="dashboardHeightCalc w-70">
-        <div className="h-50">GRAFICO VENDITE ANNUALI</div>
-        <div className="h-50">
-          <GenericTable
-            fields={state.mostRecentOrders}
-            columns={recentOrdersColumns}
-            //icons={ordersListIcons}
-          />
-          <LineChart
-            data={yearlySellsStats(state?.ordersList)}
-            dataName={t("numberOrders")}
-          />
-          {state.ordersList && (
-            <DonutChart data={countrySellsStats(state?.ordersList)} />
-          )}
-          <LineChart
-            data={yearlyIncomeStats(state?.ordersList)}
-            dataName={t("monthlyIncome")}
-          />
-        </div>
-        <div className="flex h-50">
-          <div className="w-50">RECENT ORDERS</div>
-          <div className="w-50">TOP COUNTRIES</div>
-        </div>
-      </div>
-      <div className="dashboardHeightCalc w-30 topSellingWrapper">
+      <div className="flex justify-around ">
         <div>
-          <h3>TOP SELLING</h3>
-          <div>CARD CON TOP SELL</div>
+          <div className="flex align-center flex-column bg-charts m-pie-chart">
+            <h2 className="mtmb-20">{t("countrySells")}</h2>
+            {state.ordersList && (
+              <DonutChart data={countrySellsStats(state?.ordersList)} />
+            )}
+          </div>
+          <div className="flex">
+            <div className="flex align-center flex-column bg-charts m-bar-chart">
+              <h2 className="mtmb-20">{t("yearlyIncome")}</h2>
+              <LineChart
+                data={yearlyIncomeStats(state?.ordersList)}
+                dataName={t("monthlyIncome")}
+              />
+            </div>
+            <div className="flex align-center flex-column bg-charts m-bar-chart">
+              <h2 className="mtmb-20">{t("yearlySales")}</h2>
+              <LineChart
+                data={yearlySellsStats(state?.ordersList)}
+                dataName={t("numberOrders")}
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          {state.mostRecentOrders && (
+            <div>{mapRecentOrders(state.mostRecentOrders)}</div>
+          )}
         </div>
       </div>
     </>

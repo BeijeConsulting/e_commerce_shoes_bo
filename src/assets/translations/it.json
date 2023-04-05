@@ -94,8 +94,11 @@
     "streetAddress": "Indirizzo",
     "zipcode": "CAP",
     "remove": "Rimuovi",
-    "sellingPrice" : "Prezzo di vendita",
+    "sellingPrice": "Prezzo di vendita",
     "startingPrice": "Prezzo iniziale",
+    "countrySells": "Vendite per stato",
+    "yearlyIncome": "Reddito annuo",
+    "yearlySales": "Vendite annuali",
 
     "orderDetails": "Dettagli dell'ordine",
     "productDetails": "Dettagli del prodotto",
