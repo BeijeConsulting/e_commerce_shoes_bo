@@ -14,8 +14,6 @@ export default function ProductImages(props) {
             alt={"shoe"}
             loading="lazy"
             style={{
-              minWidth: "250px",
-              minHeight: "250px",
               maxHeight: "300px",
               maxWidth: "300px",
             }}
