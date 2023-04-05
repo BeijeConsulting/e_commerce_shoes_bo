@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductById, getDetailProduct } from "../services/servicesProducts";
+import { getDetailProduct } from "../services/servicesProducts";
 import { useTranslation } from "react-i18next";
-import ProductImages from "../components/functionalComponents/productImages/ProductImages";
-import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
-import MediaCard from "../components/functionalComponents/cardImg/CardImg";
+import ProductImages from "../components/functionalComponents/productImages/productImages";
 import { t } from "i18next";
 import "../styles/productDetails/productDetails.css";
 
@@ -25,7 +23,7 @@ function ProductDetails() {
       setState({ ...state, product: response.data });
     }
     getResources();
-  }, [language]);
+  }, []);
 
   return (
     <>
@@ -36,17 +34,6 @@ function ProductDetails() {
             <ProductImages productImages={state.product.productImages} />
           )}
 
-          {/* <MediaCard
-            imageSrc={state.product && state.product.product.imagePreview}
-            height={{ height: 300 }}
-            title="Shoe"
-            width={{ width: 300, marginRight: "40px" }}
-            style={{
-              boxShadow: "10px 10px 50px #0371bc",
-              borderRadius: "25px",
-            }}
-          /> */}
-          {/* {state.product && <ViewDetails details={state.product.product} />} */}
           {state.product && (
             <div className="product-details-container">
               <h1 className="text-center">
@@ -56,7 +43,7 @@ function ProductDetails() {
                 <div className="w-50 product-description-container">
                   <h3>{t("description")}</h3>
                   <p>
-                    {i18n.language === "en"
+                    {language === "en"
                       ? state.product.product.descriptionEng
                       : state.product.product.descriptionIt}
                   </p>
