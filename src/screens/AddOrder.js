@@ -74,47 +74,40 @@ function AddOrder(props) {
   }
 
   return (
-    <div>
-      <Header />
-      <div style={{ display: "flex" }}>
-        <SideBar />
-        <div style={{ width: "100%" }} className="screen-bg">
-          <h1 className="screen-title">{t("addOrder")}</h1>
-          <div
-            style={{
-              width: "95%",
-              height: "80%",
-              margin: "0 auto",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "50%",
-              }}
-            >
-              <Form
-                propsData={addOrderFormProps}
-                abilitatePictures={canUploadPictures}
-                buttonTitle={addTitle}
-                isFromAddOrder={true}
-                onSubmit={addOrder}
-                filterProduct={filterId}
-              />
+    <>
+      <h1 className="screen-title">{t("addOrder")}</h1>
+      <div
+        style={{
+          width: "95%",
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "50%",
+          }}
+        >
+          <Form
+            propsData={addOrderFormProps}
+            abilitatePictures={canUploadPictures}
+            buttonTitle={addTitle}
+            isFromAddOrder={true}
+            onSubmit={addOrder}
+            filterProduct={filterId}
+          />
 
-              {state.productArr.length > 0 && (
-                <div>{mapProducts(state.productArr)}</div>
-              )}
-            </div>
-          </div>
+          {state.productArr.length > 0 && (
+            <div>{mapProducts(state.productArr)}</div>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

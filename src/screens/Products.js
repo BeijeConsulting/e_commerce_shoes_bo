@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import GenericTable from "../components/functionalComponents/table/GenericTable";
-import Header from "../components/functionalComponents/header/Header";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { useTranslation } from "react-i18next";
 import { getProducts } from "../services/servicesProducts";
@@ -57,32 +55,26 @@ function Products(props) {
   }
 
   return (
-    <div>
-      <Header />
-      <div style={{ display: "flex" }}>
-        <SideBar />
-        <div style={{ width: "100%" }} className="screen-bg">
-          <h1 className="screen-title">{t("productsManagement")}</h1>
-          <div style={{ width: "95%", margin: "0 auto" }}>
-            <FiltersRow
-              label={t("productsList")}
-              addLabel={t("addProduct")}
-              addUrl="/products/add-product"
-            />
-            {state.productsList && (
-              <GenericTable
-                fields={state.productsList}
-                icons={productsListIcons}
-                columns={productsColumns}
-                getResources={getResourcesTest}
-                results={state?.results}
-                deleteAction={deleteProduct}
-              />
-            )}
-          </div>
-        </div>
+    <>
+      <h1 className="screen-title">{t("productsManagement")}</h1>
+      <div style={{ width: "95%", margin: "0 auto" }}>
+        <FiltersRow
+          label={t("productsList")}
+          addLabel={t("addProduct")}
+          addUrl="/products/add-product"
+        />
+        {state.productsList && (
+          <GenericTable
+            fields={state.productsList}
+            icons={productsListIcons}
+            columns={productsColumns}
+            getResources={getResourcesTest}
+            results={state?.results}
+            deleteAction={deleteProduct}
+          />
+        )}
       </div>
-    </div>
+    </>
   );
 }
 

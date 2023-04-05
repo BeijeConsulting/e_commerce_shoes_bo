@@ -49,7 +49,29 @@ export default function Dashboard(props) {
   function mapRecentOrders(orders) {
     return orders.map((order) => {
       console.log(order.id);
-      return <p>{order.id}</p>;
+      // return <p key={order.id}>{order.id}</p>;
+      return (
+        <>
+          <table key={order.id} className="recent-orders-table">
+            <thead>
+              <tr>
+                <th>{t("id")}</th>
+                <th>{t("status")}</th>
+                <th>{t("total")}</th>
+                {/* <th>{t("Payment")}</th> */}
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="recent-order-row">
+                <td>{order.id}</td>
+                <td>{order.status}</td>
+                <td>{order.total_price}</td>
+                {/* <td>{order.payment_status}</td> */}
+              </tr>
+            </tbody>
+          </table>
+        </>
+      );
     });
   }
 
@@ -63,6 +85,7 @@ export default function Dashboard(props) {
               <DonutChart data={countrySellsStats(state?.ordersList)} />
             )}
           </div>
+
           <div className="flex">
             <div className="flex align-center flex-column bg-charts m-bar-chart">
               <h2 className="mtmb-20">{t("yearlyIncome")}</h2>
@@ -80,7 +103,11 @@ export default function Dashboard(props) {
             </div>
           </div>
         </div>
-        <div>
+        <div
+          className="text-center flex flex-column flex-center"
+          style={{ gap: 20 }}
+        >
+          <h2>{t("recentOrders")}</h2>
           {state.mostRecentOrders && (
             <div>{mapRecentOrders(state.mostRecentOrders)}</div>
           )}

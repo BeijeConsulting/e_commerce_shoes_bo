@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import GenericTable from "../components/functionalComponents/table/GenericTable";
-import Header from "../components/functionalComponents/header/Header";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { ordersColumns } from "../utils/tableUtils";
-
+import {
+  notifyDeleteSuccess,
+  notifyDeleteError,
+} from "../utils/notificationsUtils";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -34,35 +35,31 @@ export default function Orders() {
     const response = await deleteOrderByIdAuth(id);
     console.log("RESPONSE DELETE:", response);
     if (response.status === 200) {
-      alert("Order eliminado correctamente");
-      window.location.reload();
+      notifyDeleteSuccess("Order");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } else {
-      alert("Error al eliminar order");
+      notifyDeleteError("order");
     }
   }
 
   return (
-    <div>
-      <Header />
-      <div style={{ display: "flex" }}>
-        <SideBar />
-        <div style={{ width: "100%" }} className="screen-bg">
-          <h1 className="screen-title">Gestione ordini</h1>
-          <div style={{ width: "95%", margin: "0 auto" }}>
-            <FiltersRow
-              label={t("ordersList")}
-              addLabel={t("addOrder")}
-              addUrl="/orders/add-order"
-            />
-            <GenericTable
-              fields={state.ordersList}
-              columns={ordersColumns}
-              icons={ordersListIcons}
-              deleteAction={deleteOrder}
-            />
-          </div>
-        </div>
+    <>
+      <h1 className="screen-title">{t("manageOrders")}</h1>
+      <div style={{ width: "95%", margin: "0 auto" }}>
+        <FiltersRow
+          label={t("ordersList")}
+          addLabel={t("addOrder")}
+          addUrl="/orders/add-order"
+        />
+        <GenericTable
+          fields={state.ordersList}
+          columns={ordersColumns}
+          icons={ordersListIcons}
+          deleteAction={deleteOrder}
+        />
       </div>
-    </div>
+    </>
   );
 }
