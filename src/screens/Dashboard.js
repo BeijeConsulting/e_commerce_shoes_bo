@@ -72,31 +72,34 @@ export default function Dashboard(props) {
   return (
     <>
       <div className="flex justify-around ">
-        <div>
-          <div className="flex align-center flex-column bg-charts m-pie-chart">
-            <h2 className="mtmb-20">{t("countrySells")}</h2>
-            {state.ordersList && (
-              <DonutChart data={countrySellsStats(state?.ordersList)} />
-            )}
-          </div>
+        {state.ordersList && (
+          <div>
+            <div className="flex align-center flex-column bg-charts m-pie-chart">
+              <h2 className="mtmb-20">{t("countrySells")}</h2>
+              {state.ordersList && (
+                <DonutChart data={countrySellsStats(state.ordersList)} />
+              )}
+            </div>
 
-          <div className="flex">
-            <div className="flex align-center flex-column bg-charts m-bar-chart">
-              <h2 className="mtmb-20">{t("yearlyIncome")}</h2>
-              <LineChart
-                data={yearlyIncomeStats(state?.ordersList)}
-                dataName={t("monthlyIncome")}
-              />
-            </div>
-            <div className="flex align-center flex-column bg-charts m-bar-chart">
-              <h2 className="mtmb-20">{t("yearlySales")}</h2>
-              <LineChart
-                data={yearlySellsStats(state?.ordersList)}
-                dataName={t("numberOrders")}
-              />
+            <div className="flex">
+              <div className="flex align-center flex-column bg-charts m-bar-chart">
+                <h2 className="mtmb-20">{t("yearlyIncome")}</h2>
+                <LineChart
+                  data={yearlyIncomeStats(state.ordersList)}
+                  dataName={t("monthlyIncome")}
+                />
+              </div>
+              <div className="flex align-center flex-column bg-charts m-bar-chart">
+                <h2 className="mtmb-20">{t("yearlySales")}</h2>
+                <LineChart
+                  data={yearlySellsStats(state.ordersList)}
+                  dataName={t("numberOrders")}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
+
         <div
           className="text-center flex flex-column flex-center"
           style={{ gap: 20 }}
