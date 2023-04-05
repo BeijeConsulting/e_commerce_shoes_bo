@@ -7,7 +7,7 @@ const MarketingRoutes = () => {
   return authority.includes("ADMIN") || authority.includes("MARKETING") ? (
     <Outlet />
   ) : (
-    (notifyAccessDenied(), (<Navigate to="/dashboard" />))
+    (notifyAccessDenied(), (<Navigate to="/personal-area" />))
   );
 };
 

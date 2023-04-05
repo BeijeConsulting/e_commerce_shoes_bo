@@ -7,7 +7,7 @@ const DataEntryRoutes = () => {
   return authority.includes("ADMIN") || authority.includes("DATA_ENTRY") ? (
     <Outlet />
   ) : (
-    (notifyAccessDenied(), (<Navigate to="/dashboard" />))
+    (notifyAccessDenied(), (<Navigate to="/personal-area" />))
   );
 };
 
