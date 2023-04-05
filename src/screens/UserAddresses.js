@@ -21,10 +21,6 @@ function UserAddresses() {
     getResources();
   }, []);
 
-  async function modifyAddress(data) {
-    console.log("MODIFY ADDRESS:", data);
-  }
-
   function mapAddressCards(addresses) {
     return addresses.map((address) => {
       return <AddressCard address={address} key={address.id} />;
