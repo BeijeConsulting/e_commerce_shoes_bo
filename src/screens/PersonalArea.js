@@ -94,10 +94,10 @@ export default function PersonalArea() {
             </Button>
           </div>
         </div>
-        {state.isEditing && (
+        {state.isEditing && state.formProps && (
           <div className="w-50">
             <Form
-              propsData={state?.formProps}
+              propsData={state.formProps}
               buttonTitle={t("save")}
               buttonColor="primary"
               onSubmit={editUser}
