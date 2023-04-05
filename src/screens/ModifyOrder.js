@@ -9,7 +9,7 @@ import { editOrderByIdAuth } from "../services/servicesOrders";
 import "../styles/modifyOrder/modifyOrder.css";
 
 function ModifyOrder() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const addTitle = t("modify");
 
   const { id } = useParams();

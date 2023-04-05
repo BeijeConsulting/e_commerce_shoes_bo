@@ -1,11 +1,6 @@
 import { PROPERTIES } from "../utils/properties";
 //import { getData, postData, deleteData, putData } from "../genericFetch/generciFetch"
-import {
-  getData,
-  postData,
-  putData,
-  deleteData,
-} from "../genericAxios/genericAxios";
+import { getData, postData, putData } from "../genericAxios/genericAxios";
 
 async function getPosts() {
   return await getData(PROPERTIES.BASE_URL + "/posts");

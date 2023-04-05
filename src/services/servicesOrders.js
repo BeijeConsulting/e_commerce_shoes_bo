@@ -3,9 +3,6 @@ import { ORDERS_PROPERTIES, PROPERTIES } from "../utils/properties";
 import {
   getData,
   getDataAuth,
-  postData,
-  putData,
-  deleteData,
   postDataAuth,
   putDataAuth,
   deleteDataAuth,

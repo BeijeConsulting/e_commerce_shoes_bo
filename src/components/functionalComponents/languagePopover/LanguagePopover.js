@@ -6,7 +6,7 @@ import enFlag from "../../../assets/images/languageIcons/gb.svg";
 import itFlag from "../../../assets/images/languageIcons/it.svg";
 import { setLanguage } from "../../../redux/duck/language/languageDuck";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // ----------------------------------------------------------------------
 
 const LANGS = [

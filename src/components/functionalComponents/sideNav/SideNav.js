@@ -14,10 +14,6 @@ function SideNav(props) {
 
   const { t } = useTranslation();
 
-  //   oggetto custom che contiene i vari utenti e le relative voci del menu che possono visualizzare e cliccare
-  const { admin, marketing, data_entry } = sidebarConfig;
-  // const currentUser = sidebarConfig[props?.authorities[1]?.toLowerCase()];
-
   //   inizializza una sola volta al mount lo stato e il conseguente map del menu
   useEffect(() => {
     console.log("PROPS AUTHORITIES", props?.authorities);

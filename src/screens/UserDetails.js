@@ -5,7 +5,7 @@ import { getUserByIdAuth } from "../services/servicesUsers";
 import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
 
 function UserDetails(props) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [state, setState] = useState({
     user: null,
   });
