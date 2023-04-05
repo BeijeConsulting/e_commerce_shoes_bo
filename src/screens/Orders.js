@@ -42,27 +42,21 @@ export default function Orders() {
   }
 
   return (
-    <div>
-      <Header />
-      <div style={{ display: "flex" }}>
-        <SideBar />
-        <div style={{ width: "100%" }} className="screen-bg">
-          <h1 className="screen-title">Gestione ordini</h1>
-          <div style={{ width: "95%", margin: "0 auto" }}>
-            <FiltersRow
-              label={t("ordersList")}
-              addLabel={t("addOrder")}
-              addUrl="/orders/add-order"
-            />
-            <GenericTable
-              fields={state.ordersList}
-              columns={ordersColumns}
-              icons={ordersListIcons}
-              deleteAction={deleteOrder}
-            />
-          </div>
-        </div>
+    <>
+      <h1 className="screen-title">{t("manageOrders")}</h1>
+      <div style={{ width: "95%", margin: "0 auto" }}>
+        <FiltersRow
+          label={t("ordersList")}
+          addLabel={t("addOrder")}
+          addUrl="/orders/add-order"
+        />
+        <GenericTable
+          fields={state.ordersList}
+          columns={ordersColumns}
+          icons={ordersListIcons}
+          deleteAction={deleteOrder}
+        />
       </div>
-    </div>
+    </>
   );
 }

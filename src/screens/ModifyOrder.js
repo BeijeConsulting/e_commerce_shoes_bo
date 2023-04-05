@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import Form from "../components/hookComponents/form/Form";
 import { modifyOrderFormProps } from "../utils/formUtils";
-import Header from "../components/functionalComponents/header/Header";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import { useTranslation } from "react-i18next";
 import { getDetailOrderAuth } from "../services/servicesOrders";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-
 import { editOrderByIdAuth } from "../services/servicesOrders";
+import "../styles/modifyOrder/modifyOrder.css";
 
 function ModifyOrder() {
   const { t, i18n } = useTranslation();
@@ -60,28 +58,20 @@ function ModifyOrder() {
   };
 
   return (
-    <div>
-      <Header />
-      <div className="personalArea-box">
-        <SideBar />
-        <div>
-          <div className="personalArea-user">
-            <h1>Modify Order</h1>
-          </div>
-          <div className="personalArea-form">
-            {state.formProps.length > 0 && (
-              <>
-                <Form
-                  propsData={state.formProps}
-                  buttonTitle={addTitle}
-                  onSubmit={editOrder}
-                />
-              </>
-            )}
-          </div>
-        </div>
+    <>
+      <h1 className="screen-title">{t("modifyOrder")}</h1>
+      <div className="personalArea-form">
+        {state.formProps.length > 0 && (
+          <>
+            <Form
+              propsData={state.formProps}
+              buttonTitle={addTitle}
+              onSubmit={editOrder}
+            />
+          </>
+        )}
       </div>
-    </div>
+    </>
   );
 }
 

@@ -1,7 +1,5 @@
 import React from "react";
 import Form from "../components/hookComponents/form/Form";
-import Header from "../components/functionalComponents/header/Header";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import { useTranslation } from "react-i18next";
 import {
   addProductFormProps,
@@ -36,25 +34,19 @@ export default function AddProduct(props) {
   }
 
   return (
-    <div>
-      <Header />
-      <div style={{ display: "flex" }}>
-        <SideBar />
-        <div style={{ backgroundColor: "#f9fafb", width: "100%" }}>
-          <h1 className="screen-title">{t("addProduct")}</h1>
-          <div style={{ width: "95%", margin: "0 auto" }}>
-            <Form
-              propsData={addProductFormProps}
-              propsProductDetails={addProductDetailsFormProps}
-              abilitatePictures={canUploadPictures}
-              buttonTitle={t("addProduct")}
-              // onSubmit={addProduct}
-              addProductAuth={addProd}
-              productDetails={true}
-            />
-          </div>
-        </div>
+    <>
+      <h1 className="screen-title">{t("addProduct")}</h1>
+      <div style={{ width: "95%", margin: "0 auto" }}>
+        <Form
+          propsData={addProductFormProps}
+          propsProductDetails={addProductDetailsFormProps}
+          abilitatePictures={canUploadPictures}
+          buttonTitle={t("addProduct")}
+          // onSubmit={addProduct}
+          addProductAuth={addProd}
+          productDetails={true}
+        />
       </div>
-    </div>
+    </>
   );
 }
