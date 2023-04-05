@@ -29,6 +29,10 @@ async function getProductById(id, lang) {
   );
 }
 
+async function getProductByIdBo(id) {
+  return await getData(PRODUCTS_PROPERTIES.BASE_URL + `/products/${id}`);
+}
+
 async function getDetailProduct(id) {
   return await getData(PRODUCTS_PROPERTIES.DETAIL_URL + `/${id}`);
 }
@@ -57,6 +61,7 @@ export {
   getDetailProduct,
   getProductsAuth,
   addProductAuth,
+  getProductByIdBo,
   editProductByIdAuth,
   deleteProductAuthById,
 };

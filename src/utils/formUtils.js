@@ -551,8 +551,8 @@ const modifyUserFormProps = [
   {
     label: "name",
     type: "text",
-    id: "firstName",
-    name: "firstName",
+    id: "first_name",
+    name: "first_name",
     required: true,
   },
   {
@@ -572,8 +572,8 @@ const modifyUserFormProps = [
   {
     label: "birthDate",
     type: "date",
-    id: "birthDate",
-    name: "birthDate",
+    id: "birth_date",
+    name: "birth_date",
     required: false,
   },
   {
@@ -604,8 +604,8 @@ const modifyProductFormProps = [
   {
     label: "descriptionEn",
     type: "text",
-    id: "descriptionEn",
-    name: "descriptionEn",
+    id: "descriptionEng",
+    name: "descriptionEng",
     required: false,
   },
   {
@@ -618,24 +618,24 @@ const modifyProductFormProps = [
   {
     label: "colour",
     type: "text",
-    id: "colour",
-    name: "colour",
+    id: "color",
+    name: "color",
     required: true,
   },
-  {
+  /*{
     label: "sizes",
     type: "text",
     id: "sizes",
     name: "sizes",
     required: true,
-  },
-  {
+  },*/
+  /*{
     label: "images",
     type: "text",
     id: "images",
     name: "images",
     required: true,
-  },
+  },*/
   {
     label: "brand",
     type: "text",
@@ -664,20 +664,20 @@ const modifyProductFormProps = [
     name: "category",
     required: true,
   },
-  {
+  /*{
     label: "id",
     type: "text",
     id: "id",
     name: "id",
     required: true,
-  },
-  {
+  },*/
+  /*{
     label: "quantity",
     type: "number",
     id: "quantity",
     name: "quantity",
     required: true,
-  },
+  },*/
 ];
 
 const loginFormProps = [

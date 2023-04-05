@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-  getProductById,
+  getProductByIdBo,
   editProductByIdAuth,
 } from "../services/servicesProducts";
 import { useTranslation } from "react-i18next";
-import { modifyProductFormProps } from "../utils/formUtils";
+import { modifyFormProps, modifyProductFormProps } from "../utils/formUtils";
 import Header from "../components/functionalComponents/header/Header";
 import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 //import ViewDetails from "../components/functionalComponents/viewDetails/ViewDetails";
@@ -17,6 +17,8 @@ function ModifyProduct() {
   const [state, setState] = useState({
     product: null,
     formProps: [],
+    productImages: [],
+    productDetailsData: [],
   });
   const language = i18n.language;
   const canUploadPictures = true;
@@ -26,14 +28,23 @@ function ModifyProduct() {
 
   useEffect(() => {
     async function getResources() {
-      const response = await getProductById(id, language);
-      console.log("RESPONSE:", response.data);
-      setState({ ...state, product: response.data });
+      const response = await getProductByIdBo(id);
+      console.log("RESPONSE: ???????????????", response.data);
+      setState({
+        ...state,
+        product: response.data,
+        productImages: picturesArrayToModify(response.data.productImages),
+        productDetailsData: response.data.productDetails,
+        formProps: modifyFormProps(
+          modifyProductFormProps,
+          response.data.product
+        ),
+      });
       if (!state.product) return;
-      modProductFormProps(modifyProductFormProps);
+      //modProductFormProps(modifyProductFormProps);
     }
     getResources();
-  }, [state.product]);
+  }, []);
 
   function modProductFormProps(formFields) {
     let newformProps = [];
@@ -53,6 +64,35 @@ function ModifyProduct() {
     //setState({ ...state, formProps: concatenazione });
   }
 
+  function picturesArrayToModify(arrayFromResponse) {
+    let newImageArray = null;
+    if (arrayFromResponse) {
+      newImageArray = arrayFromResponse.map((item) => item.imagePath);
+      console.log("arrayFromResponse --->", arrayFromResponse);
+      console.log("!!!!!!!!! arrayFromResponse --->", newImageArray);
+    }
+    return newImageArray;
+  }
+
+  /*const editProduct = (data) => {
+    console.log("DATA", data);
+    delete data.id;
+    console.log("DATA2", data);
+    editProductByIdAuth(id, data);
+  };*/
+
+  async function editProduct(data) {
+    console.log("FORM DATA", data);
+    const response = await editProductByIdAuth(id, data);
+    console.log("OGGETTO MODIFICA PRODOTTO ---->:", response);
+    if (response.status === 200) {
+      alert("Coupon modified successfully");
+      window.location.href = "/coupons";
+    } else {
+      alert("Error modifying coupon");
+    }
+  }
+
   return (
     <div>
       <Header />
@@ -62,7 +102,7 @@ function ModifyProduct() {
           <div className="screen-bg w-100 flex flex-column flex-center">
             <h1 className="screen-title">Modify product</h1>
             <div className="flex w-100 align-center justify-center">
-              <MediaCard
+              {/*<MediaCard
                 imageSrc="https://shop.saravecchi.it/wp-content/uploads/2020/06/Coupon_NoText.jpg"
                 height={{ height: 300 }}
                 title="Coupon"
@@ -71,15 +111,21 @@ function ModifyProduct() {
                   boxShadow: "10px 10px 50px #0371bc",
                   borderRadius: "25px",
                 }}
-              />
-
-              <Form
-                propsData={state.formProps}
-                abilitatePictures={canUploadPictures}
-                screenName={screenName}
-                buttonTitle={t("modify")}
-                modifyProductAuth={editProductByIdAuth}
-              />
+              />*/}
+              {state.formProps &&
+                state.formProps !== null &&
+                state.productImages !== null && (
+                  <Form
+                    propsData={state.formProps}
+                    abilitatePictures={canUploadPictures}
+                    screenName={screenName}
+                    buttonTitle={t("modify")}
+                    modifyProductAuth={editProduct}
+                    modifyProductImages={state.productImages}
+                    productDetails={true}
+                    productDetailsData={state.productDetailsData}
+                  />
+                )}
             </div>
           </div>
         )}

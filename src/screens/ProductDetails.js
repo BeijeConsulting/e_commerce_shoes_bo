@@ -36,7 +36,7 @@ function ProductDetails() {
           <h1 className="screen-title">Product details</h1>
           <div className="flex w-100 align-center justify-center">
             <MediaCard
-              imageSrc="https://shop.saravecchi.it/wp-content/uploads/2020/06/Coupon_NoText.jpg"
+              imageSrc={state.product?.images[0]?.image_path}
               height={{ height: 300 }}
               title="Coupon"
               width={{ width: 300, marginRight: "40px" }}

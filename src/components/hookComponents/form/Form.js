@@ -133,6 +133,14 @@ function Form(props) {
           productImages: convertedImagesArray,
         });
       }
+      if (props.modifyProductAuth) {
+        //props.addProductAuth(testObject);
+        props.modifyProductAuth({
+          product: { ...data, isListed: 1, imagePreview: "/nopreview" },
+          productDetails: state.outputProductDetails,
+          productImages: convertedImagesArray,
+        });
+      }
       if (props.editProductByIdAuth) {
         response = props.editProductByIdAuth(outputObject);
       }
@@ -160,8 +168,10 @@ function Form(props) {
 
   useEffect(() => {
     let starterPicturesArray = null;
+    //console.log("IMAGES ARRAY     :", state.imagesArray);
+    console.log("PROPS.DETAILDATA !_!_!_!_!_!", props.productDetailsData);
     props.screenName === "ModifyProduct"
-      ? (starterPicturesArray = images)
+      ? (starterPicturesArray = props.modifyProductImages)
       : (starterPicturesArray = []);
     setState({
       ...state,
@@ -452,6 +462,19 @@ function Form(props) {
     });
   }
 
+  let datas = props.productDetailsData;
+  console.log(datas);
+
+  function mapProductDetailsData(datas) {
+    return datas.map((detail) => {
+      return <div>AAAAAA {detail.id}</div>;
+    });
+  }
+
+  function mapSingleProductDetails() {
+    return <div>{mapProductDetailsInputs()}</div>;
+  }
+
   return (
     <div className="form">
       {
@@ -512,7 +535,6 @@ function Form(props) {
         )}
         {props.abilitatePictures && props.screenName !== "ModifyProduct" && (
           <>
-            {/*<h5>NAME SCREEN: {props.screenName}</h5>*/}
             <ImageListContainer
               imagesData={state.imagesArray}
               state={state}
@@ -522,10 +544,12 @@ function Form(props) {
           </>
         )}
       </div>
+      {props.singleProductDetails && (
+        <>{mapProductDetailsData(props.productDetailsData)}</>
+      )}
 
       {props.abilitatePictures && props.screenName === "ModifyProduct" && (
         <>
-          <h5>NAME SCREEN: {props.screenName}</h5>
           <ImageListContainer
             imagesData={state.imagesArray}
             state={state}
