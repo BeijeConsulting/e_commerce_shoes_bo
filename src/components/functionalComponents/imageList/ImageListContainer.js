@@ -3,6 +3,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ClearIcon from "@mui/icons-material/Clear";
 import emptyImage from "../../../assets/images/emptyImage/emptyImage.jpg";
+import "./imageListContainer.css";
 
 export default function ImageListContainer(props) {
   console.log("PROPS:", props);
@@ -20,24 +21,31 @@ export default function ImageListContainer(props) {
       cols={3}
       rowHeight={164}
     >
-      {/*{itemData.map((item, index) => (*/}
       {emptyImagesNumber(props.imagesData).map((item, index) => (
         <ImageListItem key={Math.random()}>
-          {/*<button onClick={callbackButton}>ADD</button>*/}
-          {/* <p style={{ position: "absolute" }}>BOTTONE AGGIUNGI</p> */}
           {props.imagesData.length === index && (
-            <input
-              type="file"
-              id={"file-ip-" + index}
-              accept="image/*"
-              onChange={(event) => props.showPreview(event, index)}
-              style={{
-                position: "absolute",
-                zIndex: "1",
-                top: "70px",
-                left: "70px",
-              }}
-            />
+            <div>
+              <label
+                htmlFor={"file-ip-" + index}
+                className="form-input-file-label"
+              >
+                +
+              </label>
+              <input
+                type="file"
+                name="file"
+                id={"file-ip-" + index}
+                accept="image/*"
+                onChange={(event) => props.showPreview(event, index)}
+                className="form-input-file "
+                style={{
+                  position: "absolute",
+                  zIndex: "1",
+                  top: "70px",
+                  left: "70px",
+                }}
+              />
+            </div>
           )}
 
           {props.imagesData[index] && (

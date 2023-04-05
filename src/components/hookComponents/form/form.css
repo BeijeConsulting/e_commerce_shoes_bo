@@ -53,3 +53,22 @@
   padding: 0 7px;
   font-family: "Poppins";
 }
+
+.form-add-button {
+  background-color: #2e7d32;
+  padding: 9px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  transition: 0.2s;
+  margin: 10px;
+}
+
+.form-add-button:hover {
+  background-color: #1b5e20;
+  cursor: pointer;
+}
+
+.shoe-details {
+  margin: 10px;
+}

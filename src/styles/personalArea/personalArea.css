@@ -1,27 +1,5 @@
-.personalArea-box {
-  display: flex;
-  width: 100%;
-}
-
-.personalArea-form .form {
-}
-
-.personalArea-user {
-  width: 700px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-/* .personalArea-form form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 auto;
-  width: 700px;
-} */
-
 .user-details-container {
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -29,7 +7,7 @@
   margin: 0 auto;
   margin-top: 20px;
   min-width: max-content;
-  padding: 40px 30px;
+  padding: 40px 80px;
   border: 2px solid #0171bc;
   border-radius: 10px;
 }

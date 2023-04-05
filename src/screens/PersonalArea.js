@@ -51,38 +51,37 @@ export default function PersonalArea() {
   }
 
   return (
-    <div className="personalArea-form">
+    <>
       <h1 className="screen-title">{t("personalArea")}</h1>
       <div className="flex flex-center">
         <div className="w-50">
-          <div
-            className={
-              state.formProps?.length > 0
-                ? "user-details-container w-70"
-                : "user-details-container w-100"
-            }
-          >
+          <div className="user-details-container w-50">
             <h3> {t("personalData")}</h3>
-            <p>
-              <span className="bold">{t("name")}:&nbsp;</span>{" "}
-              {state.user?.first_name}
-            </p>
-            <p>
-              <span className="bold">{t("lastName")}:&nbsp;</span>{" "}
-              {state.user?.last_name}
-            </p>
-            <p>
-              <span className="bold">{t("email")}:&nbsp;</span>{" "}
-              {state.user?.email}
-            </p>
-            <p>
-              <span className="bold">{t("telephone")}:&nbsp;</span>{" "}
-              {state.user?.telephone}
-            </p>
-            <p>
-              <span className="bold">{t("birthDate")}:&nbsp;</span>{" "}
-              {state.user?.birth_date}
-            </p>
+            {state.user && (
+              <>
+                <p>
+                  <span className="bold">{t("name")}:&nbsp;</span>{" "}
+                  {state.user.first_name}
+                </p>
+                <p>
+                  <span className="bold">{t("lastName")}:&nbsp;</span>{" "}
+                  {state.user.last_name}
+                </p>
+                <p>
+                  <span className="bold">{t("email")}:&nbsp;</span>{" "}
+                  {state.user.email}
+                </p>
+                <p>
+                  <span className="bold">{t("telephone")}:&nbsp;</span>{" "}
+                  {state.user.telephone}
+                </p>
+                <p>
+                  <span className="bold">{t("birthDate")}:&nbsp;</span>{" "}
+                  {state.user.birth_date}
+                </p>
+              </>
+            )}
+
             <Link to="/personal-area/addresses" className="addresses-link">
               {t("yourAddresses")}
             </Link>
@@ -106,6 +105,6 @@ export default function PersonalArea() {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }

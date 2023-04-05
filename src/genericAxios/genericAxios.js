@@ -137,7 +137,14 @@ export async function getData(resource, header = null) {
 
 // GET with Authentication
 export async function getDataAuth(resource) {
-  const response = await axiosInstanceToken.get(resource);
+  const response = await axiosInstanceToken
+    .get(resource)
+    .then(function (res) {
+      return res;
+    })
+    .catch(function (err) {
+      return err.response;
+    });
 
   return response;
 }
@@ -158,9 +165,16 @@ export async function putData(resource, obj, header = null) {
 
 // PUT with Authentication
 export async function putDataAuth(resource, obj, header = null) {
-  const response = await axiosInstanceToken.put(resource, obj, {
-    headers: header !== null ? { Authorization: `Bearer ${header}` } : null,
-  });
+  const response = await axiosInstanceToken
+    .put(resource, obj, {
+      headers: header !== null ? { Authorization: `Bearer ${header}` } : null,
+    })
+    .then(function (res) {
+      return res;
+    })
+    .catch(function (err) {
+      return err.response;
+    });
 
   return response;
 }

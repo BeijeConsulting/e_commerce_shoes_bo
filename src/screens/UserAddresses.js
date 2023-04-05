@@ -15,15 +15,11 @@ function UserAddresses() {
     async function getResources() {
       const response = await getUserAddresses();
       if (!response) return;
-      console.log("RESPONSE ADDRESSES:", response?.data);
+      console.log("RESPONSE ADDRESSES:", response.data);
       setState({ ...state, addresses: response.data });
     }
     getResources();
   }, []);
-
-  async function modifyAddress(data) {
-    console.log("MODIFY ADDRESS:", data);
-  }
 
   function mapAddressCards(addresses) {
     return addresses.map((address) => {

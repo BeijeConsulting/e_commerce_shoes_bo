@@ -13,28 +13,22 @@ import {
   initUserCredentials,
 } from "../../../redux/duck/user/userDuck";
 import { Button } from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
 import {
   notifyLogOutSuccess,
   notifyLogOutError,
 } from "../../../utils/notificationsUtils";
+import { getLocalStorage } from "../../../utils/localStorageUtils";
 
 function SideBar() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token, refreshToken } = useSelector((state) => state.tokenDuck);
-  // async function userLogOut() {
-  //   const response = await signOut(refreshToken, token);
-  //   console.log("SIGNOUT", response);
+  // const authorities = useSelector((state) => state.userDuck.authorities);
+  const authorities = getLocalStorage("authorities");
 
-  //   dispatch(removeUserCredentials());
-
-  //   dispatch(removeToken());
-
-  //   clearLocalStorage();
-  //   navigate(`/${lang}/`);
-  // }
+  console.log("authorities", authorities);
+  // console.log("authorities[1]", authorities[1]);
 
   async function userLogOut() {
     const response = await signOut(refreshToken, token);
@@ -56,7 +50,7 @@ function SideBar() {
     <div className="sideNavWrapper">
       {" "}
       <nav className="sideNavMenu">
-        <SideNav />
+        <SideNav authorities={authorities} />
         <div className="logoutButton">
           <LogoutIcon style={{ color: "white", margin: "8px 15px" }} />
           <Button

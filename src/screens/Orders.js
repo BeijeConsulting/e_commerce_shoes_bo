@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
 import GenericTable from "../components/functionalComponents/table/GenericTable";
-import Header from "../components/functionalComponents/header/Header";
 import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow";
 import { ordersColumns } from "../utils/tableUtils";
-
+import {
+  notifyDeleteSuccess,
+  notifyDeleteError,
+} from "../utils/notificationsUtils";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { getOrders, getOrdersAuth } from "../services/servicesOrders";
+import {
+  getOrders,
+  getOrdersAuth,
+  deleteOrderByIdAuth,
+} from "../services/servicesOrders";
 import { ordersListIcons } from "../utils/tableUtils";
 
 export default function Orders() {
@@ -25,27 +30,36 @@ export default function Orders() {
     getResources();
   }, []);
 
+  async function deleteOrder(id) {
+    alert(`Are you sure you want to delete order with id ${id}?`);
+    const response = await deleteOrderByIdAuth(id);
+    console.log("RESPONSE DELETE:", response);
+    if (response.status === 200) {
+      notifyDeleteSuccess("Order");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+    } else {
+      notifyDeleteError("order");
+    }
+  }
+
   return (
-    <div>
-      <Header />
-      <div style={{ display: "flex" }}>
-        <SideBar />
-        <div style={{ width: "100%" }} className="screen-bg">
-          <h1 className="screen-title">Gestione ordini</h1>
-          <div style={{ width: "95%", margin: "0 auto" }}>
-            <FiltersRow
-              label={t("ordersList")}
-              addLabel={t("addOrder")}
-              addUrl="/orders/add-order"
-            />
-            <GenericTable
-              fields={state.ordersList}
-              columns={ordersColumns}
-              icons={ordersListIcons}
-            />
-          </div>
-        </div>
+    <>
+      <h1 className="screen-title">{t("manageOrders")}</h1>
+      <div style={{ width: "95%", margin: "0 auto" }}>
+        <FiltersRow
+          label={t("ordersList")}
+          addLabel={t("addOrder")}
+          addUrl="/orders/add-order"
+        />
+        <GenericTable
+          fields={state.ordersList}
+          columns={ordersColumns}
+          icons={ordersListIcons}
+          deleteAction={deleteOrder}
+        />
       </div>
-    </div>
+    </>
   );
 }

@@ -1,7 +1,6 @@
 import { PROPERTIES } from "../utils/properties";
 
 import {
-  getData,
   getDataAuth,
   postDataAuth,
   putDataAuth,

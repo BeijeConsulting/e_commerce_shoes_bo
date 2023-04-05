@@ -9,8 +9,8 @@ function filtersRow(props) {
     <div className="filtersRow-container">
       <h3>{props.label}</h3>
       <div className="filters-container align-center">
-        <h3>Searchbar</h3>
-        <h3>Filtro</h3>
+        {/* <h3>Searchbar</h3>
+        <h3>Filtro</h3> */}
         <Link to={props.addUrl}>
           <Button variant="contained" disableElevation startIcon={<AddIcon />}>
             {props.addLabel}

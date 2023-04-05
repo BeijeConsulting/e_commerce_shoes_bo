@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
-import GenericTable from "../components/functionalComponents/table/GenericTable";
-import Header from "../components/functionalComponents/header/Header";
 import "../styles/dashboard/dashboard.css";
 import LineChart from "../components/functionalComponents/lineChart/LineChart";
 import DonutChart from "../components/functionalComponents/donutChart/DonutChart";
 import { getOrdersAuth } from "../services/servicesOrders";
-import { recentOrdersColumns } from "../utils/tableUtils";
 import {
   yearlySellsStats,
   top5mostRecentOrders,
@@ -14,18 +10,26 @@ import {
   yearlyIncomeStats,
 } from "../utils/dashboardUtils";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { notifyNotAuthorized } from "../utils/notificationsUtils";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     ordersList: null,
+    mostRecentOrders: [],
   });
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function getResources() {
       const response = await getOrdersAuth();
-      console.log("RESPONSE orders:", response.data);
+      if (response.status === 403) {
+        // navigate("/personal-area");
+        notifyNotAuthorized();
+      }
+      console.log("RESPONSE:", response);
       console.log(
         "yearly sells stats",
         yearlySellsStats(response.data?.orders)
@@ -38,37 +42,72 @@ export default function Dashboard() {
     getResources();
   }, []);
 
+  function mapRecentOrders(orders) {
+    return orders.map((order) => {
+      console.log(order.id);
+      // return <p key={order.id}>{order.id}</p>;
+      return (
+        <table key={order.id} className="recent-orders-table">
+          <thead>
+            <tr>
+              <th>{t("id")}</th>
+              <th>{t("status")}</th>
+              <th>{t("total")}</th>
+              {/* <th>{t("Payment")}</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="recent-order-row">
+              <td>{order.id}</td>
+              <td>{order.status}</td>
+              <td>{order.total_price}</td>
+              {/* <td>{order.payment_status}</td> */}
+            </tr>
+          </tbody>
+        </table>
+      );
+    });
+  }
+
   return (
     <>
-      <div className="dashboardHeightCalc w-70">
-        <div className="h-50">GRAFICO VENDITE ANNUALI</div>
-        <div className="h-50">
-          <GenericTable
-            fields={state.mostRecentOrders}
-            columns={recentOrdersColumns}
-            //icons={ordersListIcons}
-          />
-          <LineChart
-            data={yearlySellsStats(state?.ordersList)}
-            dataName={t("numberOrders")}
-          />
-          {state.ordersList && (
-            <DonutChart data={countrySellsStats(state?.ordersList)} />
+      <div className="flex justify-around ">
+        {state.ordersList && (
+          <div>
+            <div className="flex align-center flex-column bg-charts m-pie-chart">
+              <h2 className="mtmb-20">{t("countrySells")}</h2>
+              {state.ordersList && (
+                <DonutChart data={countrySellsStats(state.ordersList)} />
+              )}
+            </div>
+
+            <div className="flex">
+              <div className="flex align-center flex-column bg-charts m-bar-chart">
+                <h2 className="mtmb-20">{t("yearlyIncome")}</h2>
+                <LineChart
+                  data={yearlyIncomeStats(state.ordersList)}
+                  dataName={t("monthlyIncome")}
+                />
+              </div>
+              <div className="flex align-center flex-column bg-charts m-bar-chart">
+                <h2 className="mtmb-20">{t("yearlySales")}</h2>
+                <LineChart
+                  data={yearlySellsStats(state.ordersList)}
+                  dataName={t("numberOrders")}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div
+          className="text-center flex flex-column flex-center"
+          style={{ gap: 20 }}
+        >
+          <h2>{t("recentOrders")}</h2>
+          {state.mostRecentOrders && (
+            <div>{mapRecentOrders(state.mostRecentOrders)}</div>
           )}
-          <LineChart
-            data={yearlyIncomeStats(state?.ordersList)}
-            dataName={t("monthlyIncome")}
-          />
-        </div>
-        <div className="flex h-50">
-          <div className="w-50">RECENT ORDERS</div>
-          <div className="w-50">TOP COUNTRIES</div>
-        </div>
-      </div>
-      <div className="dashboardHeightCalc w-30 topSellingWrapper">
-        <div>
-          <h3>TOP SELLING</h3>
-          <div>CARD CON TOP SELL</div>
         </div>
       </div>
     </>

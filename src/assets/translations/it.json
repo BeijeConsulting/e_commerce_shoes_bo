@@ -40,6 +40,7 @@
     "repeatPassword": "Ripeti la password",
     "personalData": "Dati personali",
     "yourAddresses": "I tuoi indirizzi",
+    "recentOrders": "Ordini recenti",
 
     "logout": "Disconettiti",
     "birthDate": "Data di nascita",
@@ -94,8 +95,12 @@
     "streetAddress": "Indirizzo",
     "zipcode": "CAP",
     "remove": "Rimuovi",
-    "sellingPrice" : "Prezzo di vendita",
+    "sellingPrice": "Prezzo di vendita",
     "startingPrice": "Prezzo iniziale",
+    "countrySells": "Vendite per stato",
+    "yearlyIncome": "Reddito annuo",
+    "yearlySales": "Vendite annuali",
+    "addProductDetails": "Aggiungi dettagli prodotto",
 
     "orderDetails": "Dettagli dell'ordine",
     "productDetails": "Dettagli del prodotto",

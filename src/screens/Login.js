@@ -35,14 +35,10 @@ function Login() {
 
       dispatch(
         setUserCredentials({
-          name: user.data.first_name,
-          surname: user.data.last_name,
-          email: user.data.email,
-          adresses: [...user.data.addresses],
-          authorities: response.data.permission,
-          birthDate: user.data.birth_date,
-          isLogged: true,
-          isLoading: false,
+          name: user.data?.first_name,
+          surname: user.data?.last_name,
+          email: user.data?.email,
+          birthDate: user.data?.birth_date,
         })
       );
 
@@ -56,8 +52,9 @@ function Login() {
       setLocalStorage("token", response.data.token);
       setLocalStorage("refreshToken", response.data.refreshToken);
       setLocalStorage("isLogged", true);
+      setLocalStorage("authorities", response.data.permission);
 
-      navigate(`/dashboard`);
+      navigate(`/personal-area`);
     } else {
       notifyLoginError(response.error.response.data.message);
       // alert(response.error.response.data.message);
@@ -67,10 +64,9 @@ function Login() {
   return (
     <div className="login-page-container">
       <div className="form-login-page-container">
-        <h1>CMS Shoes Shop</h1>
+        <h1>CMS Beije Shoes</h1>
         <Form
           propsData={loginFormProps}
-          abilitatePictures={false}
           buttonTitle={t("login")}
           onSubmit={onSubmit}
           buttonColor="primary"

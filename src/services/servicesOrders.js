@@ -37,9 +37,11 @@ async function editOrderByIdAuth(obj) {
   return await putDataAuth(PROPERTIES.BASE_URL + `/orders/modify_order`, obj);
 }
 
-// async function deleteOrderByIdAuth(id){
-//   return await deleteDataAuth(PROPERTIES.BASE_URL)
-// }
+async function deleteOrderByIdAuth(id) {
+  return await deleteDataAuth(
+    PROPERTIES.BASE_URL + `/orders/delete_order/${id}`
+  );
+}
 
 export {
   getOrders,
@@ -47,4 +49,5 @@ export {
   getOrdersAuth,
   addOrderAuth,
   editOrderByIdAuth,
+  deleteOrderByIdAuth,
 };

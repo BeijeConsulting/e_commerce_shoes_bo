@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // @mui
 import { alpha } from "@mui/material/styles";
 import { Box, MenuItem, Stack, IconButton, Popover } from "@mui/material";
@@ -28,7 +28,7 @@ export default function LanguagePopover() {
   const { t, i18n } = useTranslation();
   const [state, setState] = useState({
     open: null,
-    lang: "en",
+    // lang: "en",
   });
 
   const dispatch = useDispatch();
@@ -48,12 +48,12 @@ export default function LanguagePopover() {
     });
   };
 
-  useEffect(() => {
-    setState({
-      ...state,
-      lang: i18n.language ? i18n.language : "en",
-    });
-  }, []);
+  // useEffect(() => {
+  //   setState({
+  //     ...state,
+  //     lang: i18n.language ? i18n.language : "en",
+  //   });
+  // }, []);
 
   function handleLanguage(languageChosen) {
     handleClose();
@@ -62,7 +62,7 @@ export default function LanguagePopover() {
     i18n.changeLanguage(languageChosen);
     setState({
       ...state,
-      lang: languageChosen,
+      // lang: languageChosen,
     });
   }
 
@@ -103,7 +103,7 @@ export default function LanguagePopover() {
         }}
       >
         <img
-          src={state.lang === "en" ? enFlag : itFlag}
+          src={i18n.language === "en" ? enFlag : itFlag}
           alt={"Language flag"}
           style={{ borderRadius: "10px" }}
         />
@@ -112,7 +112,7 @@ export default function LanguagePopover() {
       <Popover
         open={Boolean(state.open)}
         anchorEl={state.open}
-        onClose={handleClose}
+        onClick={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         PaperProps={{

@@ -41,6 +41,7 @@
     "yourAddresses": "Your addresses",
     "notes": "Notes",
     "remove": "Remove",
+    "recentOrders": "Recent orders",
 
     "logout": "Logout",
     "birthDate": "Birth date",
@@ -95,8 +96,12 @@
     "nameSurname": "Name and surname",
     "streetAddress": "Street address",
     "zipcode": "ZIP code",
-    "sellingPrice" : "Selling price",
+    "sellingPrice": "Selling price",
     "startingPrice": "Starting price",
+    "countrySells": "Sales by state",
+    "yearlyIncome": "Yearly income",
+    "yearlySales": "Yearly sales",
+    "addProductDetails": "Add product details",
 
     "orderDetails": "Order details",
     "productDetails": "Product details",
