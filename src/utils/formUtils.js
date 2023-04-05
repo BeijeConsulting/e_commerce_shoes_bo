@@ -701,7 +701,6 @@ const loginFormProps = [
     name: "password",
     placeholder: "password",
     required: true,
-    errors: checkPasswordInput,
   },
 ];
 
