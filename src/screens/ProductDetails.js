@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDetailProduct } from "../services/servicesProducts";
 import { useTranslation } from "react-i18next";
-import ProductImages from "../components/functionalComponents/productImages/productImages";
+import ProductImages from "../components/functionalComponents/productImages/ProductImages";
 import { t } from "i18next";
 import "../styles/productDetails/productDetails.css";
 

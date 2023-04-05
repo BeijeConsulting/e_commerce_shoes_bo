@@ -23,77 +23,6 @@ function Form(props) {
   let images = [image1, image1, image1, image1, image1, image1];
 
   //_-------------------------------------------------
-
-  const image1Ref = useRef(null);
-  const image2Ref = useRef(null);
-  const image3Ref = useRef(null);
-  const image4Ref = useRef(null);
-  const image5Ref = useRef(null);
-  const image6Ref = useRef(null);
-  const image7Ref = useRef(null);
-  const image8Ref = useRef(null);
-  const image9Ref = useRef(null);
-  const image10Ref = useRef(null);
-
-  const testObject = {
-    product: {
-      brand: "Adidas",
-      category: "Cross Training",
-      color: "Lilla",
-      descriptionEng: "AAAAAAAAAAAAAAAAA",
-      descriptionIt: "BBBBBBBBB",
-      imagePreview: "/aiuto",
-      isListed: "1",
-      listedPrice: 300,
-      name: "Test 7",
-      startingPrice: 0,
-      type: "m",
-    },
-    productDetails: [
-      {
-        is_listed: true,
-        quantity: 37,
-        selling_price: 90,
-        size: "M40",
-      },
-      {
-        is_listed: true,
-        quantity: 100,
-        selling_price: 400,
-        size: "M41",
-      },
-    ],
-    productImages: [
-      {
-        altEng: "efwefwe",
-        altIt: "testest",
-        imageNumber: 0,
-        imagePath: "/provaancora",
-        type: "desktop",
-      },
-      {
-        altEng: "efwefwwere",
-        altIt: "testewerst",
-        imageNumber: 0,
-        imagePath: "/provawerancora",
-        type: "desktop",
-      },
-    ],
-  };
-
-  const arrayReferences = [
-    image1Ref,
-    image2Ref,
-    image3Ref,
-    image4Ref,
-    image5Ref,
-    image6Ref,
-    image7Ref,
-    image8Ref,
-    image9Ref,
-    image10Ref,
-  ];
-
   const {
     register,
     formState: { errors },
@@ -104,7 +33,6 @@ function Form(props) {
     //console.log("data:", data);
     let outputObject = null;
     let response = null;
-    let newOutputObj = {};
     // check if at least 3 pictures have been uploaded
     if (state.imagesArray.length < 3 && props.abilitatePictures) {
       alert(
@@ -344,19 +272,6 @@ function Form(props) {
       productDetails: productDetailsArray,
     });
   }*/
-
-  function filterId(event) {
-    let shoe = props?.products?.filter((product) => {
-      return String(product.id).includes(event.target.value);
-    });
-    if (event.target.value === "") {
-      shoe = null;
-    }
-    setState({
-      ...state,
-      filtereProducts: shoe,
-    });
-  }
 
   function handleProductDetails(event) {
     //let productDetails = state.outputProductDetails;
