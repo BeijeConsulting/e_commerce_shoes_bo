@@ -84,13 +84,6 @@ function notifyAccessDenied() {
   });
 }
 
-function notifySomethingWentWrong() {
-  toast.error("Something went wrong", {
-    position: toast.POSITION.TOP_CENTER,
-    autoClose: 2000,
-  });
-}
-
 export {
   notifyLogOutSuccess,
   notifyLogOutError,
