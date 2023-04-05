@@ -18,8 +18,8 @@ function ModifyCoupon(props) {
   useEffect(() => {
     async function getResources() {
       const response = await getCouponByIdAuth(id);
-      console.log("RESPONSE:", response.data);
       if (!response) return;
+      console.log("RESPONSE:", response.data);
       setState({
         ...state,
         coupon: response.data[0],
