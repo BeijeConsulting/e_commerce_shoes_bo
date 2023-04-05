@@ -45,7 +45,6 @@ function GenericTable(props) {
         <TableRow hover role="checkbox" tabIndex={-1} key={key}>
           {props.columns.map((column) => {
             const value = product[column.id];
-            console.log("VALUE:", value);
             return (
               <TableCell key={column.id} align={column.align}>
                 {column.id === "actions" && (
