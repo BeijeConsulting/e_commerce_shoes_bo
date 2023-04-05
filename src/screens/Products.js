@@ -67,13 +67,13 @@ function Products(props) {
           addLabel={t("addProduct")}
           addUrl="/products/add-product"
         />
-        {state.productsList && (
+        {state.productsList && state.results && (
           <GenericTable
             fields={state.productsList}
             icons={productsListIcons}
             columns={productsColumns}
             getResources={getResourcesTest}
-            results={state?.results}
+            results={state.results}
             deleteAction={deleteProduct}
           />
         )}
