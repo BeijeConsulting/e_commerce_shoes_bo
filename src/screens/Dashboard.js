@@ -10,11 +10,9 @@ import {
   yearlyIncomeStats,
 } from "../utils/dashboardUtils";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { notifyNotAuthorized } from "../utils/notificationsUtils";
 
 export default function Dashboard(props) {
-  const navigate = useNavigate();
   const [state, setState] = useState({
     ordersList: null,
     mostRecentOrders: [],
