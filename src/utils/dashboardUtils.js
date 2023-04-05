@@ -102,6 +102,7 @@ function countIncomeByMonth(data) {
 }
 
 function top5mostRecentOrders(array) {
+  if (!array) return;
   array.sort((a, b) => new Date(b.date) - new Date(a.date));
   return array.slice(0, 5);
 }
