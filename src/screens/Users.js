@@ -4,7 +4,10 @@ import FiltersRow from "../components/functionalComponents/filtersRow/FiltersRow
 import { useTranslation } from "react-i18next";
 import { usersListIcons, usersColumns } from "../utils/tableUtils";
 import { Tabs, Tab } from "@mui/material";
-
+import {
+  notifyDeleteSuccess,
+  notifyDeleteError,
+} from "../utils/notificationsUtils";
 import { useState, useEffect } from "react";
 import {
   getUsersAuth,
@@ -76,10 +79,12 @@ export default function Users() {
     const response = await deleteUserAuthById(id);
     console.log("RESPONSE DELETE:", response);
     if (response.status === 200) {
-      alert("Usuario eliminado correctamente");
-      window.location.reload();
+      notifyDeleteSuccess("User");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } else {
-      alert("Error al eliminar usuario");
+      notifyDeleteError("user");
     }
   }
 

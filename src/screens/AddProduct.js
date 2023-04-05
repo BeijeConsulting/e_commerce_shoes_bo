@@ -36,7 +36,7 @@ export default function AddProduct(props) {
   return (
     <>
       <h1 className="screen-title">{t("addProduct")}</h1>
-      <div style={{ width: "95%", margin: "0 auto" }}>
+      <div style={{ width: "50%", margin: "0 auto" }}>
         <Form
           propsData={addProductFormProps}
           propsProductDetails={addProductDetailsFormProps}

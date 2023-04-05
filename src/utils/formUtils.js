@@ -52,7 +52,6 @@ const addProductFormProps = [
     id: "name",
     name: "name",
     required: true,
-    errors: checkTextInput,
   },
 
   {

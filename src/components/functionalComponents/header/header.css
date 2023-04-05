@@ -21,8 +21,9 @@
 }
 
 .header-logo {
-  height: 100%;
-  width: 15vw;
+  height: auto;
+  margin-left: 1rem;
+  width: 10vw;
   display: flex;
   justify-content: center;
 }

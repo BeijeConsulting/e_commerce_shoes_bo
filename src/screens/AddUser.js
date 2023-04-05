@@ -3,13 +3,16 @@ import { useTranslation } from "react-i18next";
 import Form from "../components/hookComponents/form/Form";
 import { addUserFormProps } from "../utils/formUtils";
 import { addUserAuth } from "../services/servicesUsers";
+import { notifyAddSuccess, notifyAddError } from "../utils/notificationsUtils";
+import { useNavigate } from "react-router-dom";
 
 function AddUser(props) {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+
   const language = i18n.language;
 
   const optionValues = [
-    { value: "USER", label: "Customer" },
     { value: "ADMIN", label: "Admin" },
     { value: "DATA_ENTRY", label: "Data Entry" },
     { value: "MARKETING", label: "Marketing" },
@@ -25,10 +28,10 @@ function AddUser(props) {
     const response = await addUserAuth(data);
     console.log("RESPONSE", response);
     if (response.status === 200) {
-      alert("User added successfully");
-      window.location.href = "/users";
+      notifyAddSuccess("User");
+      navigate("/users");
     } else {
-      alert("Error adding user");
+      notifyAddError("user");
     }
   };
 

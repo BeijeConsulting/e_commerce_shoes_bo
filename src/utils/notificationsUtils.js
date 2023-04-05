@@ -84,6 +84,13 @@ function notifyAccessDenied() {
   });
 }
 
+function notifyNotEnoughImages() {
+  toast.error("Upload at least three images", {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 2000,
+  });
+}
+
 export {
   notifyLogOutSuccess,
   notifyLogOutError,
@@ -97,4 +104,5 @@ export {
   notifyDeleteError,
   notifyNotAuthorized,
   notifyAccessDenied,
+  notifyNotEnoughImages,
 };

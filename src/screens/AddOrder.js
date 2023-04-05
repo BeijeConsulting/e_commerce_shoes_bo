@@ -4,9 +4,12 @@ import Form from "../components/hookComponents/form/Form";
 import { addOrderFormProps } from "../utils/formUtils";
 import { getProductById } from "../services/servicesProducts";
 import { addOrderAuth } from "../services/servicesOrders";
+import { notifyAddSuccess, notifyAddError } from "../utils/notificationsUtils";
+import { useNavigate } from "react-router-dom";
 
 function AddOrder(props) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [state, setState] = useState({
     product: null,
     productArr: [],
@@ -20,8 +23,8 @@ function AddOrder(props) {
       event.target.value === ""
     )
       return;
-    const response = await getProductById(event.target.value);
-    console.log(response.data.productSizes[0].productDetailsId);
+    const response = await getProductById(event.target.value, "en");
+    console.log(response);
     setState({
       ...state,
       product: response.data.productSizes[0].productDetailsId,
@@ -58,10 +61,17 @@ function AddOrder(props) {
   const canUploadPictures = false;
   const addTitle = t("add");
 
-  function addOrder(data) {
+  async function addOrder(data) {
     const outputObj = { ...data, products: state.totalProducts };
     console.log(outputObj);
-    addOrderAuth(outputObj);
+    const response = await addOrderAuth(outputObj);
+    console.log(response);
+    if (response.status === 200) {
+      notifyAddSuccess("Order");
+      navigate("/orders");
+    } else {
+      notifyAddError("order");
+    }
   }
 
   return (

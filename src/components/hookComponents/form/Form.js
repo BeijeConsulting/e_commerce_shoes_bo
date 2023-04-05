@@ -14,12 +14,12 @@ import {
   convertArrayImages,
 } from "../../../utils/imageUtils";
 import "./form.css";
+import { notifyNotEnoughImages } from "../../../utils/notificationsUtils";
 
 function Form(props) {
   const { t } = useTranslation();
   //-----------------------------------------------------------------
-  const image1 =
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
+  const image1 = "";
   let images = [image1, image1, image1, image1, image1, image1];
 
   //_-------------------------------------------------
@@ -35,12 +35,13 @@ function Form(props) {
     let response = null;
     // check if at least 3 pictures have been uploaded
     if (state.imagesArray.length < 3 && props.abilitatePictures) {
-      alert(
-        t("errorFewPictures1") +
-          (3 - state.imagesArray.length) +
-          t("errorFewPictures2")
-        // test
-      );
+      // alert(
+      //   t("errorFewPictures1") +
+      //     (3 - state.imagesArray.length) +
+      //     t("errorFewPictures2")
+      //   // test
+      // );
+      notifyNotEnoughImages();
       return;
     } else {
       let convertedImagesArray = convertArrayImages(state.imagesArray);
