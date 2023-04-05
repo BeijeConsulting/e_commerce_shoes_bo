@@ -22,8 +22,8 @@ function ModifyOrder() {
   useEffect(() => {
     async function getResources() {
       const response = await getDetailOrderAuth(id);
-      console.log(response.data);
       if (!response) return;
+      console.log(response.data);
       setState({
         ...state,
         order: response.data?.status,
