@@ -19,7 +19,7 @@ function InputPassword(props) {
   return (
     <>
       <div className="password-wrapper">
-        {props.register && (
+        {register && (
           <input
             {...register(props.field?.name, props.field?.errors)}
             type={state.showPassword ? "text" : "password"}
