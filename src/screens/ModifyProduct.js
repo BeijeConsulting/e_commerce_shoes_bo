@@ -18,7 +18,6 @@ function ModifyProduct() {
   });
   const language = i18n.language;
   const canUploadPictures = true;
-  const screenName = "ModifyProduct";
 
   const { id } = useParams();
 
@@ -37,23 +36,23 @@ function ModifyProduct() {
     getResources();
   }, []);
 
-  function modProductFormProps(formFields) {
-    let newformProps = [];
+  // function modProductFormProps(formFields) {
+  //   let newformProps = [];
 
-    for (let i = 0; i < formFields.length; i++) {
-      newformProps.push({
-        ...formFields[i],
-        defaultValue: Object.values(state.product)[i],
-      });
-    }
-    console.log("OLD FORM PROPS", modifyProductFormProps);
-    console.log("NEW FORM PROPS", newformProps);
-    //let concatenazione = [...newformProps, ...images];
-    //console.log("CONCATENAZIONE ", concatenazione);
+  //   for (let i = 0; i < formFields.length; i++) {
+  //     newformProps.push({
+  //       ...formFields[i],
+  //       defaultValue: Object.values(state.product)[i],
+  //     });
+  //   }
+  //   console.log("OLD FORM PROPS", modifyProductFormProps);
+  //   console.log("NEW FORM PROPS", newformProps);
+  //   //let concatenazione = [...newformProps, ...images];
+  //   //console.log("CONCATENAZIONE ", concatenazione);
 
-    setState({ ...state, formProps: newformProps });
-    //setState({ ...state, formProps: concatenazione });
-  }
+  //   setState({ ...state, formProps: newformProps });
+  //   //setState({ ...state, formProps: concatenazione });
+  // }
 
   return (
     <>
