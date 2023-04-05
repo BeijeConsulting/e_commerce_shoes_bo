@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from "react";
-import SideBar from "../components/functionalComponents/sideBar/Sidebar";
-import Header from "../components/functionalComponents/header/Header";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Form from "../components/hookComponents/form/Form";
 import { addOrderFormProps } from "../utils/formUtils";
-import { useParams } from "react-router-dom";
-import { getProductById, getProductsAuth } from "../services/servicesProducts";
-import { getProducts } from "../services/servicesProducts";
+import { getProductById } from "../services/servicesProducts";
 import { addOrderAuth } from "../services/servicesOrders";
-import { set } from "react-hook-form";
 
 function AddOrder(props) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [state, setState] = useState({
     product: null,
     productArr: [],
     totalProducts: [],
   });
-  const language = i18n.language;
-
-  let productArrToUpload = [];
-  const { id } = useParams();
 
   async function filterId(event) {
     if (
