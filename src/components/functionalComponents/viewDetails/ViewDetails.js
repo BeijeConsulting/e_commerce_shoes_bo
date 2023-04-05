@@ -32,7 +32,12 @@ function ViewDetails(props) {
     // if (Array.isArray(value)) return null;
     if (key === "addresses") {
       return mapAddresses(value);
-    } else if (Array.isArray(value)) return null;
+    } else if (Array.isArray(value)) {
+      return null;
+    } else if (typeof value === "object") {
+      return null;
+    }
+
     return (
       <div className="viewDetails" key={key}>
         <p className="details-paragraph">
