@@ -36,6 +36,7 @@ import { useEffect } from "react";
 import PrivateRoutes from "./PrivateRoutes";
 import MarketingRoutes from "./MarketingRoutes";
 import DataEntryRoutes from "./DataEntryRoutes";
+import AdminRoutes from "./AdminRoutes";
 
 function Routing(props) {
   const dispatch = useDispatch();
@@ -84,7 +85,7 @@ function Routing(props) {
           {/* ----- PRIVATE ROUTES ----- */}
           <Route element={<PrivateRoutes />}>
             {/* ----- ROUTES FOR ALL AUTHENTICATED USERS ----- */}
-            <Route path="/dashboard" element={<Dashboard />} />
+
             <Route path="/personal-area" element={<PersonalArea />} />
             <Route
               path="/personal-area/addresses"
@@ -139,7 +140,9 @@ function Routing(props) {
             </Route>
 
             {/* ----- ROUTES FOR ADMIN USERS ----- */}
-            <Route element={<DataEntryRoutes />}>
+            <Route element={<AdminRoutes />}>
+              {/* DASHBOARD */}
+              <Route path="/dashboard" element={<Dashboard />} />
               {/* USERS */}
               <Route path="/users" element={<Users />} />
               <Route path="/users/add-user" element={<AddUser />} />
