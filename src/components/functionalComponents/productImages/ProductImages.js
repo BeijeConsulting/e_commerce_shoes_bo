@@ -3,7 +3,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import "./productImages.css";
 
-export default function ProductImages(props) {
+function ProductImages(props) {
   return (
     <ImageList cols={4} gap={16}>
       {props.productImages.map((item) => (
@@ -23,3 +23,5 @@ export default function ProductImages(props) {
     </ImageList>
   );
 }
+
+export default ProductImages;
