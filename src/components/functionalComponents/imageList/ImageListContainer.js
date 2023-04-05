@@ -25,7 +25,10 @@ export default function ImageListContainer(props) {
         <ImageListItem key={Math.random()}>
           {props.imagesData.length === index && (
             <div>
-              <label for={"file-ip-" + index} className="form-input-file-label">
+              <label
+                htmlFor={"file-ip-" + index}
+                className="form-input-file-label"
+              >
                 +
               </label>
               <input
