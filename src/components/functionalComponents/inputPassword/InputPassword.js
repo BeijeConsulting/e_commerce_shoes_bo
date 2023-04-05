@@ -19,16 +19,18 @@ function InputPassword(props) {
   return (
     <>
       <div className="password-wrapper">
-        <input
-          {...register(props.field?.name ?? null, props.field?.errors ?? null)}
-          type={state.showPassword ? "text" : "password"}
-          id={props.field?.id}
-          name={props.field?.name}
-          placeholder={props.field?.placeholder}
-          required={props.field?.required}
-          defaultValue={props.field?.defaultValue}
-          className="form-input"
-        />
+        {props.register && (
+          <input
+            {...register(props.field?.name, props.field?.errors)}
+            type={state.showPassword ? "text" : "password"}
+            id={props.field?.id}
+            name={props.field?.name}
+            placeholder={props.field?.placeholder}
+            required={props.field?.required}
+            defaultValue={props.field?.defaultValue}
+            className="form-input"
+          />
+        )}
 
         <div className="icon-container" onClick={toggleVisibility}>
           {!state.showPassword && <VisibilityOnIcon fontSize="medium" />}
