@@ -15,7 +15,7 @@ function UserAddresses() {
     async function getResources() {
       const response = await getUserAddresses();
       if (!response) return;
-      console.log("RESPONSE ADDRESSES:", response?.data);
+      console.log("RESPONSE ADDRESSES:", response.data);
       setState({ ...state, addresses: response.data });
     }
     getResources();
