@@ -25,7 +25,6 @@ const userDuck = createSlice({
     surname: "",
     email: "",
     authorities: [],
-    addresses: [],
     birthDate: "",
   },
   reducers: {
@@ -34,7 +33,6 @@ const userDuck = createSlice({
       state.surname = action.payload.surname;
       state.email = action.payload.email;
       state.authorities = action.payload.authorities;
-      state.addresses = action.payload.addresses;
       state.birthDate = action.payload.birthDate;
     },
     initUserCredentialsAction: (state) => {
@@ -42,7 +40,6 @@ const userDuck = createSlice({
       state.surname = "";
       state.email = "";
       state.authorities = [];
-      state.addresses = [];
       state.birthDate = "";
     },
   },

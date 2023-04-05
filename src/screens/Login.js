@@ -38,7 +38,6 @@ function Login() {
           name: user.data?.first_name,
           surname: user.data?.last_name,
           email: user.data?.email,
-          adresses: [...user?.data?.addresses],
           authorities: [...response.data?.permission],
           birthDate: user.data?.birth_date,
         })
