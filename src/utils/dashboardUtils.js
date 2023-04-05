@@ -1,5 +1,3 @@
-import React from "react";
-
 function yearlySellsStats(orders) {
   let monthlyOrderCount = new Array(12).fill(0);
   if (orders) {

@@ -30,7 +30,6 @@ export default function PersonalArea() {
 
   async function getUserDetails() {
     const response = await getUserAuth(token);
-    if (!response) return;
     console.log(response.data);
     setState({
       ...state,

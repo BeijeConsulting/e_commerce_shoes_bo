@@ -31,7 +31,7 @@ function Products(props) {
         productsList: response.data?.products,
       });
     }
-    getResources(0, 5);
+    getResources();
   }, []);
 
   async function deleteProduct(id) {

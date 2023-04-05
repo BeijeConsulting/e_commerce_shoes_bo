@@ -16,8 +16,7 @@ import {
 import "./form.css";
 
 function Form(props) {
-  const { t, i18n } = useTranslation();
-  const refImg = useRef(null);
+  const { t } = useTranslation();
   //-----------------------------------------------------------------
   const image1 =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";

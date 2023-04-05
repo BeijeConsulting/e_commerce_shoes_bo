@@ -8,7 +8,7 @@ import {
 import { addProductAuth } from "../services/servicesProducts";
 
 export default function AddProduct(props) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const canUploadPictures = true;
 
   // const addProduct = (data) => {
