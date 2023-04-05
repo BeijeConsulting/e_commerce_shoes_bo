@@ -32,7 +32,6 @@ export default function LanguagePopover() {
   });
 
   const dispatch = useDispatch();
-  const languageRedux = useSelector((state) => state.languageDuck.language);
 
   const handleOpen = (event) => {
     setState({

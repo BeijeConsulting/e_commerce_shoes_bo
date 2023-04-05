@@ -4,10 +4,7 @@ import {
   getData,
   getDataAuth,
   postDataAuth,
-  postData,
-  putData,
   putDataAuth,
-  deleteData,
   deleteDataAuth,
 } from "../genericAxios/genericAxios";
 
@@ -53,11 +50,6 @@ async function getEmployees(page, size) {
 }
 
 async function getEmployeesAuth(page, size) {
-  // Possiamo passare qui l'authority dell'utente
-  // if (authority !== "admin") {
-  //   alert ("You are not authorized to access this page");
-  //   return;
-  // }
   return await getDataAuth(
     PROPERTIES.BASE_URL + `/search/page=${page}/size=${size}?staff=true`
   );
