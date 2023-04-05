@@ -93,7 +93,7 @@ export const recentOrdersColumns = [
 
 export const productsColumns = [
   { id: "id", label: "id" },
-  { id: "image", label: "image" },
+  { id: "image_preview", label: "image" },
   { id: "brand", label: "brand" },
   { id: "name", label: "name" },
   { id: "category", label: "category" },
