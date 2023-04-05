@@ -75,9 +75,7 @@ export default function Dashboard(props) {
           <div>
             <div className="flex align-center flex-column bg-charts m-pie-chart">
               <h2 className="mtmb-20">{t("countrySells")}</h2>
-              {state.ordersList && (
-                <DonutChart data={countrySellsStats(state.ordersList)} />
-              )}
+              <DonutChart data={countrySellsStats(state.ordersList)} />
             </div>
 
             <div className="flex">
