@@ -13,24 +13,18 @@ import emptyShoes from "../../../assets/images/emptyImage/emptyShoes.png";
 import "./genericTable.css";
 
 function GenericTable(props) {
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleChangePage = (event, newPage) => {
     console.log("NEW PsdaAGE:", newPage);
     console.log("TOTAL ROWS:", props.results);
-    setPage(newPage + 1);
+    setPage(newPage);
     console.log("Rows per page:", rowsPerPage);
     props.getResources(newPage + 1, rowsPerPage);
   };
-
-  // const handleChangeRowsPerPage = (event) => {
-  //   setRowsPerPage(parseInt(event.target.value));
-  //   // props.getResources(page, rowsPerPage);
-  //   // setPage(page); //setPage(0);
-  // };
 
   function mapColumns() {
     return props?.columns?.map((column) => {
@@ -53,9 +47,6 @@ function GenericTable(props) {
             const value = product[column.id];
             return (
               <TableCell key={column.id} align={column.align}>
-                {/* {column.format && typeof value === "number"
-                  ? column.format(value)
-                  : value} */}
                 {column.id === "actions" && (
                   <ActionsButton
                     icons={props.icons}
@@ -91,7 +82,6 @@ function GenericTable(props) {
         overflow: "hidden",
         boxShadow: "none",
         margin: "0 auto",
-        // width: "95%",
         backgroundColor: "#f1f1f1",
       }}
     >
@@ -113,7 +103,6 @@ function GenericTable(props) {
         rowsPerPage={rowsPerPage}
         page={page} // {page}
         onPageChange={handleChangePage}
-        // onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
   );

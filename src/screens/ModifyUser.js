@@ -5,10 +5,16 @@ import { modifyUserFormProps, modifyFormProps } from "../utils/formUtils";
 import { useParams } from "react-router-dom";
 import Form from "../components/hookComponents/form/Form";
 import { useTranslation } from "react-i18next";
+import {
+  notifyEditSuccess,
+  notifyEditError,
+} from "../utils/notificationsUtils";
+import { useNavigate } from "react-router-dom";
 
 function ModifyUser() {
   const { t } = useTranslation();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [state, setState] = useState({
     user: null,
@@ -39,7 +45,7 @@ function ModifyUser() {
     getResources();
   }, []);
 
-  const editUser = (data) => {
+  const editUser = async (data) => {
     console.log("DATA", data);
     delete data.id;
     console.log("DATA2", data);
@@ -48,7 +54,14 @@ function ModifyUser() {
         return (data[item] = ["USER", data[item]]);
       }
     });
-    editUserByIdAuth(id, data);
+    const response = await editUserByIdAuth(id, data);
+    console.log("RESPONSE:", response);
+    if (response.status === 200) {
+      notifyEditSuccess("User");
+      navigate("/users");
+    } else {
+      notifyEditError("user");
+    }
   };
 
   return (

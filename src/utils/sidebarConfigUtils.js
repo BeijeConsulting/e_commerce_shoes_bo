@@ -40,6 +40,11 @@ const sidebarConfig = {
   ],
   data_entry: [
     {
+      label: "dashboard",
+      link: "/dashboard",
+      icon: <HomeIcon />,
+    },
+    {
       label: "manageProducts",
       link: "/products",
       icon: <LocalMallIcon />,
@@ -56,6 +61,11 @@ const sidebarConfig = {
     },
   ],
   marketing: [
+    {
+      label: "dashboard",
+      link: "/dashboard",
+      icon: <HomeIcon />,
+    },
     {
       label: "manageCoupons",
       link: "/coupons",

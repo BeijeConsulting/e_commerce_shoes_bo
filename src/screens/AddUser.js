@@ -19,7 +19,7 @@ function AddUser(props) {
     console.log("DATA", data);
     Object.keys(data).forEach((item) => {
       if (item === "authorities") {
-        return (data[item] = [data[item]]);
+        return (data[item] = ["USER", data[item]]);
       }
     });
     const response = await addUserAuth(data);

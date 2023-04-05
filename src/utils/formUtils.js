@@ -549,15 +549,15 @@ const modifyUserFormProps = [
   {
     label: "lastName",
     type: "text",
-    id: "lastName",
-    name: "lastName",
+    id: "last_name",
+    name: "last_name",
     required: true,
   },
   {
     label: "name",
     type: "text",
-    id: "firstName",
-    name: "firstName",
+    id: "first_name",
+    name: "first_name",
     required: true,
   },
   {
@@ -577,8 +577,8 @@ const modifyUserFormProps = [
   {
     label: "birthDate",
     type: "date",
-    id: "birthDate",
-    name: "birthDate",
+    id: "birth_date",
+    name: "birth_date",
     required: false,
   },
   {

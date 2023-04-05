@@ -5,23 +5,27 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-function SideNav() {
+function SideNav(props) {
   // stato per settare utente corrente
   // verrà preso da redux store in base al token iniziale
   const [state, setState] = useState({
     user: [],
   });
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   //   oggetto custom che contiene i vari utenti e le relative voci del menu che possono visualizzare e cliccare
   const { admin, marketing, data_entry } = sidebarConfig;
+  // const currentUser = sidebarConfig[props?.authorities[1]?.toLowerCase()];
 
   //   inizializza una sola volta al mount lo stato e il conseguente map del menu
   useEffect(() => {
+    console.log("PROPS AUTHORITIES", props?.authorities);
     setState({
       ...state,
-      user: admin,
+      user: props?.authorities
+        ? sidebarConfig[props?.authorities[1]?.toLowerCase()]
+        : "USER",
     });
   }, []);
 
@@ -29,7 +33,7 @@ function SideNav() {
   function mapMenu() {
     const arrMenu = state.user.map((link, key) => {
       return (
-        <li key={Math.random(key)}>
+        <li key={key}>
           <div>{link.icon}</div>
           <NavLink to={link.link}>{t(link.label)}</NavLink>
         </li>
@@ -39,9 +43,13 @@ function SideNav() {
   }
 
   return (
-    <div className="menuListWrapper">
-      <ul>{mapMenu()}</ul>
-    </div>
+    <>
+      {state.user && (
+        <div className="menuListWrapper">
+          <ul>{mapMenu()}</ul>
+        </div>
+      )}
+    </>
   );
 }
 

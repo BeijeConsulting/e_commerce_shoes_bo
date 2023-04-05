@@ -25,7 +25,6 @@ const userDuck = createSlice({
     surname: "",
     email: "",
     authorities: [],
-    isLogged: false,
     addresses: [],
     birthDate: "",
   },
@@ -35,7 +34,6 @@ const userDuck = createSlice({
       state.surname = action.payload.surname;
       state.email = action.payload.email;
       state.authorities = action.payload.authorities;
-      state.isLogged = action.payload.isLogged;
       state.addresses = action.payload.addresses;
       state.birthDate = action.payload.birthDate;
     },
@@ -44,7 +42,6 @@ const userDuck = createSlice({
       state.surname = "";
       state.email = "";
       state.authorities = [];
-      state.isLogged = false;
       state.addresses = [];
       state.birthDate = "";
     },
