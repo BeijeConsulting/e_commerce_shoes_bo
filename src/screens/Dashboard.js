@@ -47,26 +47,24 @@ export default function Dashboard(props) {
       console.log(order.id);
       // return <p key={order.id}>{order.id}</p>;
       return (
-        <>
-          <table key={order.id} className="recent-orders-table">
-            <thead>
-              <tr>
-                <th>{t("id")}</th>
-                <th>{t("status")}</th>
-                <th>{t("total")}</th>
-                {/* <th>{t("Payment")}</th> */}
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="recent-order-row">
-                <td>{order.id}</td>
-                <td>{order.status}</td>
-                <td>{order.total_price}</td>
-                {/* <td>{order.payment_status}</td> */}
-              </tr>
-            </tbody>
-          </table>
-        </>
+        <table key={order.id} className="recent-orders-table">
+          <thead>
+            <tr>
+              <th>{t("id")}</th>
+              <th>{t("status")}</th>
+              <th>{t("total")}</th>
+              {/* <th>{t("Payment")}</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="recent-order-row">
+              <td>{order.id}</td>
+              <td>{order.status}</td>
+              <td>{order.total_price}</td>
+              {/* <td>{order.payment_status}</td> */}
+            </tr>
+          </tbody>
+        </table>
       );
     });
   }
