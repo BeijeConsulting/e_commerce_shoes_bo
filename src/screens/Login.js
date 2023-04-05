@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "../components/hookComponents/form/Form";
-import { loginFormProps, addAddressFormProps } from "../utils/formUtils";
+import { loginFormProps } from "../utils/formUtils";
 import { useTranslation } from "react-i18next";
 import { setLocalStorage } from "../utils/localStorageUtils";
 import { signin, getUser } from "../services/servicesAuth";
@@ -38,7 +38,6 @@ function Login() {
           name: user.data?.first_name,
           surname: user.data?.last_name,
           email: user.data?.email,
-          authorities: [...response.data?.permission],
           birthDate: user.data?.birth_date,
         })
       );
