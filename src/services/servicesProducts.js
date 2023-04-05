@@ -26,7 +26,7 @@ async function getProductById(id, lang) {
 }
 
 async function getDetailProduct(id) {
-  return await getData(PRODUCTS_PROPERTIES.DETAIL_URL + `/${id}`);
+  return await getData(PROPERTIES.BASE_URL + `/products/${id}`);
 }
 
 async function addProductAuth(obj) {
