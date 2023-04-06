@@ -6,9 +6,12 @@ import {
   addProductDetailsFormProps,
 } from "../utils/formUtils";
 import { addProductAuth } from "../services/servicesProducts";
+import { notifyAddSuccess, notifyAddError } from "../utils/notificationsUtils";
+import { useNavigate } from "react-router-dom";
 
 export default function AddProduct(props) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const canUploadPictures = true;
 
   // const addProduct = (data) => {
@@ -26,10 +29,10 @@ export default function AddProduct(props) {
     const response = await addProductAuth(data);
     console.log("RESPONSE ADD PRODUCT:", response);
     if (response.status === 200) {
-      alert("Product added successfully");
-      // window.location.href = "/products";
+      notifyAddSuccess("Product");
+      navigate(`/products`);
     } else {
-      alert("Error adding product");
+      notifyAddError("product");
     }
   }
 
