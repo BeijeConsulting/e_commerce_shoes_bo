@@ -8,9 +8,15 @@ import { Button } from "@mui/material";
 import { editUserAuth } from "../services/servicesUsers";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import {
+  notifyEditSuccess,
+  notifyEditError,
+} from "../utils/notificationsUtils";
+import { useNavigate } from "react-router-dom";
 
 export default function PersonalArea() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const token = useSelector((state) => state.tokenDuck.token);
 
   const [state, setState] = useState({
@@ -42,11 +48,15 @@ export default function PersonalArea() {
     const response = await editUserAuth(data);
     console.log("RESPONSE:", response);
     if (response.status === 200) {
-      alert("User data modified successfully");
+      notifyEditSuccess("User");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+      // alert("User data modified successfully");
     } else {
-      alert("Error modifying user data");
+      // alert("Error modifying user data");
+      notifyEditError("user");
     }
-    window.location.reload();
   }
 
   return (
