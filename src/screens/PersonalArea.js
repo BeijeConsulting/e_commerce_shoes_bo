@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function PersonalArea() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const token = useSelector((state) => state.tokenDuck.token);
 
   const [state, setState] = useState({
