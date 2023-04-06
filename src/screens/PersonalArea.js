@@ -12,7 +12,6 @@ import {
   notifyEditSuccess,
   notifyEditError,
 } from "../utils/notificationsUtils";
-import { useNavigate } from "react-router-dom";
 
 export default function PersonalArea() {
   const { t } = useTranslation();
